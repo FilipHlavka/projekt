@@ -11,6 +11,8 @@ TagManager:
   - 
   - Water
   - UI
+  - enemy
+  - player
   - 
   - 
   - 
@@ -20,9 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - mlha
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: enemy
+    uniqueID: 4015881879
+    locked: 0
+  - name: mlha
+    uniqueID: 1803130965
+    locked: 0
+  - name: player
+    uniqueID: 4092673621
     locked: 0
