@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.UI.Image;
+using Unity.AI;
+using UnityEngine.AI;
 
 public class pohybHrace : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class pohybHrace : MonoBehaviour
     LayerMask layer;
     [SerializeField]
     GameObject rayes;
+    NavMeshAgent agent;
     
    
     // Start is called before the first frame update
@@ -24,6 +27,9 @@ public class pohybHrace : MonoBehaviour
     {
         rigitbody = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false; // otoèilo by se to o 90%
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,31 +45,19 @@ public class pohybHrace : MonoBehaviour
         {
 
             vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-          
-            
-            direction = (vec - rigitbody.position).normalized;
 
-           
-          /*  RaycastHit2D hit = Physics2D.Raycast(rayes.transform.position, direction,5, layer);
-            RaycastHit2D hitTri = Physics2D.Raycast(rayes.transform.position+ new Vector3(0,1.5f), direction,0.5f, layer);
-            RaycastHit2D hitDva = Physics2D.Raycast(rayes.transform.position+ new Vector3(0, -1.5f), direction,0.5f, layer);
-            Debug.DrawRay(rayes.transform.position, direction.normalized * 5, Color.red, 0.1f);
-            Debug.DrawRay(rayes.transform.position + new Vector3(0, 1.5f), direction.normalized * 5, Color.red, 0.1f);
-            Debug.DrawRay(rayes.transform.position + new Vector3(0, -1.5f), direction.normalized * 5, Color.red, 0.1f);
 
+            //direction = (vec - rigitbody.position).normalized;
+
+            agent.SetDestination(vec);
+
+
+            /*   if (hit.collider != null || hitDva.collider != null || hitTri.collider != null)
+               {
+                   direction = Vector2.zero;
+
+               }
             */
-
-
-
-
-
-
-         /*   if (hit.collider != null || hitDva.collider != null || hitTri.collider != null)
-            {
-                direction = Vector2.zero;
-
-            }
-         */
 
             if (vec.x < rigitbody.position.x)
             {
