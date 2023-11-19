@@ -11,14 +11,9 @@ public class pohybHrace : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Vector2 vec;
     Vector2 direction;
-    Vector2 pohb;
     [SerializeField]
     float speed;
     bool flip = false;
-    [SerializeField]
-    LayerMask layer;
-    [SerializeField]
-    GameObject rayes;
     NavMeshAgent agent;
     
    

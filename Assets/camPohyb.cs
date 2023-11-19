@@ -11,6 +11,8 @@ public class camPohyb : MonoBehaviour
     float scrol;
     [SerializeField]
     Camera cam;
+    [SerializeField]
+    Transform org;
     float movex = 0;
     float movey = 0;
     bool zoom = false;
@@ -49,8 +51,9 @@ public class camPohyb : MonoBehaviour
             {
                 zoom = false;
                 cam.orthographicSize = 10;
-                movex = 0;
-                movey = 0;
+                movex = org.position.x;
+                movey = org.position.y;
+                
 
             }
             else
