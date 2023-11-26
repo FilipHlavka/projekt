@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - enemy
+  - camera
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 4092673621
+    locked: 0
+  - name: Prekazka
+    uniqueID: 4234134041
     locked: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,14 +17,26 @@ public class camPohyb : MonoBehaviour
     float movex = 0;
     float movey = 0;
     bool zoom = false;
+    bool stuj = false;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+    public void Zastav()
+    {
+        stuj = !stuj;
+        cam.enabled = !cam.enabled;
+    }
     // Update is called once per frame
     void Update()
+    {
+        if (!stuj)
+            HniSe();
+        
+    }
+
+    private void HniSe()
     {
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
@@ -46,14 +59,14 @@ public class camPohyb : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            
+
             if (zoom)
             {
                 zoom = false;
                 cam.orthographicSize = 10;
                 movex = org.position.x;
                 movey = org.position.y;
-                
+
 
             }
             else

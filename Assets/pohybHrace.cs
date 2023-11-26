@@ -4,21 +4,29 @@ using UnityEngine;
 using static UnityEngine.UI.Image;
 using Unity.AI;
 using UnityEngine.AI;
+using System;
 
 public class pohybHrace : MonoBehaviour
 {
     Rigidbody2D rigitbody;
     SpriteRenderer spriteRenderer;
     Vector2 vec;
-    Vector2 direction;
-    [SerializeField]
-    float speed;
+    //Vector2 direction;
+    /*[SerializeField]
+    float speed;*/
     bool flip = false;
     NavMeshAgent agent;
-    
+    bool stuj = false;
    
     // Start is called before the first frame update
     void Start()
+    {
+        
+        Zacni();
+
+    }
+
+    private void Zacni()
     {
         rigitbody = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -26,6 +34,7 @@ public class pohybHrace : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false; // otoèilo by se to o 90%
     }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         rigitbody.velocity = Vector2.zero;
@@ -34,8 +43,19 @@ public class pohybHrace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
+        if (!stuj)
+            HejbniSe();
+        else
+            agent.isStopped = true;
+       
+    }
+    public void Zastav()
+    {
+        stuj = !stuj;
+        agent.isStopped = false;
+    }
+    private void HejbniSe()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
@@ -63,7 +83,7 @@ public class pohybHrace : MonoBehaviour
                 flip = false;
             }
 
-            rigitbody.velocity = direction * speed;
+            // rigitbody.velocity = direction * speed;
         }
         if (Vector2.Distance(rigitbody.position, vec) < 0.1f)
         {

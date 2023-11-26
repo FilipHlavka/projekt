@@ -9,11 +9,15 @@ using UnityEngine.Events;
 public class zakl : MonoBehaviour
 {
     [SerializeField]
-    protected int zivoty;
+    public int Zivoty;
     [SerializeField]
-    protected int range;
+    public int Def;
     [SerializeField]
-    protected int rychlost;
+    protected int range; // vyditelnost
+    [SerializeField]
+    public int Atk;
+    [SerializeField]
+    public float Rychlost;
     NavMeshAgent agent;
     Transform maska;
     [SerializeField]
@@ -24,99 +28,139 @@ public class zakl : MonoBehaviour
     [SerializeField]
     public LayerMask maskaPrekazka;
     [SerializeField]
-    int dosah;
-    UnityEvent<bool> utoc;
-   
+    float dosah;
+    UnityEvent<bool,GameObject> utoc;
+    bool stuj = false;
+    public void Awake()
+    {
+        agent = gameObject.GetComponent<NavMeshAgent>();
 
+        Debug.Log("rychlost" + Rychlost);
+        agent.speed = Rychlost; // rychlost
+        gameObject.GetComponent<hracData>().zivoty = Zivoty;
+        gameObject.GetComponent<hracData>().atk = Atk;
+        gameObject.GetComponent<hracData>().def = Def;
+        gameObject.GetComponent<hracData>().rychlost = Rychlost;
+        gameObject.GetComponent<hracData>().range = dosah;
+        
+    }
 
     public void Start()
     {
+        
+        Zacni();
 
-        if (utoc == null)
-            utoc = new UnityEvent<bool>();
-        agent = gameObject.GetComponent<NavMeshAgent>();
-
-
-        agent.speed = rychlost; // rychlost
-        maska = transform.Find("SpriteMask");
-        maska.localScale = new Vector3 (range, range, range); // pøiøazení dohledu
-        enemies = GameObject.FindGameObjectsWithTag("enemy"); // enemákù bude fixní poèet takže tohle staèí
-        Debug.Log(enemies.Length);
-
-        utoc.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>().Prepnuti);
+       
 
 
     }
 
+    private void Zacni()
+    {
+        if (utoc == null)
+            utoc = new UnityEvent<bool, GameObject>();
+
+
+
+        maska = transform.Find("SpriteMask");
+        maska.localScale = new Vector3(range, range, range); // pøiøazení dohledu
+        AktualizujSeznamEnemy();
+        
+        Debug.Log(enemies.Length);
+
+        utoc.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>().Prepnuti);
+    }
+
+    public void AktualizujSeznamEnemy()
+    {
+        
+        enemies = GameObject.FindGameObjectsWithTag("enemy"); // pozdìjš pøidání dalších eventem
+        Debug.Log(enemies.Length);
+    }
+
+    public void Zastav()
+    {
+        //AktualizujSeznamEnemy();
+        stuj = !stuj;
+    }
+
     public void Update()
     {
-
-        Raycastuj();
-       
+        
+            if (!stuj)
+                Raycastuj();
+        
         
     }
     
     protected void Raycastuj()
     {
-       
-        foreach (GameObject enemy in enemies)
-        {
-            
-            if (strelbaPresPrekazky) { 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, enemyMaska);
-
-               
-
-
-
-                Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
-
-            if (hit.collider != null)
+        
+           
+            foreach (GameObject enemy in enemies)
+            {
+            if (enemy != null)
             {
 
 
-                if (hit.collider.CompareTag("enemy"))
+                if (strelbaPresPrekazky)
                 {
 
-                    Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
-                        if (Input.GetKeyDown(KeyCode.Space))
-                        {
-                            utoc.Invoke(false);
-                        }
-
-                    }
-
-                }
-               
-            }
-            if (!strelbaPresPrekazky)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, maskaPrekazka);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, enemyMaska);
 
 
 
 
-                Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
 
-                if (hit.collider != null)
-                {
+                    Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
 
-
-                    if (hit.collider.CompareTag("enemy"))
+                    if (hit.collider != null)
                     {
 
-                        Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
-                        if (Input.GetKeyDown(KeyCode.Space))
+
+                        if (hit.collider.CompareTag("enemy"))
                         {
-                            utoc.Invoke(false);
+
+                            Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
+                            if (Input.GetButtonDown("Jump"))
+                            {
+                                utoc.Invoke(false, enemy);
+                            }
+
                         }
 
                     }
 
                 }
-            }
+                if (!strelbaPresPrekazky)
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, maskaPrekazka);
 
-        }
+
+
+
+                    Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
+
+                    if (hit.collider != null)
+                    {
+
+
+                        if (hit.collider.CompareTag("enemy"))
+                        {
+
+                            Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                utoc.Invoke(false, enemy);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            }
+        
     }
   
 
