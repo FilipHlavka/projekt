@@ -10,7 +10,7 @@ public class cont : MonoBehaviour
     UnityEvent funguj;
     [SerializeField]
     GameObject kamera;
-    [SerializeField]
+    [SerializeField]                    // zkusit pøes static
     Camera kameraSouboje;
     [SerializeField]
     GameObject KontrolerSouboj;

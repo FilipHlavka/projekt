@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Apple.ReplayKit;
@@ -15,14 +16,14 @@ public class zakl : MonoBehaviour
     [SerializeField]
     protected int range; // vyditelnost
     [SerializeField]
-    public int Atk;
+    public int Atk;                     // kontrolovat vzdálenost pøed raycastem
     [SerializeField]
     public float Rychlost;
     NavMeshAgent agent;
     Transform maska;
     [SerializeField]
     bool strelbaPresPrekazky;
-    GameObject[] enemies;
+    List<GameObject> enemies;
     [SerializeField]
     public LayerMask enemyMaska;
     [SerializeField]
@@ -66,7 +67,7 @@ public class zakl : MonoBehaviour
         maska.localScale = new Vector3(range, range, range); // pøiøazení dohledu
         AktualizujSeznamEnemy();
         
-        Debug.Log(enemies.Length);
+        Debug.Log(enemies.Count);
 
         utoc.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>().Prepnuti);
     }
@@ -74,8 +75,8 @@ public class zakl : MonoBehaviour
     public void AktualizujSeznamEnemy()
     {
         
-        enemies = GameObject.FindGameObjectsWithTag("enemy"); // pozdìjš pøidání dalších eventem
-        Debug.Log(enemies.Length);
+        enemies = GameObject.FindGameObjectsWithTag("enemy").ToList(); // pozdìjš pøidání dalších eventem
+        Debug.Log(enemies.Count);
     }
 
     public void Zastav()
@@ -106,7 +107,7 @@ public class zakl : MonoBehaviour
                 if (strelbaPresPrekazky)
                 {
 
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, enemyMaska);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, (enemy.transform.position - transform.position).normalized, dosah, enemyMaska);
 
 
 
