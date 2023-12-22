@@ -7,16 +7,14 @@ using UnityEngine.SceneManagement;
 public class cont : MonoBehaviour
 {
     GameObject hrac;
-<<<<<<< Updated upstream
+
     UnityEvent stuj;
     UnityEvent funguj;
     [SerializeField]
     GameObject kamera;
     [SerializeField]                    // zkusit pøes static
     Camera kameraSouboje;
-=======
-   
->>>>>>> Stashed changes
+
     [SerializeField]
     GameObject KontrolerSouboj;
     public UnityEvent<bool> zacniBojovat;
