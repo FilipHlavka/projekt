@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class SoubojCont : MonoBehaviour
-{
+{/*
     [SerializeField]
     SpriteRenderer hracSprite; // fake hr·Ë
     [SerializeField]
@@ -24,7 +24,7 @@ public class SoubojCont : MonoBehaviour
             konec = new UnityEvent();
         cont = GameObject.FindGameObjectWithTag("GameController");
        
-        konec.AddListener(cont.GetComponent<cont>().PrepniZpet);
+        //konec.AddListener(cont.GetComponent<cont>().PrepniZpet);
     }
 
     // Update is called once per frame
@@ -88,6 +88,6 @@ public class SoubojCont : MonoBehaviour
 
 
         
-    }
+    }*/
     
 }

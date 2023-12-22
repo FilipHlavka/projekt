@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/souboj.unity
-    guid: 3826ef61867d94e4a921793fbb1b5c44
+    guid: 39cf2fd0ed1dc3e4193134691f2fd564
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
