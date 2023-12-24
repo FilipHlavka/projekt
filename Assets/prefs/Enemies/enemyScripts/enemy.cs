@@ -28,7 +28,7 @@ public abstract class enemy : MonoBehaviour
     public bool jeNaTahu = false;
     
     public abstract void Delej();
-
+    
     public void Update()
     {
         updatePozice();

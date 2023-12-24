@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class zakladniHrac : zakl
+public class delostrelectvo : zakl
 {
-    // dodìlat hráèe do scény 2
     [SerializeField]
     public GameObject vybuch;
     int pocetVylepseni = 2;
@@ -17,7 +16,7 @@ public class zakladniHrac : zakl
     public override void Update()
     {
         base.Update();
-
+        
         CheckForPower();
     }
 
@@ -39,15 +38,16 @@ public class zakladniHrac : zakl
     IEnumerator schopnost()
     {
         Debug.Log("aktivace schopnosti");
+
         phb.agent.speed = Rychlost * 2;
 
-
+       
         yield return new WaitForSeconds(3f);
 
         pocetVylepseni--;
 
         phb.agent.speed = Rychlost;
 
-
+       
     }
 }

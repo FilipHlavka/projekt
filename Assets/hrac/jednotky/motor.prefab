@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2212460502343316065}
   - component: {fileID: 4987313213695343116}
   - component: {fileID: 1913923490726519820}
-  - component: {fileID: 4782638221361101939}
+  - component: {fileID: 23823437414164895}
   - component: {fileID: 1466835561464581736}
   - component: {fileID: 6619157309991568467}
   - component: {fileID: 2564127981165376580}
   m_Layer: 7
-  m_Name: hm2_0
+  m_Name: motor
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: -202293675
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1894994301860224146, guid: 82301f1aecb768f47852f2132c500f0e, type: 3}
+  m_Sprite: {fileID: -6679339266308888183, guid: bbe9c5a13d1a02b42b5a89568da80bcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.38, y: 1.62}
+  m_Size: {x: 2.85, y: 2.18}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9d51fc54bf1ec44b74dc3cea84b897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4782638221361101939
+--- !u!114 &23823437414164895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,19 +124,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4464040587062689483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0794193385625fe43a22fe3166aa1069, type: 3}
+  m_Script: {fileID: 11500000, guid: 72371671606782d47a28b35521f565a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Zivoty: 25
   Def: 5
-  range: 25
-  Atk: 10
-  Rychlost: 4
+  range: 35
+  Atk: 20
+  Rychlost: 6
   maskaPrekazka:
     serializedVersion: 2
     m_Bits: 64
   dosah: 50
-  nameHr: zakladniHrac
+  nameHr: motor
   pozice: {x: 0, y: 0}
 --- !u!50 &1466835561464581736
 Rigidbody2D:

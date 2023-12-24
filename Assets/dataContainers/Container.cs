@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Container : MonoBehaviour
@@ -42,9 +43,14 @@ public class Container : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
         enemies.Add(hrac);
 
+
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        
         Zabal Whopper = new Zabal();
         Whopper.obj = UzFaktNevimEnemy;
         Whopper.hrDt = ukl;
+        Whopper.sceneJm = currentScene.name;
 
         enemyData = new List<enemy>(enemies.Count);
 
@@ -93,7 +99,7 @@ public class Container : MonoBehaviour
                 UzFaktNevimEnemy.Add(nvm);
             }
         }
-       
+      
 
         // Uložení do JSON
         jsonData = JsonUtility.ToJson(Whopper);
@@ -137,5 +143,6 @@ public class Zabal
 {
     public List<UkladaniProEnemy> obj;
     public UkladaniProHrac hrDt;
+    public string sceneJm;
 }
 #endregion

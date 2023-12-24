@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.Events;
-
+using TMPro;
 
 public class prirazeniDoBoje : MonoBehaviour
 {
@@ -28,21 +28,54 @@ public class prirazeniDoBoje : MonoBehaviour
 
     public actuallSouboj actSouboj;
 
+    [SerializeField]
+    TMP_Text text;
+    [SerializeField]
+    Canvas canvas;
+
+    public UnityEvent zpet;
+
     void Start()
     {
-      
-        if(zacniEvent == null)
+        canvas.enabled = false;
+        if (zacniEvent == null)
             zacniEvent = new UnityEvent();  
 
         actSouboj = gameObject.GetComponent<actuallSouboj>();
         Souboj = gameObject.GetComponent<soubojSceneController>();
-
+        zpet.AddListener(Souboj.Uloz);
         zacniEvent.AddListener(actSouboj.Pridej);
 
         priratEnemy();
         pridatHrace();
         zacniEvent.Invoke();
     }
+
+
+
+    public void konecBoje(bool vyhraEnemy)
+    {
+        canvas.enabled = true;
+        
+        if (vyhraEnemy)
+        {
+            text.text = "vítìz je nepøítel";
+        }
+        else
+        {
+            text.text = "Vyhrál jsi";
+        }
+        Souboj.hracDt = actSouboj.hracDt;
+        listEnemies.Add(actSouboj.enemyVSouboji);
+        Souboj.listEnemies = listEnemies;
+
+        Invoke("ulozZpet",4);
+    }
+    public void ulozZpet()
+    {
+        zpet.Invoke();
+    }
+    #region prirazeniSpritu
     public void priratEnemy()
     {
         for (int i = 0; i < spriteList.Count; i++)
@@ -83,7 +116,7 @@ public class prirazeniDoBoje : MonoBehaviour
         hracObjekt.GetComponent<SpriteRenderer>().sprite = sprite;
         
     }
-    
+    #endregion
 
     // Update is called once per frame
     void Update()

@@ -6,20 +6,25 @@ using UnityEngine.Events;
 public class actuallSouboj : MonoBehaviour
 {
     [SerializeField]
-    UkladaniProEnemy enemyVSouboji;
+    public UkladaniProEnemy enemyVSouboji;
     [SerializeField]
-    UkladaniProHrac hracDt;
+    public UkladaniProHrac hracDt;
     prirazeniDoBoje boj;
-    float enemyAtkMulti;
-    int enemyDefenseMulti;
-
-    float hracAtkMulti;
-    int hracDefenseMulti;
+    float enemyAtkMulti = 1;
+    public UnityEvent<bool> vyhraEnemyOtaznik;
+    public bool vyhraEnemy;
+    bool konec = false;
+    float hracAtkMulti = 1;
+   
     // Start is called before the first frame update
     void Awake()
     {
+        if(vyhraEnemyOtaznik == null) 
+            vyhraEnemyOtaznik = new UnityEvent<bool>();
+
+
         boj = gameObject.GetComponent<prirazeniDoBoje>();
-        
+        vyhraEnemyOtaznik.AddListener(boj.konecBoje);
     }
     public void Pridej()
     {
@@ -35,16 +40,25 @@ public class actuallSouboj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!enemyVSouboji.jeNaTahu)
-        {
-            
-            Bojuj();
-        }
-        else
-        {
-            EnemyBoj();
-        }
+        if (!konec) {
+            if (!enemyVSouboji.jeNaTahu && hracDt.zivoty > 0 && enemyVSouboji.zivoty > 0)
+            {
 
+                Bojuj();
+            }
+            else if (hracDt.zivoty > 0 && enemyVSouboji.zivoty > 0)
+            {
+                EnemyBoj();
+            } else
+            {
+                if (enemyVSouboji.zivoty <= 0)
+                    vyhraEnemy = false;
+                else vyhraEnemy = true;
+
+                konec = true;
+                vyhraEnemyOtaznik.Invoke(vyhraEnemy);
+            }
+        }
     }
     // ---------------------------------------------
     #region hrac
@@ -93,9 +107,9 @@ public class actuallSouboj : MonoBehaviour
 
     public void BranSe()
     {
-        hracDefenseMulti += 5;
+        hracDt.def += 5;
         enemyVSouboji.jeNaTahu = true;
-
+        Debug.Log("hryc defence" + hracDt.def);
     }
     public void ZvisAtk()
     {
@@ -143,7 +157,7 @@ public class actuallSouboj : MonoBehaviour
 
     public void BranSeEnemy()
     {
-        enemyDefenseMulti += 5;
+        enemyVSouboji.def += 5;
     }
     public void ZvisAtkEnemy()
     {

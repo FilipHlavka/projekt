@@ -15,41 +15,57 @@ public class pohybHrace : MonoBehaviour
     /*[SerializeField]
     float speed;*/
     bool flip = false;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     bool stuj = false;
-   
-    // Start is called before the first frame update
+    
+
+    private void Awake()
+    {
+        agent = gameObject.GetComponent<NavMeshAgent>();
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false; // otoèilo by se to o 90%
+        
+        if (!cont.prvniInstance)
+        {
+            Destroy(gameObject);
+            Debug.Log("zniceno");
+        }
+    }
     void Start()
     {
         
+       
         Zacni();
 
     }
+   
 
     private void Zacni()
     {
+        
+       
         rigitbody = gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false; // otoèilo by se to o 90%
+       
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         rigitbody.velocity = Vector2.zero;
     }
-    private void OnDestroy()
-    {
-        
-    }
+   
     // Update is called once per frame
     void Update()
     {
-        if (!stuj)
-            HejbniSe();
-        else
-            agent.isStopped = true;
+       
+        
+            if (!stuj)
+                HejbniSe();
+            else
+                agent.isStopped = true;
+        
+        
        
     }
     public void Zastav()

@@ -24,7 +24,15 @@ public class pohybEnemy : MonoBehaviour
 
 
     // Start is called before the first frame update
-  
+    private void Awake()
+    {
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        if (!cont.prvniInstance)
+            Destroy(gameObject);
+    }
+
     void Start()
     {
         
@@ -39,13 +47,14 @@ public class pohybEnemy : MonoBehaviour
     }
     private void Zacni()
     {
+       
+
+
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        
         Enemy = gameObject.GetComponent<enemy>();
 
         
@@ -60,10 +69,17 @@ public class pohybEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-           
+        if(cont.prvniInstance && player != null)
         Delej();
 
-       
+        if (player == null)
+        {
+            try { 
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+                }
+            catch { }
+        }
 
     }
 

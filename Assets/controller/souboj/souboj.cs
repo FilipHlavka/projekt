@@ -11,11 +11,12 @@ public class soubojSceneController : MonoBehaviour
     [SerializeField]
     public List<UkladaniProEnemy> listEnemies;
     public UkladaniProHrac hracDt;
-    
-
+    ingamemanager mngr;
+    string sceneJm;
     // Start is called before the first frame update
     void Start()
     {
+        mngr = gameObject.GetComponent<ingamemanager>();
         NactiJson();
     }
     public void NactiJson()
@@ -33,14 +34,22 @@ public class soubojSceneController : MonoBehaviour
            
             listEnemies = zabal.obj;
             hracDt = zabal.hrDt;
-           
+            sceneJm = zabal.sceneJm;
             Debug.Log(listEnemies.Count);
         }
         
     }
     public void Uloz()
     {
+        Debug.Log("jsem tu");
+        zabal.hrDt = hracDt;
+        zabal.obj = listEnemies;
 
+        string jsonData = JsonUtility.ToJson(zabal);
+        File.WriteAllText(Application.dataPath + "/enemies.json", jsonData);
+        cont.prvniInstance = false;
+        // zmenit senu
+        mngr.PrepniNascenu(sceneJm);
     }
 
     // Update is called once per frame

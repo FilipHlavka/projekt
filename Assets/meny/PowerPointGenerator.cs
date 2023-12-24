@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PowerPointGenerator : MonoBehaviour
 {
     [SerializeField]
-    int maxPP;
+    public static int maxPP;
     public static int PP;
     [SerializeField]
     int poKolika;
@@ -14,6 +14,7 @@ public class PowerPointGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxPP = 100; // llll
         InvokeRepeating("PridejPP", 0, 5);
     }
     public void PridejPP()
@@ -31,6 +32,7 @@ public class PowerPointGenerator : MonoBehaviour
         //Debug.Log(PP);
 
     }
+    
     // Update is called once per frame
     void Update()
     {

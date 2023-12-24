@@ -21,11 +21,7 @@ public abstract class zakl : MonoBehaviour
     public float Rychlost;
     NavMeshAgent agent;
     Transform maska;
-    [SerializeField]
-    bool strelbaPresPrekazky;
     List<GameObject> enemies;
-    [SerializeField]
-    public LayerMask enemyMaska;
     [SerializeField]
     public LayerMask maskaPrekazka;
     [SerializeField]
@@ -50,13 +46,16 @@ public abstract class zakl : MonoBehaviour
         
     }
 
-    public void Start()
+    public virtual void Start()
     {
-        
+/*
+        if (!cont.prvniInstance)
+        {
+            Destroy(gameObject);
+        }
+*/
+
         Zacni();
-
-       
-
 
     }
 
@@ -89,7 +88,7 @@ public abstract class zakl : MonoBehaviour
         stuj = !stuj;
     }
 
-    public void Update()
+    public virtual void Update()
     {
         
             if (!stuj)
@@ -114,51 +113,19 @@ public abstract class zakl : MonoBehaviour
                 if (Vector2.Distance(transform.position, enemy.transform.position) < range/3)
                 {
                     
-                    if (strelbaPresPrekazky)
-                    {
-
-                        RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, enemyMaska);
-
-
-
-
+                   
+                        RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position,dosah,maskaPrekazka);
+                        
 
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
 
                         if (hit.collider != null)
                         {
 
-
+                            
                             if (hit.collider.CompareTag("enemy"))
                             {
-
-                                //Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
-                                if (Input.GetButtonDown("Jump"))
-                                {
-                                    
-                                    utoc.Invoke(false,enemy);
-                                }
-
-                            }
-
-                        }
-
-                    }
-                    if (!strelbaPresPrekazky)
-                    {
-                        RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, dosah, maskaPrekazka);
-
-
-
-
-                        Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
-
-                        if (hit.collider != null)
-                        {
-
-
-                            if (hit.collider.CompareTag("enemy"))
-                            {
+                                
 
                                 Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
                                 if (Input.GetKeyDown(KeyCode.Space))
@@ -174,7 +141,7 @@ public abstract class zakl : MonoBehaviour
                         }
                     }
 
-                }
+                
                 }
             }
         

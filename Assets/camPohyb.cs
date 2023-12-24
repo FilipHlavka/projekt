@@ -14,8 +14,8 @@ public class camPohyb : MonoBehaviour
     Camera cam;
     [SerializeField]
     Transform org;
-    float movex = 0;
-    float movey = 0;
+    public float movex = 0;
+    public float movey = 0;
     bool zoom = false;
     bool stuj = false;
     // Start is called before the first frame update
@@ -64,8 +64,8 @@ public class camPohyb : MonoBehaviour
             {
                 zoom = false;
                 cam.orthographicSize = 10;
-                movex = org.position.x;
-                movey = org.position.y;
+                /*movex = org.position.x;
+                movey = org.position.y;*/
 
 
             }

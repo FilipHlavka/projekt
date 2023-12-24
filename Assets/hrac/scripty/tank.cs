@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class zakladniHrac : zakl
+public class tank : zakl
 {
-    // dodìlat hráèe do scény 2
     [SerializeField]
     public GameObject vybuch;
     int pocetVylepseni = 2;
@@ -38,7 +37,7 @@ public class zakladniHrac : zakl
     }
     IEnumerator schopnost()
     {
-        Debug.Log("aktivace schopnosti");
+        Debug.Log("aktivace schopnosti" );
         phb.agent.speed = Rychlost * 2;
 
 
