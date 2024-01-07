@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4987313213695343116}
   - component: {fileID: 1913923490726519820}
   - component: {fileID: 4782638221361101939}
+  - component: {fileID: 2225691135075037662}
   - component: {fileID: 1466835561464581736}
   - component: {fileID: 6619157309991568467}
   - component: {fileID: 2564127981165376580}
@@ -103,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41327452e95ae914c83d4e58f8bf09e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
 --- !u!114 &1913923490726519820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,10 +136,24 @@ MonoBehaviour:
   Rychlost: 4
   maskaPrekazka:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   dosah: 50
   nameHr: zakladniHrac
   pozice: {x: 0, y: 0}
+  vybuch: {fileID: 0}
+--- !u!114 &2225691135075037662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464040587062689483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddb29ab3c5b33943835a8d02a33f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: 0
 --- !u!50 &1466835561464581736
 Rigidbody2D:
   serializedVersion: 4

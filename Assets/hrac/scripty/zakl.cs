@@ -24,8 +24,8 @@ public abstract class zakl : MonoBehaviour
     List<GameObject> enemies;
     [SerializeField]
     public LayerMask maskaPrekazka;
-    [SerializeField]
-    float dosah;
+    
+    public float dosah;
     UnityEvent<bool,GameObject> utoc;
     bool stuj = false;
     hracData hracdata;
@@ -43,7 +43,8 @@ public abstract class zakl : MonoBehaviour
         hracdata.def = Def;
         hracdata.rychlost = Rychlost;
         hracdata.range = dosah;
-        
+        dosah = range / 3;
+
     }
 
     public virtual void Start()
@@ -56,7 +57,7 @@ public abstract class zakl : MonoBehaviour
 */
 
         Zacni();
-
+       
     }
 
     private void Zacni()
@@ -122,7 +123,7 @@ public abstract class zakl : MonoBehaviour
                         if (hit.collider != null)
                         {
 
-                            
+                       
                             if (hit.collider.CompareTag("enemy"))
                             {
                                 

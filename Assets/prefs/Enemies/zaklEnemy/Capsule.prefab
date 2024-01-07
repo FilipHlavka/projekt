@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 8838288321375270155}
   - component: {fileID: 5668764737875131011}
   - component: {fileID: 5240105466394118562}
+  - component: {fileID: 1001740730895007088}
   - component: {fileID: 7057020443853587887}
   - component: {fileID: 3266760425296818375}
+  - component: {fileID: -4516707385748751606}
   m_Layer: 6
   m_Name: Capsule
   m_TagString: enemy
@@ -135,11 +137,27 @@ MonoBehaviour:
   atk: 2
   def: 10
   rychlost: 3
-  range: 5
+  range: 7
   dosahDetekce: 15
   defenseMulti: 1
   atkMulti: 1
-  enemyObject: {fileID: 0}
+  nazev: 
+  bojuje: 0
+  pozice: {x: 0, y: 0}
+  jeNaTahu: 0
+--- !u!114 &1001740730895007088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219083540486949734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddb29ab3c5b33943835a8d02a33f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: 1
 --- !u!195 &7057020443853587887
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -199,3 +217,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!50 &-4516707385748751606
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219083540486949734}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

@@ -15,7 +15,7 @@ public class PowerPointGenerator : MonoBehaviour
     void Start()
     {
         maxPP = 100; // llll
-        InvokeRepeating("PridejPP", 0, 5);
+        InvokeRepeating("PridejPP", 5, 5);
     }
     public void PridejPP()
     {

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+
 public class pohybEnemy : MonoBehaviour
 {
     
@@ -20,7 +21,7 @@ public class pohybEnemy : MonoBehaviour
     enemy Enemy;
     
     UnityEvent<bool,GameObject> utoc;
-    bool stuj = false;
+    //bool stuj = false;
 
 
     // Start is called before the first frame update
@@ -40,11 +41,11 @@ public class pohybEnemy : MonoBehaviour
        
         
     }
-    public void Zastav()
+    /*public void Zastav()
     {
         stuj = !stuj;
        
-    }
+    }*/
     private void Zacni()
     {
        
@@ -82,11 +83,12 @@ public class pohybEnemy : MonoBehaviour
         }
 
     }
+   
 
     private void Delej()
     {
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, (float)dosahDetekce, Mask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, dosahDetekce, Mask);
 
 
         if (hit.collider != null)
@@ -100,7 +102,7 @@ public class pohybEnemy : MonoBehaviour
 
 
             }
-            else if (Vector2.Distance(transform.position, player.position) <= (float)AtkRange)
+            else if (Vector2.Distance(transform.position, player.position) <= AtkRange)
             {
                 agent.isStopped = true;
 

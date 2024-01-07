@@ -76,7 +76,7 @@ public class camPohyb : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.A) && cam.transform.position.x > -5.44f)
+        if (Input.GetKey(KeyCode.A))
         {
 
             movex += -speed * Time.deltaTime;
@@ -90,7 +90,7 @@ public class camPohyb : MonoBehaviour
         {
             movey += speed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.S) && cam.transform.position.y > -6f)
+        if (Input.GetKey(KeyCode.S))
         {
             movey += -speed * Time.deltaTime;
         }
