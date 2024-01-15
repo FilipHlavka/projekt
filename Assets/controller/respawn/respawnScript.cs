@@ -52,13 +52,13 @@ public class respawnScript : MonoBehaviour
         tlacText.transform.SetParent(btObj.transform);
         tlacText.text = vratTxt(jm);
         tlacText.color = Color.black;
-        tlacText.rectTransform.sizeDelta = new Vector2(400f, 50f);
+        tlacText.rectTransform.sizeDelta = new Vector2(500f, 50f);
         tlacText.alignment = TextAlignmentOptions.Center;
 
         k += 63;
 
         RectTransform buttonRectTransform = btObj.GetComponent<RectTransform>();
-        buttonRectTransform.sizeDelta = new Vector2(400f, 50f);
+        buttonRectTransform.sizeDelta = new Vector2(500f, 50f);
         buttonRectTransform.anchoredPosition = new Vector2(0, odsazeni-k);
 
        

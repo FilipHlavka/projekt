@@ -8,6 +8,7 @@ public class tank : zakl
     public GameObject vybuch;
     int pocetVylepseni = 2;
     pohybHrace phb;
+    bool CRunning = false;  
     public override void Start()
     {
         base.Start();
@@ -24,12 +25,10 @@ public class tank : zakl
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (pocetVylepseni > 0)
+            if (pocetVylepseni > 0 && !CRunning)
             {
-                /*Vector3 mousePosition = Input.mousePosition;
-                Vector3 DoSveta = Camera.main.ScreenToWorldPoint(mousePosition);
-
-                Instantiate(vybuch, new Vector3(DoSveta.x,DoSveta.y,0), Quaternion.Euler(0,0,0));*/
+               
+                CRunning = true;
                 StartCoroutine(schopnost());
             }
         }
@@ -37,14 +36,14 @@ public class tank : zakl
     }
     IEnumerator schopnost()
     {
-        Debug.Log("aktivace schopnosti" );
+        Debug.Log("aktivace schopnosti");
         phb.agent.speed = Rychlost * 2;
 
 
         yield return new WaitForSeconds(3f);
 
         pocetVylepseni--;
-
+        CRunning = false;
         phb.agent.speed = Rychlost;
 
 

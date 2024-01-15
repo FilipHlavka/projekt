@@ -9,6 +9,7 @@ public class zakladniHrac : zakl
     public GameObject vybuch;
     int pocetVylepseni = 2;
     pohybHrace phb;
+    bool CRunning = false;
     public override void Start()
     {
         base.Start();
@@ -25,12 +26,13 @@ public class zakladniHrac : zakl
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (pocetVylepseni > 0)
+            if (pocetVylepseni > 0 && !CRunning)
             {
                 /*Vector3 mousePosition = Input.mousePosition;
                 Vector3 DoSveta = Camera.main.ScreenToWorldPoint(mousePosition);
-
+                
                 Instantiate(vybuch, new Vector3(DoSveta.x,DoSveta.y,0), Quaternion.Euler(0,0,0));*/
+                CRunning = true;
                 StartCoroutine(schopnost());
             }
         }
@@ -45,7 +47,7 @@ public class zakladniHrac : zakl
         yield return new WaitForSeconds(3f);
 
         pocetVylepseni--;
-
+        CRunning = false;
         phb.agent.speed = Rychlost;
 
 

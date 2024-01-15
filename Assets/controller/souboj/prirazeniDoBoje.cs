@@ -31,13 +31,13 @@ public class prirazeniDoBoje : MonoBehaviour
     [SerializeField]
     TMP_Text text;
     [SerializeField]
-    Canvas canvas;
+    GameObject canvas;
 
     public UnityEvent zpet;
 
     void Start()
     {
-        canvas.enabled = false;
+        canvas.SetActive(false);
         if (zacniEvent == null)
             zacniEvent = new UnityEvent();  
 
@@ -55,7 +55,7 @@ public class prirazeniDoBoje : MonoBehaviour
 
     public void konecBoje(bool vyhraEnemy)
     {
-        canvas.enabled = true;
+        canvas.SetActive(true);
         
         if (vyhraEnemy)
         {
@@ -98,7 +98,7 @@ public class prirazeniDoBoje : MonoBehaviour
         Sprite sprite = null;
         slovnik.TryGetValue(enemyVSouboji.nazev, out sprite);
         enemyObjekt.GetComponent<SpriteRenderer>().sprite = sprite;
-        Debug.Log(listEnemies.Count);
+        //Debug.Log(listEnemies.Count);
     }
 
     public void pridatHrace()

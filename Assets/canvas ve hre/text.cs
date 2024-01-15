@@ -14,7 +14,7 @@ public class PPtext : MonoBehaviour
     }
     public static void aktualizuj()
     {
-        napis.text = "Power Points: "+PowerPointGenerator.PP;
+        napis.text = "Resource Points: "+PowerPointGenerator.PP;
     }
     // Update is called once per frame
     

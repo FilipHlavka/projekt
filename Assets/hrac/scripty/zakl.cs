@@ -14,7 +14,7 @@ public abstract class zakl : MonoBehaviour
     [SerializeField]
     public int Def;
     [SerializeField]
-    protected int range; // vyditelnost
+    public int range; // vyditelnost
     [SerializeField]
     public int Atk;
     [SerializeField]
@@ -43,7 +43,7 @@ public abstract class zakl : MonoBehaviour
         hracdata.def = Def;
         hracdata.rychlost = Rychlost;
         hracdata.range = dosah;
-        dosah = range / 3;
+        dosah = (float)(range / 3.5);
 
     }
 
