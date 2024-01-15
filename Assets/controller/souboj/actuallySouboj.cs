@@ -31,6 +31,7 @@ public class actuallSouboj : MonoBehaviour
     [SerializeField]
     TMP_Text Log;
     string zpoznenejText;
+    bool jeZpozden= false;
 
     // Start is called before the first frame update
     void Awake()
@@ -91,7 +92,8 @@ public class actuallSouboj : MonoBehaviour
             }
             else if (hracDt.zivoty > 0 && enemyVSouboji.zivoty > 0)
             {
-                EnemyBoj(); // pøidat zpoždìní
+                if(!jeZpozden)
+                StartCoroutine(Enmy());
             }
             else
             {
@@ -105,7 +107,19 @@ public class actuallSouboj : MonoBehaviour
         }
     }
 
+    IEnumerator Enmy()
+    {
+        Debug.Log("aktivace schopnosti");
+        jeZpozden = true;
 
+
+        yield return new WaitForSeconds(2f);
+        EnemyBoj(); // pøidat zpoždìní
+
+        jeZpozden = false;
+
+
+    }
     #region schopnostiABuffyDebuffy
 
 

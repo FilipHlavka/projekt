@@ -7,6 +7,7 @@ TagManager:
   - enemy
   - camera
   - kontejner
+  - line
   layers:
   - Default
   - TransparentFX

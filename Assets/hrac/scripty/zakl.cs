@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Apple.ReplayKit;
 using UnityEngine.Events;
 
 public abstract class zakl : MonoBehaviour
@@ -32,6 +31,7 @@ public abstract class zakl : MonoBehaviour
     int blbost= 0;
     public string nameHr;
     public Vector2 pozice;
+    LineRenderer lineRenderer;
     public void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -45,6 +45,12 @@ public abstract class zakl : MonoBehaviour
         hracdata.range = dosah;
         dosah = (float)(range / 3.5);
 
+        lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
+       
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
     }
 
     public virtual void Start()
@@ -111,8 +117,8 @@ public abstract class zakl : MonoBehaviour
             {
                 if (enemy != null)
                 {
-                if (Vector2.Distance(transform.position, enemy.transform.position) < range/3)
-                {
+                    if (Vector2.Distance(transform.position, enemy.transform.position) < range/3)
+                    {
                     
                    
                         RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position,dosah,maskaPrekazka);
@@ -123,12 +129,16 @@ public abstract class zakl : MonoBehaviour
                         if (hit.collider != null)
                         {
 
-                       
+                        
+
                             if (hit.collider.CompareTag("enemy"))
                             {
-                                
 
-                                Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
+                            lineRenderer.positionCount = 2;
+
+                            lineRenderer.SetPosition(0, transform.position);
+                            lineRenderer.SetPosition(1, enemy.transform.position);
+                            Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
                                 if (Input.GetKeyDown(KeyCode.Space))
                                 {
                                     if(blbost == 0)
@@ -138,9 +148,25 @@ public abstract class zakl : MonoBehaviour
                                 }
 
                             }
+                            
+                            
+                           
+                            
+
+
+
+
 
                         }
+                    else
+                    {
+                        lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
+                        lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+                        Debug.Log("aa");
                     }
+
+
+                }
 
                 
                 }
