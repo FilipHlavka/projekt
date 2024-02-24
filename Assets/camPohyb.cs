@@ -78,11 +78,12 @@ public class camPohyb : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-
+            
             movex += -speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
+           
             movex += speed * Time.deltaTime;
 
         }

@@ -8,6 +8,8 @@ TagManager:
   - camera
   - kontejner
   - line
+  - generator
+  - budova
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a55dca47a38f6524586ba6fcdd6d3397
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sprite: {fileID: 8253946835719229642, guid: 8c2ad5cb5bcb427449ffdb92ccd19b32, type: 3}
+  - powerPointGenerator: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

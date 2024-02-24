@@ -20,7 +20,7 @@ public class cont : MonoBehaviour
     public UnityEvent<bool> zacniBojovat;
     [SerializeField]
     public Zabal zabal = new Zabal();
-    List<GameObject> enemiesToApear;
+    //List<GameObject> enemiesToApear;
     respawnScript res;
 
     #region pridelovani
@@ -34,6 +34,7 @@ public class cont : MonoBehaviour
     #endregion
 
     public UnityEvent Respawn;
+    public UnityEvent aktBudovy;
     //enemyTypy typy;
 
     private void Start()
@@ -44,7 +45,8 @@ public class cont : MonoBehaviour
         if (!prvniInstance)
         {
             prvniInstance = true;
-           
+            
+            aktBudovy.Invoke();
             RozdelAPanuj();
             ukazHrace();
         }

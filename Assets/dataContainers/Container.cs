@@ -15,6 +15,7 @@ public class Container : MonoBehaviour
     public zakl hracData;
     [SerializeField]
     public List<UkladaniProEnemy> UzFaktNevimEnemy = new List<UkladaniProEnemy>();
+    public List<UkladaniProBudovu> UzFaktNevimBudova = new List<UkladaniProBudovu>();
     public static bool enemyNaTahu;
     int i = 0;
     UkladaniProHrac ukl = new UkladaniProHrac();
@@ -51,6 +52,7 @@ public class Container : MonoBehaviour
         Whopper.obj = UzFaktNevimEnemy;
         Whopper.hrDt = ukl;
         Whopper.sceneJm = currentScene.name;
+        Whopper.bdv = UzFaktNevimBudova;
 
         enemyData = new List<enemy>(enemies.Count);
 
@@ -99,7 +101,8 @@ public class Container : MonoBehaviour
                 UzFaktNevimEnemy.Add(nvm);
             }
         }
-      
+
+        BudovaDoJSNu();
 
         // Uložení do JSON
         jsonData = JsonUtility.ToJson(Whopper);
@@ -112,6 +115,26 @@ public class Container : MonoBehaviour
        
     }
 
+    void BudovaDoJSNu()
+    {
+        List<GameObject> budovy = new List<GameObject>();
+        budovy = GameObject.FindGameObjectsWithTag("budova").ToList();
+
+       
+
+        foreach (GameObject budov in budovy )
+        {
+            if (budov.TryGetComponent<budova>(out var budovaObjekt))
+            {
+                UkladaniProBudovu uklProBdv = new UkladaniProBudovu();
+                uklProBdv.nazev = budovaObjekt.jmeno;
+                uklProBdv.pozice = budovaObjekt.pozice;
+                UzFaktNevimBudova.Add(uklProBdv);
+            }
+
+        }
+
+    }
 
 
  
@@ -139,8 +162,15 @@ public class UkladaniProHrac
 
 }
 [System.Serializable]
+public class UkladaniProBudovu
+{
+    public string nazev;
+    public Vector2 pozice;
+}
+[System.Serializable]
 public class Zabal
 {
+    public List<UkladaniProBudovu> bdv;
     public List<UkladaniProEnemy> obj;
     public UkladaniProHrac hrDt;
     public string sceneJm;

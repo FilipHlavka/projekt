@@ -34,9 +34,6 @@ public class respawnScript : MonoBehaviour
     private void Tlacitko(int odsazeni,string jm)
     {
       
-       
-
-       
         GameObject btObj = new GameObject("Button");
         btObj.transform.SetParent(ptf.transform);
 
@@ -118,6 +115,7 @@ public class respawnScript : MonoBehaviour
                     panel.SetActive(false);
                     kamera.movex = spawnPoint.transform.position.x;
                     kamera.movey = spawnPoint.transform.position.y;
+                    PPtext.aktualizuj();
                 }
                 else
                 {

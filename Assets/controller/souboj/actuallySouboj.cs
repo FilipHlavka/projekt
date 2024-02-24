@@ -228,6 +228,12 @@ public class actuallSouboj : MonoBehaviour
             muzu = true;
 
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            hracDt.zivoty = 0;
+            muzu = true;
+
+        }
         if (Input.GetKeyDown(KeyCode.D))
         {
             BranSe();
