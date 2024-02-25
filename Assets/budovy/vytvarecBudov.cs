@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class vytvarecBudov : MonoBehaviour
 {
@@ -9,25 +12,110 @@ public class vytvarecBudov : MonoBehaviour
     GameObject Controler;
     BudovaCont bdvCont;
     PowerPointGenerator powerPointGenerator;
-
+    [SerializeField]
+    Button vrtTlac;
+    [SerializeField]
+    Button dulTlac;
+    [SerializeField]
+    Button bankaTlac;
+    Canvas op;
+    GameObject player;
+    bool pom = true;
+    
     // Start is called before the first frame update
+ 
     private void Awake()
     {
         Controler = GameObject.FindGameObjectWithTag("GameController");
         bdvCont = Controler.GetComponent<BudovaCont>();
         Generator = GameObject.FindGameObjectWithTag("generator");
-
-
+        player = GameObject.FindGameObjectWithTag("Player");
+        op = vrtTlac.GetComponentInParent<Canvas>();
         powerPointGenerator = Generator.GetComponent<PowerPointGenerator>();
         bdvCont.stav.AddListener(postav);
-
+       
     }
     void Start()
     {
-        // bude ve funkci kt. bude urèovat podle vzdálenosti, zda lze zapnout shop
-       
+        op.enabled = false;
+        vrtTlac.onClick.AddListener(() => spawnVrt(true));
+        dulTlac.onClick.AddListener(() => spawnDul(true));
+        bankaTlac.onClick.AddListener(() => spawnBanka(true));
+    }
+    #region spawny
+    void spawnBanka(bool platim)
+    {
+        if (platim)
+        {
+            if(PowerPointGenerator.PP - 10 >= 0)
+            {
+                PowerPointGenerator.PP -= 10;
+                PPtext.aktualizuj();
+                Budova = gameObject.AddComponent<banka>();
+                Budova.powerPointGenerator = powerPointGenerator;
+                Budova.akt();
+                Destroy(this);
+            }
+        }
+        else
+        {
+            Budova = gameObject.AddComponent<banka>();
+            Budova.powerPointGenerator = powerPointGenerator;
+            Budova.akt();
+            Destroy(this);
+        }
+      
     }
 
+    void spawnDul(bool platim)
+    {
+        if (platim)
+        {
+            if (PowerPointGenerator.PP - 10 >= 0)
+            {
+                PowerPointGenerator.PP -= 10;
+                PPtext.aktualizuj();
+
+                Budova = gameObject.AddComponent<dul>();
+                Budova.powerPointGenerator = powerPointGenerator;
+                Budova.akt();
+                Destroy(this);
+            }
+        }
+        else
+        {
+            Budova = gameObject.AddComponent<dul>();
+            Budova.powerPointGenerator = powerPointGenerator;
+            Budova.akt();
+            Destroy(this);
+        }
+    }
+
+    void spawnVrt(bool platim)
+    {
+
+        if (platim)
+        {
+            if (PowerPointGenerator.PP - 15 >= 0)
+            {
+                PowerPointGenerator.PP -= 15;
+                PPtext.aktualizuj();
+
+                Budova = gameObject.AddComponent<vrt>();
+                Budova.powerPointGenerator = powerPointGenerator;
+                Budova.akt();
+                Destroy(this);
+            }
+        }
+        else
+        {
+            Budova = gameObject.AddComponent<vrt>();
+            Budova.powerPointGenerator = powerPointGenerator;
+            Budova.akt();
+            Destroy(this);
+        }
+    }
+    #endregion
     // Update is called once per frame
     void Update()
     {
@@ -36,7 +124,18 @@ public class vytvarecBudov : MonoBehaviour
             Budova = gameObject.AddComponent<vrt>();
             Budova.powerPointGenerator = powerPointGenerator;                                                                          // Destroy(this);
             Budova.akt();
+            Destroy(this);
         }
+        if (Vector2.Distance((Vector2)player.transform.position,transform.position)<7)
+        {
+            op.enabled = true;
+            pom = false;
+        }else if (!pom)
+        {
+            op.enabled= false;
+            pom = true;
+        }
+        
     }
 
     public void postav(List<UkladaniProBudovu> listBdv)
@@ -51,27 +150,27 @@ public class vytvarecBudov : MonoBehaviour
                 Debug.Log("nice" + (Vector2)transform.position);
                 if(budova.nazev == "dul")
                 {
-                 
-                    Budova = gameObject.AddComponent<dul>();
-                    Budova.powerPointGenerator = powerPointGenerator;
-                    Budova.akt();
+                    spawnDul(false);
+
                 }
                 if (budova.nazev == "vrt")
                 {
 
-                    Budova = gameObject.AddComponent<vrt>();
-                    Budova.powerPointGenerator = powerPointGenerator;
-                    Budova.akt();
+                    spawnVrt(false);
                 }
                 if (budova.nazev == "banka")
                 {
-
-                    Budova = gameObject.AddComponent<banka>();
-                    Budova.powerPointGenerator = powerPointGenerator;
-                    Budova.akt();
+                    spawnBanka(false);
+                    
                 }
             }
         }
         
+    }
+
+
+    private void OnDestroy()
+    {
+         op.enabled = false;
     }
 }
