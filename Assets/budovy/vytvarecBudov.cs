@@ -60,6 +60,19 @@ public class vytvarecBudov : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         pom2 = true;
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            InvokeRepeating("DejHrace", 0, 1);
+        }
+    }
+    void DejHrace()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            CancelInvoke("DejHrace");
+           
+        }
     }
     #region spawny
     void spawnBanka(bool platim)
@@ -140,23 +153,22 @@ public class vytvarecBudov : MonoBehaviour
     {
         if (pom2)
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            
+            if (player != null)
             {
-                Budova = gameObject.AddComponent<vrt>();
-                Budova.powerPointGenerator = powerPointGenerator;                                                                          // Destroy(this);
-                Budova.akt();
-                Destroy(this);
+                if (Vector2.Distance((Vector2)player.transform.position, transform.position) < 7)
+                {
+                    op.enabled = true;
+                    pom = false;
+                }
+                else if (!pom)
+                {
+                    op.enabled = false;
+                    pom = true;
+                }
             }
-            if (Vector2.Distance((Vector2)player.transform.position, transform.position) < 7)
-            {
-                op.enabled = true;
-                pom = false;
-            }
-            else if (!pom)
-            {
-                op.enabled = false;
-                pom = true;
-            }
+           
+            
         }
         
         
