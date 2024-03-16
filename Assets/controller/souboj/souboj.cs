@@ -18,6 +18,7 @@ public class soubojSceneController : MonoBehaviour
     {
         mngr = gameObject.GetComponent<ingamemanager>();
         NactiJson();
+       // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
     }
     public void NactiJson()
     {

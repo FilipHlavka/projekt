@@ -14,17 +14,23 @@ public class budova : MonoBehaviour
     public Vector2 pozice;
     public List<GameObject> enemies;
     SpriteRenderer spriteRenderer;
+   // bool pom = true;
+   // BudovaCont bdvCont;
 
+   
     protected void Checkuj()
     {
         foreach (var enemy in enemies)
         {
             if (Vector2.Distance(enemy.transform.position, transform.position) < 11)
             {
-                zivoty--;
+                zivoty-= 2;
                 Debug.Log(zivoty);
-                if (zivoty <= 0)
+                if (zivoty <= 0 )
                 {
+                    //pom = false;
+                    BudovaCont.poziceZnicenychBudov.Add((Vector2)transform.position);
+                   // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
                     Destroy(gameObject);
                 }
             }
@@ -33,17 +39,23 @@ public class budova : MonoBehaviour
     protected void aktSprite() 
     {
         zivoty = 10;
-        enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         //Debug.Log(spriteRenderer);
         sprite = Resources.Load<Sprite>("budovy/" + jmeno);
         //Debug.Log(sprite);
         spriteRenderer.sprite = sprite;
         //Debug.Log(Application.dataPath);
-        InvokeRepeating("Checkuj", 1, 2);
+        StartCoroutine(pockej());
+        InvokeRepeating("Checkuj", 2, 2);
     }
-    
-    
+
     public virtual void akt() {  }
-    
+
+    IEnumerator pockej()
+    {
+
+        yield return new WaitForSeconds(1f);
+        enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
+       // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + "to je ten list");
+    }
 }

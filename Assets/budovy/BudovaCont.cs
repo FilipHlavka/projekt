@@ -10,23 +10,13 @@ public class BudovaCont : MonoBehaviour
     public List<UkladaniProBudovu> listBudov;
     cont Controller;
     public UnityEvent<List<UkladaniProBudovu>> stav;
+    public static List<Vector2> poziceZnicenychBudov = new List<Vector2>();
     // Start is called before the first frame update
     void Awake()
     {
         Controller = gameObject.GetComponent<cont>();
         Controller.aktBudovy.AddListener(Pracuj);
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Pracuj()
     {
 
