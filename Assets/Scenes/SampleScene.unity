@@ -1140,6 +1140,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2004835471255371338, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004835471255371338, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149313212511522498, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2294758885078766062, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.7406025
@@ -1183,6 +1195,10 @@ PrefabInstance:
     - target: {fileID: 4076571712836826288, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
       propertyPath: m_Name
       value: budova_spawnPoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918518609224139616, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1490,6 +1506,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2004835471255371338, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004835471255371338, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149313212511522498, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2294758885078766062, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.258735
@@ -1533,6 +1561,10 @@ PrefabInstance:
     - target: {fileID: 4076571712836826288, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
       propertyPath: m_Name
       value: budova_spawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918518609224139616, guid: f7d45d91dc070e34aa533c0774b3882a, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
