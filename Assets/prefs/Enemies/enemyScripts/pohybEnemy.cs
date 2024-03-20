@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 public class pohybEnemy : MonoBehaviour
 {
-    
+    SpriteRenderer spriteRenderer;
     Transform player;
     [SerializeField]
     LayerMask Mask;
@@ -19,7 +19,7 @@ public class pohybEnemy : MonoBehaviour
     public float dosahDetekce = 0;
     
     enemy Enemy;
-    
+    bool flip = false;
     UnityEvent<bool,GameObject> utoc;
     //bool stuj = false;
 
@@ -48,8 +48,8 @@ public class pohybEnemy : MonoBehaviour
     }*/
     private void Zacni()
     {
-       
 
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
@@ -80,6 +80,22 @@ public class pohybEnemy : MonoBehaviour
 
                 }
             catch { }
+        }
+        if (agent.destination.x < transform.position.x)
+        {
+            flip = false;
+        }
+        else
+        {
+            flip = true;
+        }
+        if (flip)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
         }
 
     }
