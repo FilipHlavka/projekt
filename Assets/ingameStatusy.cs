@@ -1,9 +1,15 @@
+//using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.U2D;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class ingameStatusy : MonoBehaviour
 {
@@ -14,15 +20,22 @@ public class ingameStatusy : MonoBehaviour
     Stat stav = Stat.nic;
     float zakRange;
     zakl hrac;
+    [SerializeField]
+    Canvas canvas;
+    List<GameObject> objekty = new List<GameObject>();
+   
+    //bool pom = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         akceProStatus.nastavStatus.AddListener(Zmena);
         if (enemy)
         {
             enemyPohyb = gameObject.GetComponent<pohybEnemy>();
             Enemy = gameObject.GetComponent<enemy>();
-
+            
             zakRange = Enemy.range;
             
         }
@@ -40,14 +53,52 @@ public class ingameStatusy : MonoBehaviour
             stav = druh;
             if (enemy)
             {
+              
                 enemyCont();
+                
+                enemyStatus();
             }
             else
             {
-                hracCont();
+                 hracCont();
+                 hracStatus();
             }
         }
-        
+    }
+    private void UdelejObr(string jmeno)
+    {
+        GameObject obrObj = new GameObject(jmeno);
+        Image obr = obrObj.AddComponent<Image>();
+
+        obr.sprite = Resources.Load<Sprite>("statusy/" + jmeno);
+        if (canvas != null && obr.sprite != null && obrObj != null)
+        {
+            obrObj.transform.SetParent(canvas.transform, false);
+            objekty.Add(obrObj);
+
+        }
+
+    }
+    private void OdstranObr()
+    {
+        if (canvas != null )
+        {
+            foreach (GameObject stat in objekty)
+            {
+                stat.transform.SetParent(null,false);
+            }
+            objekty.Clear();
+        }
+    }
+
+    private void enemyStatus()
+    {
+
+    }
+
+    private void hracStatus()
+    {
+
     }
 
     private void enemyCont()
@@ -76,6 +127,9 @@ public class ingameStatusy : MonoBehaviour
         if (stav == Stat.high)
         {
             hrac.dosah = hrac.dosah * 1.5f;
+            UdelejObr("terc"); 
+            UdelejObr("terc");
+
 
         } else if (stav == Stat.low)
         {
@@ -84,6 +138,7 @@ public class ingameStatusy : MonoBehaviour
         else
         {
             hrac.dosah = zakRange;
+            OdstranObr();
         }
         Debug.Log(hrac.dosah);
     }

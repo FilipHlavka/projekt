@@ -20,10 +20,11 @@ public abstract class zakl : MonoBehaviour
     public float Rychlost;
     NavMeshAgent agent;
     Transform maska;
+    [SerializeField]
     List<GameObject> enemies;
     [SerializeField]
     public LayerMask maskaPrekazka;
-    
+    EnemyRespawn? enresp;
     public float dosah;
     UnityEvent<bool,GameObject> utoc;
     bool stuj = false;
@@ -32,17 +33,12 @@ public abstract class zakl : MonoBehaviour
     public string nameHr;
     public Vector2 pozice;
     LineRenderer lineRenderer;
+    GameObject controller;
     public void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        hracdata = gameObject.GetComponent<hracData>();
-        //Debug.Log("rychlost" + Rychlost);
         agent.speed = Rychlost; // rychlost
-        hracdata.zivoty = Zivoty;
-        hracdata.atk = Atk;
-        hracdata.def = Def;
-        hracdata.rychlost = Rychlost;
-        hracdata.range = dosah;
+       
         dosah = (float)(range / 3.5);
 
         lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
@@ -78,8 +74,13 @@ public abstract class zakl : MonoBehaviour
         AktualizujSeznamEnemy();
         
         Debug.Log(enemies.Count);
-
-        utoc.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>().Prepnuti);
+        controller = GameObject.FindGameObjectWithTag("GameController");
+        enresp = controller.GetComponent<EnemyRespawn>();
+        if(enresp != null)
+        {
+            enresp.enemyRespawn.AddListener(SeznamEnemyPridej);
+        }
+        utoc.AddListener(controller.GetComponent<cont>().Prepnuti);
     }
 
     public void AktualizujSeznamEnemy()
@@ -87,6 +88,12 @@ public abstract class zakl : MonoBehaviour
         
         enemies = GameObject.FindGameObjectsWithTag("enemy").ToList(); // pozdìjš pøidání dalších eventem
         Debug.Log(enemies.Count);
+    }
+    public void SeznamEnemyPridej(GameObject enem)
+    {
+       
+       enemies.Add(enem);
+       Debug.Log(enemies);
     }
 
     public void Zastav()

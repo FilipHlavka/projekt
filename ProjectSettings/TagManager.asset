@@ -59,3 +59,6 @@ TagManager:
   - name: Prekazka
     uniqueID: 4234134041
     locked: 0
+  - name: canvas
+    uniqueID: 2953616939
+    locked: 0

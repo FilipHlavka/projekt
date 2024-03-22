@@ -95,6 +95,7 @@ public class vytvarecBudov : MonoBehaviour
             Budova.powerPointGenerator = powerPointGenerator;
             Budova.akt();
             Destroy(this);
+            
         }
       
     }

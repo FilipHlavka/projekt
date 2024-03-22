@@ -134,6 +134,7 @@ MonoBehaviour:
   range: 60
   Atk: 20
   Rychlost: 3
+  enemies: []
   maskaPrekazka:
     serializedVersion: 2
     m_Bits: 64

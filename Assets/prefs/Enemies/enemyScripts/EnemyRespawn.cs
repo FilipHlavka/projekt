@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyRespawn : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class EnemyRespawn : MonoBehaviour
     public List<GameObject> enemies;
     [SerializeField]
     public Collider2D SpawnPlocha;
+    public UnityEvent<GameObject> enemyRespawn;
     // Start is called before the first frame update
     
     void Start()
@@ -30,6 +32,7 @@ public class EnemyRespawn : MonoBehaviour
 
         Bounds spawnBounds = SpawnPlocha.bounds;
 
-        Instantiate(enemies[Random.Range(0,enemies.Count)], new Vector3(Random.Range(spawnBounds.min.x,spawnBounds.max.x),Random.Range(spawnBounds.min.y,spawnBounds.max.y),0), Quaternion.identity);
+        GameObject enemy = Instantiate(enemies[Random.Range(0,enemies.Count)], new Vector3(Random.Range(spawnBounds.min.x,spawnBounds.max.x),Random.Range(spawnBounds.min.y,spawnBounds.max.y),0), Quaternion.identity);
+        enemyRespawn.Invoke(enemy);
     }
 }
