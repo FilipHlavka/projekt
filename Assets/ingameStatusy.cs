@@ -128,12 +128,13 @@ public class ingameStatusy : MonoBehaviour
         {
             hrac.dosah = hrac.dosah * 1.5f;
             UdelejObr("terc"); 
-            UdelejObr("terc");
+            
 
 
         } else if (stav == Stat.low)
         {
             hrac.dosah = hrac.dosah * 0.75f;
+            UdelejObr("neterc");
         }
         else
         {
