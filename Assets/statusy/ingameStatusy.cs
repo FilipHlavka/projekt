@@ -19,9 +19,11 @@ public class ingameStatusy : MonoBehaviour
     enemy Enemy;
     Stat stav = Stat.nic;
     float zakRange;
+    float Rychlost;
     zakl hrac;
     [SerializeField]
     Canvas canvas;
+    Transform maska;
     List<GameObject> objekty = new List<GameObject>();
    
     //bool pom = false;
@@ -35,36 +37,74 @@ public class ingameStatusy : MonoBehaviour
         {
             enemyPohyb = gameObject.GetComponent<pohybEnemy>();
             Enemy = gameObject.GetComponent<enemy>();
-            
+            Rychlost = enemyPohyb.agent.speed;
             zakRange = Enemy.range;
             
         }
         else
         {
             hrac = gameObject.GetComponent<zakl>();
+            maska = hrac.maska;
             zakRange = hrac.dosah;
+            Rychlost = hrac.Rychlost;
         }
     }
 
-    private void Zmena(Stat druh, Collider2D col)
+    private void Zmena(Staty st, Collider2D col)
     {
         if (col.name == gameObject.name)
         {
-            stav = druh;
+            stav = st.druh;
             if (enemy)
             {
               
-                enemyCont();
+                enemyCont(); // dosah atacku 
                 
-                enemyStatus();
+                PridejStatus(st); // ostatni
             }
             else
             {
                  hracCont();
-                 hracStatus();
+                 PridejStatus(st);
             }
         }
     }
+    private void PridejSpeedBuff(Staty st)
+    {
+        if (enemy)
+        {
+            if (st.druhSpeed == Speed.rychly)
+            {
+                enemyPohyb.agent.speed = enemyPohyb.agent.speed * 1.5f;
+            }
+            else if (st.druhSpeed == Speed.pomaly)
+            {
+                enemyPohyb.agent.speed = enemyPohyb.agent.speed * 0.6f;
+            }
+            else
+            {
+                enemyPohyb.agent.speed = Rychlost;
+            }
+        }
+        else
+        {
+            if (st.druhSpeed == Speed.rychly)
+            {
+                hrac.agent.speed = hrac.agent.speed * 1.5f;
+            }
+            else if (st.druhSpeed == Speed.pomaly)
+            {
+                hrac.agent.speed = hrac.agent.speed * 0.6f;
+            }
+            else
+            {
+                hrac.agent.speed = Rychlost + hrac.bonusRychlost;
+            }
+        }
+       
+    }
+
+
     private void UdelejObr(string jmeno)
     {
         GameObject obrObj = new GameObject(jmeno);
@@ -91,15 +131,12 @@ public class ingameStatusy : MonoBehaviour
         }
     }
 
-    private void enemyStatus()
+    private void PridejStatus(Staty st)
     {
-
+        PridejSpeedBuff(st);
     }
 
-    private void hracStatus()
-    {
-
-    }
+   
 
     private void enemyCont()
     {
@@ -149,5 +186,23 @@ public enum Stat
 {
     high,
     low,
+    nic
+}
+public enum Speed
+{
+    rychly,
+    pomaly,
+    nic
+}
+public enum Shield
+{
+    vic,
+    min,
+    nic
+}
+public enum Vyditelnost
+{
+    vic,
+    min,
     nic
 }

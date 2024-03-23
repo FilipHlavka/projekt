@@ -18,8 +18,8 @@ public abstract class zakl : MonoBehaviour
     public int Atk;
     [SerializeField]
     public float Rychlost;
-    NavMeshAgent agent;
-    Transform maska;
+    public NavMeshAgent agent;
+    public Transform maska;
     [SerializeField]
     List<GameObject> enemies;
     [SerializeField]
@@ -34,6 +34,8 @@ public abstract class zakl : MonoBehaviour
     public Vector2 pozice;
     LineRenderer lineRenderer;
     GameObject controller;
+    public float bonusRychlost;
+    public float zaklRychlost;
     public void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -67,7 +69,8 @@ public abstract class zakl : MonoBehaviour
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
-
+        
+        zaklRychlost = Rychlost;
         
         maska = transform.Find("SpriteMask");
         maska.localScale = new Vector3(range, range, range); // pøiøazení dohledu
@@ -177,9 +180,12 @@ public abstract class zakl : MonoBehaviour
 
                 
                 }
+
             }
+
         
     }
-  
+
+    
 
 }

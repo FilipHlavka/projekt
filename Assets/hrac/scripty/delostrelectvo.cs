@@ -40,13 +40,15 @@ public class delostrelectvo : zakl
     IEnumerator schopnost()
     {
         Debug.Log("aktivace schopnosti");
-        phb.agent.speed = Rychlost * 2;
+        bonusRychlost = zaklRychlost;
+        phb.agent.speed = Rychlost + bonusRychlost;
 
 
         yield return new WaitForSeconds(3f);
 
         pocetVylepseni--;
         CRunning = false;
+        bonusRychlost = 0;
         phb.agent.speed = Rychlost;
 
 
