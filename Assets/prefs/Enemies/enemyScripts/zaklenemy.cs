@@ -7,7 +7,7 @@ public class zaklenemy : enemy
 {
     public void Start()
     {
-
+        base.Start();
         nazev = "zaklenemy";
     }
     

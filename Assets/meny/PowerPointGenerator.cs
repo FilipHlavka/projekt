@@ -19,7 +19,8 @@ public class PowerPointGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxPP = 30; // llll
+        maxPP = 500; // llll
+        PP = 500;
         InvokeRepeating("PridejPP", 5, 5);
     }
     public void PridejPP()

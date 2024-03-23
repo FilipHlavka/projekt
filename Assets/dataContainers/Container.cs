@@ -75,7 +75,7 @@ public class Container : MonoBehaviour
             Debug.Log(ukl.zivoty);
             Debug.Log(hracData.Zivoty);
             ukl.atk = hracData.Atk;
-            ukl.def = hracData.Def;
+            ukl.def = hracData.aktDef;
             ukl.nazev = hracData.nameHr;
             ukl.pozice = hracData.pozice;
         }
@@ -93,7 +93,7 @@ public class Container : MonoBehaviour
                 nvm.nazev = enemy.nazev;
                 nvm.zivoty = enemy.zivoty;
                 nvm.atk = enemy.atk;
-                nvm.def = enemy.def;
+                nvm.def = enemy.aktDef;
                 nvm.bojuje = enemy.bojuje;
                 nvm.pozice = enemy.pozice;
                 nvm.jeNaTahu = enemyNaTahu;

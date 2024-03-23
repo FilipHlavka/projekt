@@ -135,6 +135,8 @@ MonoBehaviour:
   range: 40
   Atk: 15
   Rychlost: 3
+  agent: {fileID: 0}
+  maska: {fileID: 0}
   enemies: []
   maskaPrekazka:
     serializedVersion: 2
@@ -142,6 +144,9 @@ MonoBehaviour:
   dosah: 65
   nameHr: tank
   pozice: {x: 0, y: 0}
+  bonusRychlost: 0
+  zaklRychlost: 0
+  aktDef: 0
   vybuch: {fileID: 0}
 --- !u!114 &402324531136390948
 MonoBehaviour:
@@ -157,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: 0
   canvas: {fileID: 3201370615822277700}
+  zaklRange: 0
 --- !u!50 &1466835561464581736
 Rigidbody2D:
   serializedVersion: 4
@@ -356,14 +362,14 @@ RectTransform:
   m_GameObject: {fileID: 8656060573669109418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8686772831881207341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3}
+  m_AnchoredPosition: {x: 0, y: 2.5}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3201370615822277700

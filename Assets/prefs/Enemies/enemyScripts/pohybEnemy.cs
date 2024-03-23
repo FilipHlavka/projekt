@@ -22,7 +22,7 @@ public class pohybEnemy : MonoBehaviour
     bool flip = false;
     UnityEvent<bool,GameObject> utoc;
     //bool stuj = false;
-
+    bool protekce = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -63,14 +63,14 @@ public class pohybEnemy : MonoBehaviour
         dosahDetekce = Enemy.dosahDetekce;
         agent.speed = Enemy.rychlost;
 
-
+        StartCoroutine(Protection());
         utoc.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>().Prepnuti);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cont.prvniInstance && player != null)
+        if(cont.prvniInstance && player != null && protekce)
         Delej();
 
         if (player == null)
@@ -100,6 +100,11 @@ public class pohybEnemy : MonoBehaviour
 
     }
    
+    IEnumerator Protection()
+    {
+        yield return new WaitForSeconds(5);
+        protekce = true;
+    }
 
     private void Delej()
     {

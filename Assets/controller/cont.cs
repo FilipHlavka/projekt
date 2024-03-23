@@ -93,7 +93,19 @@ public class cont : MonoBehaviour
             hrDt = novyHrac.GetComponent<zakl>();
             hrDt.Zivoty = hrJednodusiData.zivoty;
             hrDt.Atk = hrJednodusiData.atk;
-            hrDt.Def = (int)hrJednodusiData.def;
+            if(((int)hrJednodusiData.def - hrDt.Def) > 0)
+            {
+
+                StartCoroutine(pockej(hrDt,hrJednodusiData));
+                
+            }
+            else
+            {
+               
+                hrDt.Def = hrDt.Def + (int)hrJednodusiData.def - hrDt.Def;
+                Debug.Log(hrDt.aktDef);
+            }
+            
             hracObj.tag = "Player";
 
         }
@@ -105,7 +117,13 @@ public class cont : MonoBehaviour
         }
     }
 
-
+    IEnumerator pockej(zakl hrDt,UkladaniProHrac hrJednodusiData)
+    {
+        yield return new WaitForSeconds(0.1f);
+        hrDt.aktDef = hrDt.Def + (int)hrJednodusiData.def - hrDt.Def;
+        Debug.Log(hrDt.aktDef);
+        Debug.Log("divný");
+    }
 
     #endregion
 

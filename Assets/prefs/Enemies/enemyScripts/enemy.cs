@@ -18,7 +18,7 @@ public abstract class enemy : MonoBehaviour
     public float range;
     [SerializeField]
     public float dosahDetekce;
-    public float defenseMulti;
+    public float aktDef;
     //public bool JeEnemy = true;
    // data enemydata;
     public float atkMulti;
@@ -33,7 +33,10 @@ public abstract class enemy : MonoBehaviour
     {
         updatePozice();
     }
-
+    protected void Start()
+    {
+        aktDef = def;
+    }
     private void updatePozice()
     {
         pozice = transform.position;

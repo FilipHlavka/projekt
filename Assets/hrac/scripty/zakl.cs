@@ -36,6 +36,8 @@ public abstract class zakl : MonoBehaviour
     GameObject controller;
     public float bonusRychlost;
     public float zaklRychlost;
+    public float aktDef;
+    
     public void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -69,14 +71,14 @@ public abstract class zakl : MonoBehaviour
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
-        
+        aktDef = Def;
         zaklRychlost = Rychlost;
         
         maska = transform.Find("SpriteMask");
         maska.localScale = new Vector3(range, range, range); // pøiøazení dohledu
         AktualizujSeznamEnemy();
         
-        Debug.Log(enemies.Count);
+        //Debug.Log(enemies.Count);
         controller = GameObject.FindGameObjectWithTag("GameController");
         enresp = controller.GetComponent<EnemyRespawn>();
         if(enresp != null)
@@ -90,7 +92,7 @@ public abstract class zakl : MonoBehaviour
     {
         
         enemies = GameObject.FindGameObjectsWithTag("enemy").ToList(); // pozdìjš pøidání dalších eventem
-        Debug.Log(enemies.Count);
+       // Debug.Log(enemies.Count);
     }
     public void SeznamEnemyPridej(GameObject enem)
     {
