@@ -29,7 +29,7 @@ public class ingameStatusy : MonoBehaviour
     bool rangeByl = false;
     bool shieldByl = false;
     bool vyditelnostByla = false;
-    //bool pom = false;
+    bool pom = false;
     public int zaklRange;
 
     // Start is called before the first frame update
@@ -195,13 +195,26 @@ public class ingameStatusy : MonoBehaviour
     private void UdelejObr(string jmeno)
     {
         GameObject obrObj = new GameObject(jmeno);
+        /*SpriteRenderer sp = obrObj.AddComponent<SpriteRenderer>();
+        sp.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        sp.sortingLayerName = "enemy";
+        obrObj.layer = 6;*/
         Image obr = obrObj.AddComponent<Image>();
-
+        
         obr.sprite = Resources.Load<Sprite>("statusy/" + jmeno);
-        if (canvas != null && obr.sprite != null && obrObj != null)
-        {
+        if (canvas != null && obr.sprite != null && obrObj != null) { 
+        
+            foreach(Transform t in canvas.transform)
+            {
+                if (obrObj.name == t.name)
+                {
+                    pom = true;
+                }
+            }
+            if(!pom)
             obrObj.transform.SetParent(canvas.transform, false);
             objekty.Add(obrObj);
+            pom = false;
 
         }
 

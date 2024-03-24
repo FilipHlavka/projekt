@@ -47,7 +47,7 @@ public class camPohyb : MonoBehaviour
 
                 cam.orthographicSize -= scrol;
             }
-            if (je < 0 && cam.orthographicSize < 20)
+            if (je < 0 && cam.orthographicSize < 16)
             {
                 //je = 0;
                 //Debug.Log(je);
@@ -66,12 +66,13 @@ public class camPohyb : MonoBehaviour
                 cam.orthographicSize = 10;
                 /*movex = org.position.x;
                 movey = org.position.y;*/
-
+                speed = speed / 3;
 
             }
             else
             {
                 cam.orthographicSize = 50;
+                speed = speed * 3;
                 zoom = true;
             }
         }
