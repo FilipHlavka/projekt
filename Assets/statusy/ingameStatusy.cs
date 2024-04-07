@@ -35,7 +35,7 @@ public class ingameStatusy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(akceProStatus.nastavStatus != null)
         akceProStatus.nastavStatus.AddListener(Zmena);
         if (enemy)
         {

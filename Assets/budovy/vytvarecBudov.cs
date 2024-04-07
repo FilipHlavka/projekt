@@ -100,7 +100,7 @@ public class vytvarecBudov : MonoBehaviour
       
     }
 
-    void spawnDul(bool platim)
+    void spawnDul(bool platim) // radar !!!!!!!!!!!!!!!!!
     {
         if (platim)
         {
@@ -109,7 +109,7 @@ public class vytvarecBudov : MonoBehaviour
                 PowerPointGenerator.PP -= 10;
                 PPtext.aktualizuj();
 
-                Budova = gameObject.AddComponent<dul>();
+                Budova = gameObject.AddComponent<radar>();
                 Budova.powerPointGenerator = powerPointGenerator;
                 Budova.akt();
                 Destroy(this);
@@ -117,7 +117,7 @@ public class vytvarecBudov : MonoBehaviour
         }
         else
         {
-            Budova = gameObject.AddComponent<dul>();
+            Budova = gameObject.AddComponent<radar>();
             Budova.powerPointGenerator = powerPointGenerator;
             Budova.akt();
             Destroy(this);
@@ -185,9 +185,9 @@ public class vytvarecBudov : MonoBehaviour
             if (Vector2.Distance(budova.pozice,(Vector2)transform.position) < 1)
             {
                 Debug.Log("nice" + (Vector2)transform.position);
-                if(budova.nazev == "dul")
+                if(budova.nazev == "radar")
                 {
-                    spawnDul(false);
+                    spawnDul(false); //radar !!!!!!!!!!!
 
                 }
                 if (budova.nazev == "vrt")

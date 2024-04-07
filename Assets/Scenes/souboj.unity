@@ -434,12 +434,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteList:
-  - {fileID: -3376040835097526051, guid: 532789e9f2e4ea5418b1778c17a6e3a2, type: 3}
+  - {fileID: 8096013900166944828, guid: 5e695bb8c49a0444eaa8567ca32ac18d, type: 3}
   hracspriteList:
-  - {fileID: 7144790253285599880, guid: cbf32bbc9fc6b1c4abfecea21dd7725d, type: 3}
-  - {fileID: -1400955761145318268, guid: d7981ce5f787ba34e8313d6601a2446d, type: 3}
-  - {fileID: -4936941884703722275, guid: 4a291f09b666c0641940bfc7cbfaedbb, type: 3}
-  - {fileID: -1680142709063003249, guid: 4d7d0eed85d4e2340bc653699b354c50, type: 3}
+  - {fileID: 21300000, guid: 6ba4ea8abb18b9f4d9b4728ffee03dcc, type: 3}
+  - {fileID: -2161941637332458828, guid: bd388f1ce403388428da45923bb4e311, type: 3}
+  - {fileID: -7317548633973272408, guid: e9dd7ea8ad826d64098516becf701f36, type: 3}
+  - {fileID: 8981802917252891263, guid: c216c91a54d87a34d9cb31f64c55e3ee, type: 3}
   nazevList:
   - zaklenemy
   hracNazev:
@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fe2fe6a68e45e47b8c438ffee18c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fakeScreen: {fileID: 0}
 --- !u!1 &684586170
 GameObject:
   m_ObjectHideFlags: 0
