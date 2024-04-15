@@ -1,0 +1,387 @@
+fileFormatVersion: 2
+guid: 8f73e46b9caa298479c01f3d6419cd88
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4606742929735134548
+    second: budovy_0
+  - first:
+      213: 6979767790441050270
+    second: budovy_1
+  - first:
+      213: 8766869866876020332
+    second: budovy_2
+  - first:
+      213: 2172714858770967627
+    second: budovy_3
+  - first:
+      213: 4465832564009791332
+    second: budovy_4
+  - first:
+      213: -4189866500744568954
+    second: budovy_5
+  - first:
+      213: -3379703770954205293
+    second: budovy_6
+  - first:
+      213: -9057306135780923733
+    second: budovy_7
+  - first:
+      213: -8638525014466618396
+    second: budovy_8
+  - first:
+      213: 273394538448782558
+    second: budovy_9
+  - first:
+      213: 8093321749821541468
+    second: budovy_10
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: budovy_0
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 3222
+        width: 534
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45da76a79407eef30800000000000000
+      internalID: 4606742929735134548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_1
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3565
+        width: 737
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90b3f333dd1dd060800000000000000
+      internalID: 6979767790441050270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_2
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 2175
+        width: 751
+        height: 616
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c66a83fe1bd2aa970800000000000000
+      internalID: 8766869866876020332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_3
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 2533
+        width: 506
+        height: 702
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4ca14b07a8072e10800000000000000
+      internalID: 2172714858770967627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_4
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 2424
+        width: 586
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46fec245e03d9fd30800000000000000
+      internalID: 4465832564009791332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_5
+      rect:
+        serializedVersion: 2
+        x: 3414
+        y: 2763
+        width: 681
+        height: 623
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f9fcecd9a9ad5c0800000000000000
+      internalID: -4189866500744568954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_6
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 913
+        width: 803
+        height: 681
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 397f936a351e811d0800000000000000
+      internalID: -3379703770954205293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_7
+      rect:
+        serializedVersion: 2
+        x: 3794
+        y: 1263
+        width: 302
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba6efc2ae0cfd4280800000000000000
+      internalID: -9057306135780923733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 435
+        width: 443
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb1469a44bcd1880800000000000000
+      internalID: -8638525014466618396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_9
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 0
+        width: 864
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed485cb52ea4bc300800000000000000
+      internalID: 273394538448782558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: budovy_10
+      rect:
+        serializedVersion: 2
+        x: 2630
+        y: 0
+        width: 836
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c4e0f4041415070800000000000000
+      internalID: 8093321749821541468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      budovy_0: 4606742929735134548
+      budovy_1: 6979767790441050270
+      budovy_10: 8093321749821541468
+      budovy_2: 8766869866876020332
+      budovy_3: 2172714858770967627
+      budovy_4: 4465832564009791332
+      budovy_5: -4189866500744568954
+      budovy_6: -3379703770954205293
+      budovy_7: -9057306135780923733
+      budovy_8: -8638525014466618396
+      budovy_9: 273394538448782558
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

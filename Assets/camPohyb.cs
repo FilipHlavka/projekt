@@ -64,8 +64,8 @@ public class camPohyb : MonoBehaviour
             {
                 zoom = false;
                 cam.orthographicSize = 10;
-                /*movex = org.position.x;
-                movey = org.position.y;*/
+                movex = org.position.x;
+                movey = org.position.y;
                 speed = speed / 3;
 
             }
