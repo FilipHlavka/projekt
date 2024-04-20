@@ -47,6 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: mapa
+    uniqueID: 3874705551
+    locked: 0
   - name: to mezi
     uniqueID: 2930060947
     locked: 0

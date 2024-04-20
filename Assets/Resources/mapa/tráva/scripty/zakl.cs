@@ -37,6 +37,7 @@ public abstract class zakl : MonoBehaviour
     public float bonusRychlost;
     public float zaklRychlost;
     public float aktDef;
+    public CircleCollider2D kolajdr;
     
     public void Awake()
     {
@@ -76,6 +77,8 @@ public abstract class zakl : MonoBehaviour
         
         maska = transform.Find("SpriteMask");
         maska.localScale = new Vector3(range, range, range); // pøiøazení dohledu
+        kolajdr = gameObject.GetComponent<CircleCollider2D>();
+        kolajdr.radius = (float)range/2;
         AktualizujSeznamEnemy();
         
         //Debug.Log(enemies.Count);

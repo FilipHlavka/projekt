@@ -31,12 +31,24 @@ public class ingameStatusy : MonoBehaviour
     bool vyditelnostByla = false;
     bool pom = false;
     public int zaklRange;
+    bool videt = false;
+    bool pomVidet = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        canvas.enabled = true;
+        if(enemy)
+        canvas.enabled = false;
+        
         if(akceProStatus.nastavStatus != null)
         akceProStatus.nastavStatus.AddListener(Zmena);
+        if (enemy)
+        {
+            if (praceScanvasem.nastavCanvasNaEnemy != null)
+                praceScanvasem.nastavCanvasNaEnemy.AddListener(prepinac);
+        }
+        
         if (enemy)
         {
             enemyPohyb = gameObject.GetComponent<pohybEnemy>();
@@ -47,14 +59,35 @@ public class ingameStatusy : MonoBehaviour
         }
         else
         {
-            hrac = gameObject.GetComponent<zakl>();
+            hrac = gameObject.GetComponentInParent<zakl>();
             maska = hrac.maska;
             zakRange = hrac.dosah;
             Rychlost = hrac.Rychlost;
             zaklRange = hrac.range;
         }
     }
+    private void prepinac(bool co, Collider2D col)
+    {
+        Debug.Log("ja jsem " + gameObject.name + "hledam " + col.gameObject.name);
+        if(col.gameObject.name == gameObject.name)
+        {
+            videt = co;
+        }
+    }
 
+    private void Update()
+    {
+        if (videt)
+        {
+            canvas.enabled = true;
+            pomVidet = true;
+        }
+        if(!videt && pomVidet)
+        {
+            canvas.enabled = false;
+            pomVidet = false;
+        }
+    }
     private void Zmena(Staty st, Collider2D col)
     {
         if (col.name == gameObject.name)
@@ -175,18 +208,21 @@ public class ingameStatusy : MonoBehaviour
         if (st.range == Vyditelnost.vic)
         {
             hrac.maska.localScale = hrac.maska.localScale * 1.3f;
+            hrac.kolajdr.radius = hrac.kolajdr.radius * 1.3f;
             vyditelnostByla = true;
             UdelejObr("oko");
         }
         else if (st.range == Vyditelnost.min)
         {
             hrac.maska.localScale = hrac.maska.localScale * 0.6f;
+            hrac.kolajdr.radius = hrac.kolajdr.radius * 0.6f;
             vyditelnostByla = true;
             UdelejObr("neOko");
         }
         else
         {
             hrac.maska.localScale = new Vector3 (zaklRange, zaklRange, zaklRange);
+            hrac.kolajdr.radius = (float)zaklRange/2;
             OdstranObr(vyditelnostByla);
             vyditelnostByla = false;
         }
