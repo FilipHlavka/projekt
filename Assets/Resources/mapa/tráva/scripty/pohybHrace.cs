@@ -50,10 +50,10 @@ public class pohybHrace : MonoBehaviour
        
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+   /* public void OnTriggerEnter2D(Collider2D collision)
     {
         rigitbody.velocity = Vector2.zero;
-    }
+    }*/
    
     // Update is called once per frame
     void Update()

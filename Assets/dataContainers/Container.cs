@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -104,7 +105,7 @@ public class Container : MonoBehaviour
 
         BudovaDoJSNu();
 
-        // Uložení do JSON
+       
         jsonData = JsonUtility.ToJson(Whopper);
        /* Debug.Log(UzFaktNevimEnemy.Count);
         Debug.Log(jsonData);
@@ -140,8 +141,8 @@ public class Container : MonoBehaviour
  
 }
 #region tridyProJSON
-[System.Serializable]
-public class UkladaniProEnemy
+[Serializable]
+public struct UkladaniProEnemy
 {
     public int zivoty;
     public int atk;
@@ -149,9 +150,10 @@ public class UkladaniProEnemy
     public string nazev;
     public bool bojuje;
     public Vector2 pozice;
+   
     public bool jeNaTahu;
 }
-[System.Serializable]
+[Serializable]
 public class UkladaniProHrac
 {
     public int zivoty;
@@ -160,15 +162,17 @@ public class UkladaniProHrac
     public string nazev;
     public Vector2 pozice;
 
+
 }
-[System.Serializable]
-public class UkladaniProBudovu
+[Serializable]
+public struct UkladaniProBudovu
 {
     public string nazev;
     public Vector2 pozice;
+
 }
-[System.Serializable]
-public class Zabal
+[Serializable]
+public struct Zabal
 {
     public List<UkladaniProBudovu> bdv;
     public List<UkladaniProEnemy> obj;

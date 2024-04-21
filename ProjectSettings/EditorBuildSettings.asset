@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/souboj.unity
     guid: 39cf2fd0ed1dc3e4193134691f2fd564
+  - enabled: 1
+    path: Assets/Scenes/mapa2.unity
+    guid: aa4b25f2553e9c64793c212e0c335134
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

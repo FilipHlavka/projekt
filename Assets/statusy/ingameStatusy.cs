@@ -68,7 +68,7 @@ public class ingameStatusy : MonoBehaviour
     }
     private void prepinac(bool co, Collider2D col)
     {
-        Debug.Log("ja jsem " + gameObject.name + "hledam " + col.gameObject.name);
+        //Debug.Log("ja jsem " + gameObject.name + "hledam " + col.gameObject.name);
         if(col.gameObject.name == gameObject.name)
         {
             videt = co;

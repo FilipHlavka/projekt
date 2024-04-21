@@ -28,19 +28,26 @@ public abstract class enemy : MonoBehaviour
     public bool jeNaTahu = false;
     
     public abstract void Delej();
-    
+    protected void Awake()
+    {
+        vyhra.pocetEnemy++;
+    }
     public void Update()
     {
         updatePozice();
     }
     protected void Start()
     {
+       
         aktDef = def;
     }
     private void updatePozice()
     {
         pozice = transform.position;
     }
-
+    private void OnDestroy()
+    {
+        vyhra.pocetEnemy--;
+    }
 
 }
