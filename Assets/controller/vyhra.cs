@@ -8,6 +8,7 @@ public class vyhra : MonoBehaviour
     [SerializeField]
     public static int pocetEnemy = 0;
     bool pom = false;
+    public static bool stuj = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +18,18 @@ public class vyhra : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pom)
+        if (!stuj)
         {
-            if(pocetEnemy <= 0)
+            if (pom)
             {
-                Debug.Log("Vyhra");
-                vyhralHrac();
+                if (pocetEnemy <= 0)
+                {
+                    Debug.Log("Vyhra");
+                    vyhralHrac();
+                }
             }
         }
+        
         Debug.Log(pocetEnemy + "pocet");
     }
 

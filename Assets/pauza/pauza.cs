@@ -36,6 +36,7 @@ public class pauza : MonoBehaviour
     private void Pauza()
     {
         Time.timeScale = 0f;
+        pohybHrace.nehejbat = true;
         pom = !pom;
         panel.SetActive(true);
 
@@ -43,6 +44,8 @@ public class pauza : MonoBehaviour
 
     public void Nepauza()
     {
+        pohybHrace.nehejbat = false;
+
         Time.timeScale = 1f;
         pom = !pom;
         panel.SetActive(false);

@@ -1780,9 +1780,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1083873661}
-        m_TargetAssemblyTypeName: pauza, Assembly-CSharp
-        m_MethodName: Nepauza
+      - m_Target: {fileID: 1083873664}
+        m_TargetAssemblyTypeName: nacteniSceny, Assembly-CSharp
+        m_MethodName: Nacti
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2302,6 +2302,7 @@ GameObject:
   - component: {fileID: 1083873661}
   - component: {fileID: 1083873662}
   - component: {fileID: 1083873663}
+  - component: {fileID: 1083873664}
   m_Layer: 0
   m_Name: Controller
   m_TagString: GameController
@@ -2490,6 +2491,18 @@ MonoBehaviour:
   jablkoBudova: []
   hracData: {fileID: 0}
   enemyData: []
+--- !u!114 &1083873664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083873654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9ebf94e0fafc345b803d00404832e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1128384755
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class pohybHrace : MonoBehaviour
     bool flip = false;
     public NavMeshAgent agent;
     bool stuj = false;
-    
+    public static bool nehejbat = false;
 
     private void Awake()
     {
@@ -75,6 +75,7 @@ public class pohybHrace : MonoBehaviour
     }
     private void HejbniSe()
     {
+        if(!nehejbat){ 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
@@ -103,6 +104,7 @@ public class pohybHrace : MonoBehaviour
             }
 
             // rigitbody.velocity = direction * speed;
+        }
         }
         if (Vector2.Distance(rigitbody.position, vec) < 0.1f)
         {

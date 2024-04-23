@@ -118,7 +118,7 @@ public class ukladaniSceny : MonoBehaviour
     }
     
 }
-
+#region structy
 
 [Serializable]
 public struct UkladaniProEnemyMimo
@@ -156,3 +156,4 @@ public struct Zavin
     public UkladaniProHracMimo hrDt;
     public string sceneJm;
 }
+#endregion

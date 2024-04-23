@@ -35,12 +35,19 @@ public class cont : MonoBehaviour
 
     public UnityEvent Respawn;
     public UnityEvent aktBudovy;
+    List<GameObject> listEnemaku;
+    public nacteniSceny nacitani;
+
+    Zavin strudl;
     //enemyTypy typy;
 
     private void Start()
     {
         res = gameObject.GetComponent<respawnScript>();
         Respawn.AddListener(res.DelejNeco);
+
+        nacitani = gameObject.GetComponent<nacteniSceny>();
+        nacitani.eventNacteni.AddListener(AktivujNacteni);
 
         if (!prvniInstance)
         {
@@ -59,6 +66,20 @@ public class cont : MonoBehaviour
         //typy = gameObject.GetComponent<enemyTypy>();
       
         //slovnik = typy.slovnik;
+    }
+
+    private void AktivujNacteni(Zavin strudl)
+    {
+        vyhra.stuj = true;
+        listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
+        foreach(var obj in listEnemaku)
+        {
+            Destroy(obj);
+        }
+        this.strudl = strudl;
+
+        NactiEnemaky();
+        //aktBudovy.Invoke();
     }
 
     #region hracDoSceny
@@ -130,7 +151,25 @@ public class cont : MonoBehaviour
 
     #region enemyDoSceny
 
-    private void RozdelAPanuj()
+    private void NactiEnemaky() // pøi naètení 
+    {
+        for (int i = 0; i < enemaci.Count; i++)
+        {
+            slovnik.Add(enemyNames[i], enemaci[i]);
+        }
+
+        foreach (var enemy in strudl.obj)
+        {
+            if (enemy.zivoty > 0)
+            {
+                slovnik.TryGetValue(enemy.nazev, out GameObject enemyObj);
+                Instantiate(enemyObj, new Vector2(enemy.X,enemy.Y), Quaternion.Euler(0, 0, 0));
+
+            }
+        }
+    }
+
+    private void RozdelAPanuj() // pøi vrácení ze souboje
     {
         for (int i = 0; i < enemaci.Count; i++)
         {
