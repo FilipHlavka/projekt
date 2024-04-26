@@ -22,7 +22,7 @@ public class soubojContainer : MonoBehaviour
             prepniScenu = new UnityEvent<string>();
         controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>();
         controller.zacniBojovat.AddListener(DoBoje);
-        ingamemanager = GameObject.FindGameObjectWithTag("GameController").GetComponent<ingamemanager>();
+        ingamemanager = ingamemanager.Instance;
         prepniScenu.AddListener(ingamemanager.PrepniNascenu);
 
         

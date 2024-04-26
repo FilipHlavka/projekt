@@ -17,20 +17,36 @@ public class BudovaCont : MonoBehaviour
         Controller = gameObject.GetComponent<cont>();
         Controller.aktBudovy.AddListener(Pracuj);
     }
-    public void Pracuj()
+    public void Pracuj(bool nacti, Zavin strudl)
     {
+        if (!nacti)
+        {
+            string filePath = Application.dataPath + "/enemies.json";
+
+            string jsonData = File.ReadAllText(filePath);
+
+            zabal = JsonUtility.FromJson<Zabal>(jsonData);
+
+            listBudov = zabal.bdv;
 
 
-        string filePath = Application.dataPath + "/enemies.json";
+            stav.Invoke(listBudov);
+        }
+        else
+        {
+            List<UkladaniProBudovu> list = new List<UkladaniProBudovu>();
 
-        string jsonData = File.ReadAllText(filePath);
+            foreach(var bdv in strudl.bdv)
+            {
+                UkladaniProBudovu bud = new UkladaniProBudovu();
+                bud.nazev = bdv.nazev;
+                bud.pozice = new Vector2(bdv.X,bdv.Y);
+                list.Add(bud);
+            }
+            stav.Invoke(list);
+        }
 
-        zabal = JsonUtility.FromJson<Zabal>(jsonData);
-
-        listBudov = zabal.bdv;
-
-
-        stav.Invoke(listBudov);
+        
         
     }
 }

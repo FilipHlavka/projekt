@@ -24,19 +24,30 @@ public class budova : MonoBehaviour
     {
         foreach (var enemy in enemies)
         {
-            if (Vector2.Distance(enemy.transform.position, transform.position) < 11)
+            if(enemy != null)
             {
-                zivoty-= 2;
-                slider.value = zivoty;
-                Debug.Log(zivoty);
-                if (zivoty <= 0 )
+                if (Vector2.Distance(enemy.transform.position, transform.position) < 11)
                 {
-                    
-                    BudovaCont.poziceZnicenychBudov.Add((Vector2)transform.position);
-                   // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
-                    Destroy(gameObject);
+                    zivoty -= 2;
+                    slider.value = zivoty;
+                    Debug.Log(slider.value + "slider.value");
+
+                    Debug.Log(zivoty);
+                    if (zivoty <= 0)
+                    {
+                        BudovaCont.poziceZnicenychBudov.Add((Vector2)transform.position);
+                        // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
+                        Destroy(gameObject);
+                    }
                 }
             }
+            else
+            {
+                enemies.Clear();
+                StartCoroutine(pockej());
+                return;
+            }
+
         }
     }
     protected void aktSprite() 

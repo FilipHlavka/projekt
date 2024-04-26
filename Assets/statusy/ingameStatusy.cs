@@ -230,29 +230,34 @@ public class ingameStatusy : MonoBehaviour
 
     private void UdelejObr(string jmeno)
     {
-        GameObject obrObj = new GameObject(jmeno);
-        /*SpriteRenderer sp = obrObj.AddComponent<SpriteRenderer>();
-        sp.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-        sp.sortingLayerName = "enemy";
-        obrObj.layer = 6;*/
-        Image obr = obrObj.AddComponent<Image>();
-        
-        obr.sprite = Resources.Load<Sprite>("statusy/" + jmeno);
-        if (canvas != null && obr.sprite != null && obrObj != null) { 
-        
-            foreach(Transform t in canvas.transform)
+        if (!vyhra.nenene)
+        {
+            GameObject obrObj = new GameObject(jmeno);
+            /*SpriteRenderer sp = obrObj.AddComponent<SpriteRenderer>();
+            sp.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+            sp.sortingLayerName = "enemy";
+            obrObj.layer = 6;*/
+            Image obr = obrObj.AddComponent<Image>();
+            obrObj.tag = "svine";
+            obr.sprite = Resources.Load<Sprite>("statusy/" + jmeno);
+            if (canvas != null && obr.sprite != null && obrObj != null)
             {
-                if (obrObj.name == t.name)
-                {
-                    pom = true;
-                }
-            }
-            if(!pom)
-            obrObj.transform.SetParent(canvas.transform, false);
-            objekty.Add(obrObj);
-            pom = false;
 
+                foreach (Transform t in canvas.transform)
+                {
+                    if (obrObj.name == t.name)
+                    {
+                        pom = true;
+                    }
+                }
+                if (!pom)
+                    obrObj.transform.SetParent(canvas.transform, false);
+                objekty.Add(obrObj);
+                pom = false;
+
+            }
         }
+        
 
     }
     private void OdstranObr(bool odstran)
@@ -327,7 +332,7 @@ public class ingameStatusy : MonoBehaviour
             OdstranObr(rangeByl);
             rangeByl = false;
         }
-        Debug.Log(hrac.dosah);
+       //Debug.Log(hrac.dosah);
     }
     
 }

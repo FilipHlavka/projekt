@@ -16,27 +16,31 @@ public class PowerPointGenerator : MonoBehaviour
     int poKolika;
     public int bonusPoKolika;
     public static UnityEvent akttext;
+    public static bool stuj = false;
     // Start is called before the first frame update
     void Start()
     {
         maxPP = 500; // llll
-        PP = 500;
+        PP = 200;
         InvokeRepeating("PridejPP", 5, 5);
+        PPtext.aktualizuj();
     }
     public void PridejPP()
     {
-        if(PP >= maxPP + bonusMaxPP)
-        {
-            PP = maxPP + bonusMaxPP;
-            
-        }
-        else
-        {
-            PP += poKolika + bonusPoKolika;
-        }
-        PPtext.aktualizuj();
-        //Debug.Log(PP);
+        if (!stuj) {
+            PPtext.aktualizuj();
+            if (PP >= maxPP + bonusMaxPP)
+            {
+                PP = maxPP + bonusMaxPP;
 
+            }
+            else
+            {
+                PP += poKolika + bonusPoKolika;
+            }
+            PPtext.aktualizuj();
+            //Debug.Log(PP);
+        }
     }
     
     // Update is called once per frame

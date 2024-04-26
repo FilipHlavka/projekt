@@ -7,6 +7,8 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.U2D;
+using Unity.VisualScripting;
+using NUnit;
 
 public class cont : MonoBehaviour
 {
@@ -34,7 +36,7 @@ public class cont : MonoBehaviour
     #endregion
 
     public UnityEvent Respawn;
-    public UnityEvent aktBudovy;
+    public UnityEvent<bool,Zavin> aktBudovy;
     List<GameObject> listEnemaku;
     public nacteniSceny nacitani;
 
@@ -53,7 +55,7 @@ public class cont : MonoBehaviour
         {
             prvniInstance = true;
             
-            aktBudovy.Invoke();
+            aktBudovy.Invoke(false,new Zavin());
             RozdelAPanuj();
             ukazHrace();
         }
@@ -70,21 +72,89 @@ public class cont : MonoBehaviour
 
     private void AktivujNacteni(Zavin strudl)
     {
+        slovnik.Clear();
         vyhra.stuj = true;
+        
         listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
-        foreach(var obj in listEnemaku)
+        foreach (GameObject obj in listEnemaku)
         {
+            //listEnemaku.Remove(obj);
             Destroy(obj);
+           
+            //obj.tag = "svine";
+           
         }
-        this.strudl = strudl;
+        //listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
 
+        //Debug.Log(listEnemaku[0] + "pocet kurwa");
+        this.strudl = strudl;
+        PowerPointGenerator.PP = strudl.powePoints;
         NactiEnemaky();
-        //aktBudovy.Invoke();
+        ukazHraceDoSceny(strudl);
+        aktBudovy.Invoke(true,strudl);
+        vyhra.stuj = false;
+        
     }
+
+
 
     #region hracDoSceny
 
+    public void ukazHraceDoSceny(Zavin strudl)
+    {
+        
+        zakl hrDt;
+        UkladaniProHrac hrJednodusiData = new UkladaniProHrac();
+        hrJednodusiData.atk = strudl.hrDt.atk;
+        hrJednodusiData.def = strudl.hrDt.def;
+        hrJednodusiData.nazev = strudl.hrDt.nazev;
+        hrJednodusiData.zivoty = strudl.hrDt.zivoty;
+        hrJednodusiData.pozice = new Vector2(strudl.hrDt.X,strudl.hrDt.Y);
+        Debug.Log(hrJednodusiData.pozice);
+        int j = 0;
 
+        for (int i = enemaci.Count; i < enemaci.Count + hraci.Count; i++)
+        {
+            slovnik.Add(playerNames[j], hraci[j]);
+            j++;
+        }
+        j = 0;
+
+        if (hrJednodusiData.zivoty > 0)
+        {
+            kamera.movex = hrJednodusiData.pozice.x;
+            kamera.movey = hrJednodusiData.pozice.y;
+            slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
+
+            GameObject novyHrac = Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+
+            hrDt = novyHrac.GetComponent<zakl>();
+            hrDt.Zivoty = hrJednodusiData.zivoty;
+            hrDt.Atk = hrJednodusiData.atk;
+            if (((int)hrJednodusiData.def - hrDt.Def) > 0)
+            {
+
+                StartCoroutine(pockej(hrDt, hrJednodusiData));
+
+            }
+            else
+            {
+
+                hrDt.Def = hrDt.Def + (int)hrJednodusiData.def - hrDt.Def;
+                Debug.Log(hrDt.aktDef);
+            }
+            GameObject hrac = GameObject.FindGameObjectWithTag("Player");
+            Destroy(hrac);
+            hracObj.tag = "Player";
+
+        }
+        else
+        {
+
+            Debug.Log("divný");
+            Respawn.Invoke();
+        }
+    } // pøi naètení
 
     public void ukazHrace()
     {
@@ -136,7 +206,7 @@ public class cont : MonoBehaviour
             Debug.Log("divný");
             Respawn.Invoke();
         }
-    }
+    } // pøi vrácení ze souboje
 
     IEnumerator pockej(zakl hrDt,UkladaniProHrac hrJednodusiData)
     {
@@ -157,16 +227,28 @@ public class cont : MonoBehaviour
         {
             slovnik.Add(enemyNames[i], enemaci[i]);
         }
-
-        foreach (var enemy in strudl.obj)
+        int enmPom = 0;
+       
+        for (int i = 0; i < strudl.obj.Count / strudl.pocetUlozeni;i++)
         {
-            if (enemy.zivoty > 0)
+            if (strudl.obj[i].zivoty > 0)
             {
-                slovnik.TryGetValue(enemy.nazev, out GameObject enemyObj);
-                Instantiate(enemyObj, new Vector2(enemy.X,enemy.Y), Quaternion.Euler(0, 0, 0));
+               
+                
+                
+                    slovnik.TryGetValue(strudl.obj[i].nazev, out GameObject enemyObj);
+                    GameObject enm = Instantiate(enemyObj, new Vector2(strudl.obj[i].X, strudl.obj[i].Y), Quaternion.Euler(0, 0, 0));
 
+                    enm.name = "enemy" + enmPom;
+                    enemy ll = enm.GetComponent<enemy>();
+                    ll.zivoty = strudl.obj[i].zivoty;
+                    enmPom++;
+                   
+              
+               
             }
         }
+       
     }
 
     private void RozdelAPanuj() // pøi vrácení ze souboje
@@ -183,13 +265,17 @@ public class cont : MonoBehaviour
 
         zabal = JsonUtility.FromJson<Zabal>(jsonData);
 
+        int enmPom = 0;
         foreach (UkladaniProEnemy enemy in zabal.obj)
         {
             if (enemy.zivoty > 0)
             {
                 slovnik.TryGetValue(enemy.nazev, out GameObject enemyObj);
-                Instantiate(enemyObj, enemy.pozice, Quaternion.Euler(0, 0, 0));
-
+                GameObject enm = Instantiate(enemyObj, enemy.pozice, Quaternion.Euler(0, 0, 0));
+                enemy ll = enm.GetComponent<enemy>();
+                ll.zivoty = enemy.zivoty;
+                enm.name = "enemy" + enmPom;
+                enmPom++;
             }
 
         }

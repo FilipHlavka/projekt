@@ -16,6 +16,7 @@ public class ukladaniSceny : MonoBehaviour
     Zavin strudl = new Zavin();
     public List<enemy> enemyData;
     UkladaniProHracMimo ukl = new UkladaniProHracMimo();
+    public int pocetUlozeni = 0;
     void Start()
     {
        
@@ -23,7 +24,7 @@ public class ukladaniSceny : MonoBehaviour
 
     public void Uloz()
     {
-        
+        pocetUlozeni++;
        
         BudovaDo();
         Prirazovani();
@@ -31,9 +32,17 @@ public class ukladaniSceny : MonoBehaviour
         strudl.obj = jablkoEnemy;
         strudl.bdv = jablkoBudova;
         strudl.hrDt = ukl;
-
+        strudl.powePoints = PowerPointGenerator.PP;
+        strudl.pocetUlozeni = pocetUlozeni;
         BinaryFormatter formator = new BinaryFormatter();
-
+        try
+        {
+            File.Delete(Application.dataPath + "/" + strudl.sceneJm + ".bin");
+        }
+        catch
+        {
+            Debug.Log("sakra");
+        }
         FileStream stream = File.Create(Application.dataPath + "/" + strudl.sceneJm + ".bin");
         formator.Serialize(stream,strudl);
         stream.Close();
@@ -44,6 +53,7 @@ public class ukladaniSceny : MonoBehaviour
     {
         GameObject hrac = GameObject.FindGameObjectWithTag("Player");
         List<GameObject> enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
+        Debug.Log(enemies.Count + "pocet ulozenych enemaku");
         enemies.Add(hrac);
 
 
@@ -89,6 +99,8 @@ public class ukladaniSceny : MonoBehaviour
              
                 nvm.X = enemy.pozice.x;
                 nvm.Y = enemy.pozice.y;
+               
+                //Debug.Log(enemy.name);
 
                 jablkoEnemy.Add(nvm);
             }
@@ -129,6 +141,7 @@ public struct UkladaniProEnemyMimo
     public string nazev;
     public float X;
     public float Y;
+    public int id;
 }
 [Serializable]
 public class UkladaniProHracMimo
@@ -155,5 +168,7 @@ public struct Zavin
     public List<UkladaniProEnemyMimo> obj;
     public UkladaniProHracMimo hrDt;
     public string sceneJm;
+    public int powePoints;
+    public int pocetUlozeni;
 }
 #endregion

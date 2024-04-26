@@ -24,6 +24,7 @@ public class nacteniSceny : MonoBehaviour
         FileStream stream = File.Open(Application.dataPath + "/" + scena + ".bin", FileMode.Open);
 
         strudl = (Zavin)formator.Deserialize(stream);
+        stream.Close();
 
        eventNacteni.Invoke(strudl);
     }

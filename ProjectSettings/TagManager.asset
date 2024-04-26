@@ -10,6 +10,7 @@ TagManager:
   - line
   - generator
   - budova
+  - svine
   layers:
   - Default
   - TransparentFX

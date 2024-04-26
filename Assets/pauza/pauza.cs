@@ -37,6 +37,7 @@ public class pauza : MonoBehaviour
     {
         Time.timeScale = 0f;
         pohybHrace.nehejbat = true;
+        PowerPointGenerator.stuj = true;
         pom = !pom;
         panel.SetActive(true);
 
@@ -45,6 +46,7 @@ public class pauza : MonoBehaviour
     public void Nepauza()
     {
         pohybHrace.nehejbat = false;
+        PowerPointGenerator.stuj = false;
 
         Time.timeScale = 1f;
         pom = !pom;

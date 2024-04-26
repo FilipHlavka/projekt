@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class vyhra : MonoBehaviour
@@ -9,6 +10,7 @@ public class vyhra : MonoBehaviour
     public static int pocetEnemy = 0;
     bool pom = false;
     public static bool stuj = false;
+    public static bool nenene = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,12 @@ public class vyhra : MonoBehaviour
                 if (pocetEnemy <= 0)
                 {
                     Debug.Log("Vyhra");
+                    nenene = true;
+                    List<GameObject> list = GameObject.FindGameObjectsWithTag("svine").ToList();
+                    foreach(var idk in list)
+                    {
+                        Destroy(idk);
+                    }
                     vyhralHrac();
                 }
             }
