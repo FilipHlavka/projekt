@@ -79,6 +79,7 @@ public class cont : MonoBehaviour
         foreach (GameObject obj in listEnemaku)
         {
             //listEnemaku.Remove(obj);
+            Debug.Log("Destroying " + obj.name);
             Destroy(obj);
            
             //obj.tag = "svine";
@@ -223,13 +224,15 @@ public class cont : MonoBehaviour
 
     private void NactiEnemaky() // pøi naètení 
     {
+        
         for (int i = 0; i < enemaci.Count; i++)
         {
             slovnik.Add(enemyNames[i], enemaci[i]);
         }
         int enmPom = 0;
+        Debug.Log("Uložených emeies: " + strudl.obj.Count);
        
-        for (int i = 0; i < strudl.obj.Count / strudl.pocetUlozeni;i++)
+        for (int i = 0; i < strudl.obj.Count ;i++)
         {
             if (strudl.obj[i].zivoty > 0)
             {

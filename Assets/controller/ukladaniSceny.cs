@@ -53,11 +53,12 @@ public class ukladaniSceny : MonoBehaviour
     {
         GameObject hrac = GameObject.FindGameObjectWithTag("Player");
         List<GameObject> enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
+        Debug.Log("Ukládám: " + string.Join(", ", enemies.Select(e => e.name)));
         Debug.Log(enemies.Count + "pocet ulozenych enemaku");
         enemies.Add(hrac);
 
 
-      
+        enemyData.Clear();
         enemyData = new List<enemy>(enemies.Count);
 
         foreach (GameObject enemyObject in enemies)
@@ -86,7 +87,7 @@ public class ukladaniSceny : MonoBehaviour
             ukl.X = hracData.pozice.x;
         }
 
-
+        jablkoEnemy.Clear();
         foreach (enemy enemy in enemyData)
         {
             if (enemy != null)
