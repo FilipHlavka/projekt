@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pechota_0: -1894994301860224146
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

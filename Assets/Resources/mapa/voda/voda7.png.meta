@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      voda7_0: 3393157882066169355
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

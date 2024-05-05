@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      neOko_0: -3140987076831694735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

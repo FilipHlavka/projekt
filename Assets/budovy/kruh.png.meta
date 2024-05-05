@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kruh_0: 9144949145753699398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
