@@ -23,7 +23,7 @@ public class PowerPointGenerator : MonoBehaviour
         maxPP = 500; // llll
         PP = 200;
         InvokeRepeating("PridejPP", 5, 5);
-        PPtext.aktualizuj();
+        //PPtext.aktualizuj();
     }
     public void PridejPP()
     {
