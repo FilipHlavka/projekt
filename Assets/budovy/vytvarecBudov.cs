@@ -79,10 +79,11 @@ public class vytvarecBudov : MonoBehaviour
     {
         if (platim)
         {
-            if(PowerPointGenerator.PP - 10 >= 0)
+            if(PowerPointGenerator.instance.mena - 10 >= 0)
             {
-                PowerPointGenerator.PP -= 10;
-                PPtext.aktualizuj();
+                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - 10);
+                PowerPointGenerator.instance.mena -= 10;
+               
                 Budova = gameObject.AddComponent<banka>();
                 Budova.powerPointGenerator = powerPointGenerator;
                 Budova.akt();
@@ -104,10 +105,11 @@ public class vytvarecBudov : MonoBehaviour
     {
         if (platim)
         {
-            if (PowerPointGenerator.PP - 10 >= 0)
+            if (PowerPointGenerator.instance.mena - 10 >= 0)
             {
-                PowerPointGenerator.PP -= 10;
-                PPtext.aktualizuj();
+                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - 10);
+                PowerPointGenerator.instance.mena -= 10;
+               
 
                 Budova = gameObject.AddComponent<radar>();
                 Budova.powerPointGenerator = powerPointGenerator;
@@ -129,10 +131,11 @@ public class vytvarecBudov : MonoBehaviour
 
         if (platim)
         {
-            if (PowerPointGenerator.PP - 15 >= 0)
+            if (PowerPointGenerator.instance.mena - 15 >= 0)
             {
-                PowerPointGenerator.PP -= 15;
-                PPtext.aktualizuj();
+                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - 15);
+                PowerPointGenerator.instance.mena -= 15;
+                
 
                 Budova = gameObject.AddComponent<vrt>();
                 Budova.powerPointGenerator = powerPointGenerator;

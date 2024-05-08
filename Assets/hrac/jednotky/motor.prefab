@@ -270,7 +270,7 @@ MonoBehaviour:
     m_Bits: 72
   dosah: 50
   nameHr: motor
-  pozice: {x: 0, y: 0}
+  pozice: {x: 0, y: 0, z: 0}
   bonusRychlost: 0
   zaklRychlost: 0
   aktDef: 0

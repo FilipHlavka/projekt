@@ -107,15 +107,16 @@ public class respawnScript : MonoBehaviour
             if(jm == jed.GetComponent<zakl>().nameHr)
             {
                 
-                if (PowerPointGenerator.PP - cost > 0)
+                if (PowerPointGenerator.instance.mena - cost > 0)
                 {
-                    PowerPointGenerator.PP = PowerPointGenerator.PP - cost;
-                    PowerPointGenerator.maxPP = PowerPointGenerator.maxPP - cost;
+                    PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - cost);
+                    PowerPointGenerator.instance.mena = PowerPointGenerator.instance.mena - cost;
+                    PowerPointGenerator.instance.Max = PowerPointGenerator.instance.Max - cost;
                     Instantiate(jed, spawnPoint.transform.position, Quaternion.Euler(0, 0, 0));
                     panel.SetActive(false);
                     kamera.movex = spawnPoint.transform.position.x;
                     kamera.movey = spawnPoint.transform.position.y;
-                    PPtext.aktualizuj();
+                    
                 }
                 else
                 {

@@ -31,37 +31,37 @@ public abstract class zakl : MonoBehaviour
     hracData hracdata;
     int blbost= 0;
     public string nameHr;
-    public Vector2 pozice;
+    public Vector3 pozice;
     LineRenderer lineRenderer;
     GameObject controller;
     public float bonusRychlost;
     public float zaklRychlost;
     public float aktDef;
-    public CircleCollider2D kolajdr;
+    public SphereCollider kolajdr;
     
     public void Awake()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = Rychlost; // rychlost
+        //agent = gameObject.GetComponent<NavMeshAgent>();
+        //agent.speed = Rychlost; // rychlost
        
         dosah = (float)(range / 3.5);
 
-        lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
+        /*lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
        
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.startColor = Color.red;
-        lineRenderer.endColor = Color.red;
+        lineRenderer.endColor = Color.red;*/
     }
 
     public virtual void Start()
     {
-/*
-        if (!cont.prvniInstance)
+
+       /* if (!cont.prvniInstance)
         {
             Destroy(gameObject);
         }
-*/
+       */
 
         Zacni();
        
@@ -75,13 +75,12 @@ public abstract class zakl : MonoBehaviour
         aktDef = Def;
         zaklRychlost = Rychlost;
         
-        maska = transform.Find("SpriteMask");
-        maska.localScale = new Vector3(range, range, range); // pøiøazení dohledu
-        kolajdr = gameObject.GetComponent<CircleCollider2D>();
+                                                                                 // pøiøazení dohledu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        kolajdr = gameObject.GetComponent<SphereCollider>();
         kolajdr.radius = (float)range/2;
         AktualizujSeznamEnemy();
         
-        //Debug.Log(enemies.Count);
+       Debug.Log(enemies.Count);
         controller = GameObject.FindGameObjectWithTag("GameController");
         enresp = controller.GetComponent<EnemyRespawn>();
         if(enresp != null)
@@ -106,7 +105,7 @@ public abstract class zakl : MonoBehaviour
 
     public void Zastav()
     {
-        //AktualizujSeznamEnemy();
+        AktualizujSeznamEnemy();
         stuj = !stuj;
     }
 
@@ -132,28 +131,29 @@ public abstract class zakl : MonoBehaviour
             {
                 if (enemy != null)
                 {
-                    if (Vector2.Distance(transform.position, enemy.transform.position) < range/3)
+                    if (Vector3.Distance(transform.position, enemy.transform.position) < range/3)
                     {
-                    
-                   
-                        RaycastHit2D hit = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position,dosah,maskaPrekazka);
-                        
+
+
+                        RaycastHit hitRay;
+                        bool hit = Physics.Raycast(transform.position, enemy.transform.position - transform.position, out hitRay, dosah, maskaPrekazka);
+
 
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
 
-                        if (hit.collider != null)
+                        if (hitRay.collider != null)
                         {
 
                         
 
-                            if (hit.collider.CompareTag("enemy"))
+                            if (hitRay.collider.CompareTag("enemy"))
                             {
 
-                            lineRenderer.positionCount = 2;
+                                lineRenderer.positionCount = 2;
 
-                            lineRenderer.SetPosition(0, transform.position);
-                            lineRenderer.SetPosition(1, enemy.transform.position);
-                            Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
+                                lineRenderer.SetPosition(0, transform.position);
+                                lineRenderer.SetPosition(1, enemy.transform.position);
+                                Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
                                 if (Input.GetKeyDown(KeyCode.Space))
                                 {
                                     if(blbost == 0)

@@ -15,11 +15,11 @@ public class banka : budova
     
     public override void akt()
     {
-        powerPointGenerator.bonusMaxPP += 10;
+        PowerPointGenerator.instance.bonusMax += 10;
 
     }
     private void OnDestroy()
     {
-        powerPointGenerator.bonusMaxPP -= 10;
+        PowerPointGenerator.instance.bonusMax -= 10;
     }
 }

@@ -8,9 +8,9 @@ using System;
 
 public class pohybHrace : MonoBehaviour
 {
-    Rigidbody2D rigitbody;
-    SpriteRenderer spriteRenderer;
-    Vector2 vec;
+    Rigidbody rigitbody;
+    //SpriteRenderer spriteRenderer;
+    Vector3 vec;
     //Vector2 direction;
     /*[SerializeField]
     float speed;*/
@@ -18,13 +18,15 @@ public class pohybHrace : MonoBehaviour
     public NavMeshAgent agent;
     bool stuj = false;
     public static bool nehejbat = false;
+    GameObject camGm;
+    Camera cam;
 
     private void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
 
-        agent.updateRotation = false;
-        agent.updateUpAxis = false; // otoèilo by se to o 90%
+        /*agent.updateRotation = false;
+        agent.updateUpAxis = false; */// otoèilo by se to o 90%
         
         if (!cont.prvniInstance)
         {
@@ -45,15 +47,17 @@ public class pohybHrace : MonoBehaviour
     {
         
        
-        rigitbody = gameObject.GetComponent<Rigidbody2D>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        rigitbody = gameObject.GetComponent<Rigidbody>();
+        camGm = GameObject.FindGameObjectWithTag("MainCamera");
+        cam = camGm.GetComponent<Camera>();
+        //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
        
     }
 
-   /* public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         rigitbody.velocity = Vector2.zero;
-    }*/
+    }
    
     // Update is called once per frame
     void Update()
@@ -79,46 +83,35 @@ public class pohybHrace : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
-            vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                LayerMask layerMask = ~LayerMask.GetMask("player");
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+                {
+
+                    agent.SetDestination(hit.point);
+                    Debug.Log(hit.point);
+
+                }
 
 
-            //direction = (vec - rigitbody.position).normalized;
 
-            agent.SetDestination(vec);
-
-
-            /*   if (hit.collider != null || hitDva.collider != null || hitTri.collider != null)
-               {
-                   direction = Vector2.zero;
-
-               }
-            */
-
-            if (vec.x < rigitbody.position.x)
-            {
-                flip = true;
             }
-            else
-            {
-                flip = false;
-            }
-
-            // rigitbody.velocity = direction * speed;
         }
-        }
-        if (Vector2.Distance(rigitbody.position, vec) < 0.1f)
+        if (Vector3.Distance(rigitbody.position, vec) < 0.1f)
         {
-            rigitbody.velocity = Vector2.zero;
+            rigitbody.velocity = Vector3.zero;
         }
 
 
-        if (flip)
+       /* if (flip)
         {
             spriteRenderer.flipX = true;
         }
         else
         {
             spriteRenderer.flipX = false;
-        }
+        }*/
     }
 }

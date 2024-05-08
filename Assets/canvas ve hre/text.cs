@@ -10,14 +10,14 @@ public class PPtext : MonoBehaviour
     void Start()
     {
         napis = gameObject.GetComponent<TMP_Text>();
-        aktualizuj();
+        //aktualizuj();
        
     }
-    public static void aktualizuj()
+   /* public static void aktualizuj()
     {
        
-        napis.text = "Resource Points: "+PowerPointGenerator.PP;
-    }
+        //napis.text = "Resource Points: "+PowerPointGenerator.PP;
+    }*/
     // Update is called once per frame
     
 }

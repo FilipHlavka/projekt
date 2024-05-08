@@ -32,7 +32,7 @@ public class ukladaniSceny : MonoBehaviour
         strudl.obj = jablkoEnemy;
         strudl.bdv = jablkoBudova;
         strudl.hrDt = ukl;
-        strudl.powePoints = PowerPointGenerator.PP;
+        strudl.powePoints = PowerPointGenerator.instance.mena;
         strudl.pocetUlozeni = pocetUlozeni;
         BinaryFormatter formator = new BinaryFormatter();
         try
@@ -85,6 +85,7 @@ public class ukladaniSceny : MonoBehaviour
           
             ukl.Y = hracData.pozice.y;
             ukl.X = hracData.pozice.x;
+            ukl.Z = hracData.pozice.z;
         }
 
         jablkoEnemy.Clear();
@@ -153,7 +154,7 @@ public class UkladaniProHracMimo
     public string nazev;
     public float X;
     public float Y;
-
+    public float Z;
 }
 [Serializable]
 public struct UkladaniProBudovuMimo
@@ -161,6 +162,7 @@ public struct UkladaniProBudovuMimo
     public string nazev;
     public float X;
     public float Y;
+    public float Z;
 }
 [Serializable]
 public struct Zavin

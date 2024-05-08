@@ -89,12 +89,13 @@ public class cont : MonoBehaviour
 
         //Debug.Log(listEnemaku[0] + "pocet kurwa");
         this.strudl = strudl;
-        PowerPointGenerator.PP = strudl.powePoints;
+        PowerPointGenerator.instance.ZmenText(0,strudl.powePoints);
+        PowerPointGenerator.instance.mena = strudl.powePoints;
         NactiEnemaky();
         ukazHraceDoSceny(strudl);
-        aktBudovy.Invoke(true,strudl);
+        /*aktBudovy.Invoke(true,strudl);
         vyhra.stuj = false;
-        
+        */
     }
 
 
@@ -110,7 +111,7 @@ public class cont : MonoBehaviour
         hrJednodusiData.def = strudl.hrDt.def;
         hrJednodusiData.nazev = strudl.hrDt.nazev;
         hrJednodusiData.zivoty = strudl.hrDt.zivoty;
-        hrJednodusiData.pozice = new Vector2(strudl.hrDt.X,strudl.hrDt.Y);
+        hrJednodusiData.pozice = new Vector3(strudl.hrDt.X,strudl.hrDt.Y, strudl.hrDt.Z);
         Debug.Log(hrJednodusiData.pozice);
         int j = 0;
 
@@ -120,11 +121,11 @@ public class cont : MonoBehaviour
             j++;
         }
         j = 0;
-
+        
         if (hrJednodusiData.zivoty > 0)
         {
-            kamera.movex = hrJednodusiData.pozice.x;
-            kamera.movey = hrJednodusiData.pozice.y;
+           // kamera.movex = hrJednodusiData.pozice.x;
+           // kamera.movey = hrJednodusiData.pozice.y;
             slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
 
             GameObject novyHrac = Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
@@ -155,6 +156,7 @@ public class cont : MonoBehaviour
             Debug.Log("divný");
             Respawn.Invoke();
         }
+
     } // pøi naètení
 
     public void ukazHrace()
@@ -176,8 +178,8 @@ public class cont : MonoBehaviour
 
         if (hrJednodusiData.zivoty > 0)
         {
-            kamera.movex = hrJednodusiData.pozice.x;
-            kamera.movey = hrJednodusiData.pozice.y;
+           // kamera.movex = hrJednodusiData.pozice.x;
+            //kamera.movey = hrJednodusiData.pozice.y;
             slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
             
             GameObject novyHrac =  Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
@@ -199,7 +201,7 @@ public class cont : MonoBehaviour
             }
             
             hracObj.tag = "Player";
-
+           
         }
         else
         {

@@ -160,7 +160,7 @@ public class UkladaniProHrac
     public int atk;
     public float def;
     public string nazev;
-    public Vector2 pozice;
+    public Vector3 pozice;
 
 
 }
