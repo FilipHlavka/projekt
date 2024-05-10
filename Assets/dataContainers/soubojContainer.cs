@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class soubojContainer : MonoBehaviour
 {
     
-    cont controller;
+   
     ingamemanager ingamemanager;
    /* public GameObject hrac;
     public GameObject enemy;*/
@@ -20,8 +20,8 @@ public class soubojContainer : MonoBehaviour
             uloz = new UnityEvent<bool>();
         if (prepniScenu == null)
             prepniScenu = new UnityEvent<string>();
-        controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>();
-        controller.zacniBojovat.AddListener(DoBoje);
+        
+        cont.instance.zacniBojovat.AddListener(DoBoje);
         ingamemanager = ingamemanager.Instance;
         prepniScenu.AddListener(ingamemanager.PrepniNascenu);
 

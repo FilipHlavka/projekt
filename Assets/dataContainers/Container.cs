@@ -149,7 +149,7 @@ public struct UkladaniProEnemy
     public float def;
     public string nazev;
     public bool bojuje;
-    public Vector2 pozice;
+    public Vector3 pozice;
    
     public bool jeNaTahu;
 }
@@ -168,7 +168,7 @@ public class UkladaniProHrac
 public struct UkladaniProBudovu
 {
     public string nazev;
-    public Vector2 pozice;
+    public Vector3 pozice;
 
 }
 [Serializable]

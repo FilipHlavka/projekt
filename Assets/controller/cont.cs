@@ -12,6 +12,8 @@ using NUnit;
 
 public class cont : MonoBehaviour
 {
+    public static cont instance;
+    public static cont Instance => instance;
     [SerializeField]
     camPohyb kamera;
     /*[SerializeField]                    // zkusit pøes static
@@ -43,6 +45,15 @@ public class cont : MonoBehaviour
     Zavin strudl;
     //enemyTypy typy;
 
+    void Awake()
+    {
+        instance = this;
+    }
+    private void Update()
+    {
+        //Debug.Log(prvniInstance);
+    }
+
     private void Start()
     {
         res = gameObject.GetComponent<respawnScript>();
@@ -56,8 +67,20 @@ public class cont : MonoBehaviour
             prvniInstance = true;
             
             aktBudovy.Invoke(false,new Zavin());
+            listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
+            vyhra.stuj = true;
+            foreach (GameObject obj in listEnemaku)
+            {
+                //listEnemaku.Remove(obj);
+                Debug.Log("Destroying " + obj.name);
+                Destroy(obj);
+
+                //obj.tag = "svine";
+
+            }
             RozdelAPanuj();
             ukazHrace();
+            vyhra.stuj = false;
         }
         
         if (zacniBojovat == null)
@@ -242,7 +265,7 @@ public class cont : MonoBehaviour
                 
                 
                     slovnik.TryGetValue(strudl.obj[i].nazev, out GameObject enemyObj);
-                    GameObject enm = Instantiate(enemyObj, new Vector2(strudl.obj[i].X, strudl.obj[i].Y), Quaternion.Euler(0, 0, 0));
+                    GameObject enm = Instantiate(enemyObj, new Vector3(strudl.obj[i].X, strudl.obj[i].Y, strudl.obj[i].Z), Quaternion.Euler(0, 0, 0));
 
                     enm.name = "enemy" + enmPom;
                     enemy ll = enm.GetComponent<enemy>();

@@ -14,7 +14,7 @@ public class pohybHrace : MonoBehaviour
     //Vector2 direction;
     /*[SerializeField]
     float speed;*/
-    bool flip = false;
+    
     public NavMeshAgent agent;
     bool stuj = false;
     public static bool nehejbat = false;
@@ -25,19 +25,18 @@ public class pohybHrace : MonoBehaviour
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
 
-        /*agent.updateRotation = false;
-        agent.updateUpAxis = false; */// otoèilo by se to o 90%
+       
         
-        if (!cont.prvniInstance)
+        
+    }
+    void Start()
+    {
+        if (!cont.prvniInstance) // muže dìlat problém !!!!!!!!!!!!!!!!!!
         {
             Destroy(gameObject);
             Debug.Log("zniceno");
         }
-    }
-    void Start()
-    {
-        
-       
+
         Zacni();
 
     }
@@ -91,7 +90,7 @@ public class pohybHrace : MonoBehaviour
                 {
 
                     agent.SetDestination(hit.point);
-                    Debug.Log(hit.point);
+                   // Debug.Log(hit.point);
 
                 }
 
@@ -104,14 +103,5 @@ public class pohybHrace : MonoBehaviour
             rigitbody.velocity = Vector3.zero;
         }
 
-
-       /* if (flip)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }*/
     }
 }

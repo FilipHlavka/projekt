@@ -46,12 +46,12 @@ public abstract class zakl : MonoBehaviour
        
         dosah = (float)(range / 3.5);
 
-        /*lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
+        lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
        
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.startColor = Color.red;
-        lineRenderer.endColor = Color.red;*/
+        lineRenderer.endColor = Color.red;
     }
 
     public virtual void Start()
@@ -87,7 +87,8 @@ public abstract class zakl : MonoBehaviour
         {
             enresp.enemyRespawn.AddListener(SeznamEnemyPridej);
         }
-        utoc.AddListener(controller.GetComponent<cont>().Prepnuti);
+        utoc.AddListener(cont.instance.Prepnuti);
+        
     }
 
     public void AktualizujSeznamEnemy()
@@ -114,6 +115,12 @@ public abstract class zakl : MonoBehaviour
         
             if (!stuj)
                 Raycastuj();
+            else
+            {
+            lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
+            lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+            }
+           
         updatePozice();
         
     }
@@ -148,7 +155,7 @@ public abstract class zakl : MonoBehaviour
 
                             if (hitRay.collider.CompareTag("enemy"))
                             {
-
+                            //Debug.Log("furry");
                                 lineRenderer.positionCount = 2;
 
                                 lineRenderer.SetPosition(0, transform.position);
@@ -173,15 +180,20 @@ public abstract class zakl : MonoBehaviour
 
 
                         }
-                    else
-                    {
+                        else
+                        {
                         lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
                         lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
                         Debug.Log("aa");
+                        }
+
+
                     }
-
-
-                }
+                    else
+                    {
+                    lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
+                    lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+                    }
 
                 
                 }

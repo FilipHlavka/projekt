@@ -101,7 +101,7 @@ public class ukladaniSceny : MonoBehaviour
              
                 nvm.X = enemy.pozice.x;
                 nvm.Y = enemy.pozice.y;
-               
+                nvm.Z = enemy.pozice.z;
                 //Debug.Log(enemy.name);
 
                 jablkoEnemy.Add(nvm);
@@ -143,6 +143,7 @@ public struct UkladaniProEnemyMimo
     public string nazev;
     public float X;
     public float Y;
+    public float Z;
     public int id;
 }
 [Serializable]

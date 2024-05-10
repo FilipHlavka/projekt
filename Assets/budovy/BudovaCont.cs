@@ -8,14 +8,18 @@ public class BudovaCont : MonoBehaviour
 {
     public Zabal zabal = new Zabal();
     public List<UkladaniProBudovu> listBudov;
-    cont Controller;
+    //cont Controller;
     public UnityEvent<List<UkladaniProBudovu>> stav;
     public static List<Vector2> poziceZnicenychBudov = new List<Vector2>();
     // Start is called before the first frame update
     void Awake()
     {
-        Controller = gameObject.GetComponent<cont>();
-        Controller.aktBudovy.AddListener(Pracuj);
+       
+    }
+    private void Start()
+    {
+       cont.instance.aktBudovy.AddListener(Pracuj); // Muže dìlat problém!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     }
     public void Pracuj(bool nacti, Zavin strudl)
     {

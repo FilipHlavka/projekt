@@ -24,13 +24,15 @@ public abstract class enemy : MonoBehaviour
     public float atkMulti;
     public string nazev;
     public bool bojuje = false;
-    public Vector2 pozice;
+    public Vector3 pozice;
     public bool jeNaTahu = false;
     
     public abstract void Delej();
     protected void Awake()
     {
-       
+
+        vyhra.pocetEnemy++;
+
     }
     public void Update()
     {
@@ -38,7 +40,6 @@ public abstract class enemy : MonoBehaviour
     }
     protected void Start()
     {
-        vyhra.pocetEnemy++;
         aktDef = def;
     }
     private void updatePozice()

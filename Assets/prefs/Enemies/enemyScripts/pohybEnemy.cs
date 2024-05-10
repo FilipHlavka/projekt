@@ -19,7 +19,7 @@ public class pohybEnemy : MonoBehaviour
     public float dosahDetekce = 0;
     
     enemy Enemy;
-    bool flip = false;
+   
     UnityEvent<bool,GameObject> utoc;
     //bool stuj = false;
     bool protekce = false;
@@ -30,13 +30,14 @@ public class pohybEnemy : MonoBehaviour
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        if (!cont.prvniInstance)
-            Destroy(gameObject);
+        
     }
 
     void Start()
     {
-        
+        if (!cont.prvniInstance)        // muže být problém!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            Destroy(gameObject);
+
         Zacni();
        
         
@@ -49,7 +50,7 @@ public class pohybEnemy : MonoBehaviour
     private void Zacni()
     {
 
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
@@ -64,7 +65,7 @@ public class pohybEnemy : MonoBehaviour
         agent.speed = Enemy.rychlost;
 
         StartCoroutine(Protection());
-        utoc.AddListener(GameObject.FindGameObjectWithTag("GameController").GetComponent<cont>().Prepnuti);
+        utoc.AddListener(cont.instance.Prepnuti);
     }
 
     // Update is called once per frame
@@ -81,22 +82,7 @@ public class pohybEnemy : MonoBehaviour
                 }
             catch { }
         }
-        if (agent.destination.x < transform.position.x)
-        {
-            flip = false;
-        }
-        else
-        {
-            flip = true;
-        }
-        if (flip)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
+        
 
     }
    
@@ -108,26 +94,28 @@ public class pohybEnemy : MonoBehaviour
 
     private void Delej()
     {
-        
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, dosahDetekce, Mask);
+
+        RaycastHit hit;
+       
+         if (Physics.Raycast(transform.position, player.position - transform.position,out hit, dosahDetekce, Mask))
 
 
         if (hit.collider != null)
         {
 
             //Debug.Log(hit.collider.name);
-            if (hit.collider.gameObject.GetComponent<pohybHrace>() == null)
+            if (hit.collider.gameObject.GetComponent<pohybHrace>() == null && hit.collider.gameObject.GetComponent<ingameStatusy>() == null)
             {
 
-                // Debug.DrawRay(transform.position, player.position - transform.position, Color.red);
+                 Debug.DrawRay(transform.position, player.position - transform.position, Color.red);
 
 
             }
-            else if (Vector2.Distance(transform.position, player.position) <= AtkRange)
+            else if (Vector3.Distance(transform.position, player.position) <= AtkRange)
             {
                 agent.isStopped = true;
 
-
+                    Debug.Log("co se to dìje");
                 utoc.Invoke(true,gameObject);
                 // utok enemy
             }

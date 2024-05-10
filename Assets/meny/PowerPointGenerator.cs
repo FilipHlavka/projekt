@@ -52,7 +52,7 @@ public class PowerPointGenerator : MonoBehaviour
         {
             yield return new WaitForSeconds(3f);
             ZmenText(mena, poKolika + mena + bonusPoKolika);
-            Debug.Log(mena);
+            //Debug.Log(mena);
             if (mena >= Max + bonusMax)
             {
                 pom = false;

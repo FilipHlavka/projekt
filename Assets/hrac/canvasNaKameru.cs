@@ -6,15 +6,15 @@ public class canvasNaKameru : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject camera;
+    public GameObject cam;
     void Start()
     {
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(camera.transform.position);
+        gameObject.transform.LookAt(cam.transform.position);
     }
 }
