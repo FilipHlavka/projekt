@@ -11,7 +11,10 @@ public class respawnScript : MonoBehaviour
     private List<GameObject> jednotky;
     [SerializeField]
     private GameObject panel;
-
+    [SerializeField]
+    hracScriptable hrci;
+    [SerializeField]
+    Button button;
     RectTransform ptf;
     int k = 60;
     string jm;
@@ -114,8 +117,8 @@ public class respawnScript : MonoBehaviour
                     PowerPointGenerator.instance.Max = PowerPointGenerator.instance.Max - cost;
                     Instantiate(jed, spawnPoint.transform.position, Quaternion.Euler(0, 0, 0));
                     panel.SetActive(false);
-                    kamera.movex = spawnPoint.transform.position.x;
-                    kamera.movey = spawnPoint.transform.position.y;
+                   /* kamera.movex = spawnPoint.transform.position.x;
+                    kamera.movey = spawnPoint.transform.position.y;*/
                     
                 }
                 else
@@ -130,6 +133,7 @@ public class respawnScript : MonoBehaviour
 
     public void DelejNeco()
     {
+        /*
         int topPosition = Mathf.Abs((int)(ptf.anchoredPosition.y + ptf.sizeDelta.y / 2f));
 
         panel.SetActive(true);
@@ -139,8 +143,40 @@ public class respawnScript : MonoBehaviour
             Debug.Log(jm);
             Tlacitko(topPosition, jm);
 
-        }
+        }*/
+
+        VytvorTlacitko();
         
+    }
+
+    void VytvorTlacitko()
+    {
+        panel.SetActive(true);
+        foreach (var hr in hrci.prefs)
+        {
+            Debug.Log(hr);
+           Button tlac =  Instantiate(button,panel.transform);
+            tlac.onClick.AddListener(() =>
+            {
+                if (PowerPointGenerator.instance.mena - hr.cenaOtaznik > 0)
+                {
+                    PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - hr.cenaOtaznik);
+                    PowerPointGenerator.instance.mena = PowerPointGenerator.instance.mena - hr.cenaOtaznik;
+                    PowerPointGenerator.instance.Max = PowerPointGenerator.instance.Max - hr.cenaOtaznik;
+                    Instantiate(hr.hrac.prefab, spawnPoint.transform.position, Quaternion.Euler(0, 0, 0));
+                    panel.SetActive(false);
+                   
+
+                }
+                else
+                {
+                    Debug.Log("Nedostatek penìz");
+                }
+                
+            });
+            TMP_Text text = tlac.GetComponentInChildren<TMP_Text>();
+            text.text = hr.hrac.nameHr + ": " + hr.cenaOtaznik;
+        }
     }
 
     // Update is called once per frame

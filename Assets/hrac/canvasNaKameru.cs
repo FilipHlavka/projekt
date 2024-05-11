@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class canvasNaKameru : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class canvasNaKameru : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(cam.transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
+
     }
 }

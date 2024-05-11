@@ -25,17 +25,17 @@ public class pohybHrace : MonoBehaviour
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
 
-       
-        
-        
-    }
-    void Start()
-    {
+
         if (!cont.prvniInstance) // muže dìlat problém !!!!!!!!!!!!!!!!!!
         {
             Destroy(gameObject);
             Debug.Log("zniceno");
         }
+
+    }
+    void Start()
+    {
+      
 
         Zacni();
 

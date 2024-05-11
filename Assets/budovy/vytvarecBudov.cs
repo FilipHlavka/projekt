@@ -160,7 +160,7 @@ public class vytvarecBudov : MonoBehaviour
             
             if (player != null)
             {
-                if (Vector2.Distance((Vector2)player.transform.position, transform.position) < 7)
+                if (Vector3.Distance(player.transform.position, transform.position) < 7)
                 {
                     op.enabled = true;
                     pom = false;

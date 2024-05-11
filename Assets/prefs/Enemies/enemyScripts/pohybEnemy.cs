@@ -30,13 +30,13 @@ public class pohybEnemy : MonoBehaviour
         agent = gameObject.GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        
+        if (!cont.prvniInstance)        // muže být problém!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! <byl>
+            Destroy(gameObject);
     }
 
     void Start()
     {
-        if (!cont.prvniInstance)        // muže být problém!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            Destroy(gameObject);
+       
 
         Zacni();
        

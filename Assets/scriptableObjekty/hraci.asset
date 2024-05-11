@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d2a15f220e04c4894b57ab3bae4a28, type: 3}
+  m_Name: hraci
+  m_EditorClassIdentifier: 
+  prefs:
+  - hrac: {fileID: 4950875684005414751, guid: 96b6aca4fca8ee6458b5172f0f28e93e, type: 3}
+    cenaOtaznik: 45

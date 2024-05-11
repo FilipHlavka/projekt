@@ -18,7 +18,7 @@ public class cont : MonoBehaviour
     camPohyb kamera;
     /*[SerializeField]                    // zkusit pøes static
     Camera kameraSouboje;*/
-    public static bool prvniInstance = true;
+   
     [SerializeField]
     GameObject KontrolerSouboj;
     public UnityEvent<bool> zacniBojovat;
@@ -36,6 +36,7 @@ public class cont : MonoBehaviour
     [SerializeField]
     public Dictionary<string, GameObject> slovnik = new Dictionary<string, GameObject>();
     #endregion
+    public static bool prvniInstance = true;
 
     public UnityEvent Respawn;
     public UnityEvent<bool,Zavin> aktBudovy;
@@ -43,6 +44,9 @@ public class cont : MonoBehaviour
     public nacteniSceny nacitani;
 
     Zavin strudl;
+
+    [SerializeField]
+    hracScriptable hrci;
     //enemyTypy typy;
 
     void Awake()
@@ -137,22 +141,32 @@ public class cont : MonoBehaviour
         hrJednodusiData.pozice = new Vector3(strudl.hrDt.X,strudl.hrDt.Y, strudl.hrDt.Z);
         Debug.Log(hrJednodusiData.pozice);
         int j = 0;
-
+        /*
         for (int i = enemaci.Count; i < enemaci.Count + hraci.Count; i++)
         {
             slovnik.Add(playerNames[j], hraci[j]);
             j++;
         }
         j = 0;
-        
+        */
         if (hrJednodusiData.zivoty > 0)
         {
-           // kamera.movex = hrJednodusiData.pozice.x;
-           // kamera.movey = hrJednodusiData.pozice.y;
-            slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
+            // kamera.movex = hrJednodusiData.pozice.x;
+            // kamera.movey = hrJednodusiData.pozice.y;
+            /*slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
 
-            GameObject novyHrac = Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+            GameObject novyHrac = Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));*/
+            GameObject novyHrac = new GameObject();
+            foreach (var hr in hrci.prefs)
+            {
+                if (hrJednodusiData.nazev == hr.hrac.nameHr)
+                {
+                    novyHrac = Instantiate(hr.hrac.prefab, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
 
+                }
+            }
+
+             
             hrDt = novyHrac.GetComponent<zakl>();
             hrDt.Zivoty = hrJednodusiData.zivoty;
             hrDt.Atk = hrJednodusiData.atk;
@@ -170,7 +184,7 @@ public class cont : MonoBehaviour
             }
             GameObject hrac = GameObject.FindGameObjectWithTag("Player");
             Destroy(hrac);
-            hracObj.tag = "Player";
+           // hracObj.tag = "Player";
 
         }
         else
@@ -190,7 +204,7 @@ public class cont : MonoBehaviour
         zakl hrDt;
         UkladaniProHrac hrJednodusiData = zabal.hrDt;
 
-        int j = 0;
+       /* int j = 0;
        
         for (int i = enemaci.Count; i < enemaci.Count + hraci.Count; i++)
         {
@@ -198,14 +212,21 @@ public class cont : MonoBehaviour
             j++;
         }
         j = 0;
-
+       */
         if (hrJednodusiData.zivoty > 0)
         {
-           // kamera.movex = hrJednodusiData.pozice.x;
+            // kamera.movex = hrJednodusiData.pozice.x;
             //kamera.movey = hrJednodusiData.pozice.y;
-            slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
-            
-            GameObject novyHrac =  Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+            // slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
+            GameObject novyHrac = new GameObject();
+            foreach (var hr in hrci.prefs)
+            {
+                if (hrJednodusiData.nazev == hr.hrac.nameHr)
+                {
+                    novyHrac = Instantiate(hr.hrac.prefab, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+
+                }
+            }
 
             hrDt = novyHrac.GetComponent<zakl>();
             hrDt.Zivoty = hrJednodusiData.zivoty;
@@ -223,7 +244,7 @@ public class cont : MonoBehaviour
                 Debug.Log(hrDt.aktDef);
             }
             
-            hracObj.tag = "Player";
+            //hracObj.tag = "Player";
            
         }
         else

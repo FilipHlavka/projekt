@@ -49,6 +49,7 @@ public class soubojSceneController : MonoBehaviour
         string jsonData = JsonUtility.ToJson(zabal);
         File.WriteAllText(Application.dataPath + "/enemies.json", jsonData);
         cont.prvniInstance = false;
+        Debug.Log(cont.prvniInstance);
         // zmenit senu
         mngr.PrepniNascenu(sceneJm);
     }

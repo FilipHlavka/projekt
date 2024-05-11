@@ -29,7 +29,7 @@ public class PowerPointGenerator : MonoBehaviour
     void Start()
     {
         StartCoroutine(PridejMenu());
-        Text.text = "Mìna: " + mena;
+        Text.text = "Cash: " + mena;
         timer = 0f;
     }
 
@@ -63,7 +63,7 @@ public class PowerPointGenerator : MonoBehaviour
     {
 
         StartCoroutine(FungujUs(puvodni, potom));
-        Text.text = "Mìna: " + potom;
+        Text.text = "Cash: " + potom;
         mena = potom;
 
     }
@@ -76,7 +76,7 @@ public class PowerPointGenerator : MonoBehaviour
             float idk = Mathf.Clamp01(timer / duration);
 
             int pom = Mathf.RoundToInt(Mathf.Lerp(puvodni, potom, idk));
-            Text.text = "Mìna: " + pom;
+            Text.text = "Cash: " + pom;
 
             yield return null;
         }

@@ -18,6 +18,8 @@ public abstract class zakl : MonoBehaviour
     public int Atk;
     [SerializeField]
     public float Rychlost;
+    [SerializeField]
+    public GameObject prefab;
     public NavMeshAgent agent;
     public Transform maska;
     [SerializeField]
@@ -57,11 +59,12 @@ public abstract class zakl : MonoBehaviour
     public virtual void Start()
     {
 
-       /* if (!cont.prvniInstance)
+        if (!cont.prvniInstance)
         {
             Destroy(gameObject);
+            //Debug.Log("nyaaaaaaa");
         }
-       */
+       
 
         Zacni();
        
@@ -80,7 +83,6 @@ public abstract class zakl : MonoBehaviour
         kolajdr.radius = (float)range/2;
         AktualizujSeznamEnemy();
         
-       Debug.Log(enemies.Count);
         controller = GameObject.FindGameObjectWithTag("GameController");
         enresp = controller.GetComponent<EnemyRespawn>();
         if(enresp != null)
@@ -112,8 +114,9 @@ public abstract class zakl : MonoBehaviour
 
     public virtual void Update()
     {
+
         
-            if (!stuj)
+        if (!stuj)
                 Raycastuj();
             else
             {
