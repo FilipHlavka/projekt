@@ -130,6 +130,7 @@ public class Container : MonoBehaviour
                 UkladaniProBudovu uklProBdv = new UkladaniProBudovu();
                 uklProBdv.nazev = budovaObjekt.jmeno;
                 uklProBdv.pozice = budovaObjekt.pozice;
+                uklProBdv.zivoty = budovaObjekt.zivoty;
                 UzFaktNevimBudova.Add(uklProBdv);
             }
 
@@ -169,6 +170,7 @@ public struct UkladaniProBudovu
 {
     public string nazev;
     public Vector3 pozice;
+    public int zivoty;
 
 }
 [Serializable]

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zivoty: 20
-  atk: 2
+  atk: 15
   def: 10
   rychlost: 3
   range: 7

@@ -11,7 +11,7 @@ public class vrt : budova
         pozice = transform.position;
         jmeno = "vrt";
         
-        aktSprite();
+       //aktSprite();
     }
     public override void akt()
     {

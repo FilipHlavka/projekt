@@ -10,7 +10,7 @@ public class banka : budova
         
         pozice = transform.position;
         jmeno = "banka";
-        aktSprite();
+        //aktSprite();
     }
     
     public override void akt()

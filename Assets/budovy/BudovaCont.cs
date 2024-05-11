@@ -10,7 +10,7 @@ public class BudovaCont : MonoBehaviour
     public List<UkladaniProBudovu> listBudov;
     //cont Controller;
     public UnityEvent<List<UkladaniProBudovu>> stav;
-    public static List<Vector2> poziceZnicenychBudov = new List<Vector2>();
+    public static List<Vector3> poziceZnicenychBudov = new List<Vector3>();
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,7 +44,8 @@ public class BudovaCont : MonoBehaviour
             {
                 UkladaniProBudovu bud = new UkladaniProBudovu();
                 bud.nazev = bdv.nazev;
-                bud.pozice = new Vector2(bdv.X,bdv.Y);
+                bud.pozice = new Vector3(bdv.X,bdv.Y,bdv.Z);
+                bud.zivoty = (int)bdv.zivoty;
                 list.Add(bud);
             }
             stav.Invoke(list);

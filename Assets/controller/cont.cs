@@ -120,9 +120,9 @@ public class cont : MonoBehaviour
         PowerPointGenerator.instance.mena = strudl.powePoints;
         NactiEnemaky();
         ukazHraceDoSceny(strudl);
-        /*aktBudovy.Invoke(true,strudl);
+        aktBudovy.Invoke(true,strudl);
         vyhra.stuj = false;
-        */
+        
     }
 
 

@@ -8,16 +8,17 @@ public class radar : budova
     
     void Start()
     {
+        base.Start();
         pozice = transform.position;
         jmeno = "radar";
 
-        aktSprite();
+        
         
 
     }
     public override void akt()
     {
-         Instantiate(Resources.Load("budovy/kruh2"), gameObject.transform);
+        // Instantiate(Resources.Load("budovy/kruh2"), gameObject.transform);
 
     }
 }

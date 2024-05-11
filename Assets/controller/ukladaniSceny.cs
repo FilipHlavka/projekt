@@ -120,11 +120,15 @@ public class ukladaniSceny : MonoBehaviour
         {
             if (budov.TryGetComponent<budova>(out var budovaObjekt))
             {
+              
                 UkladaniProBudovuMimo uklProBdv = new UkladaniProBudovuMimo();
                 uklProBdv.nazev = budovaObjekt.jmeno;
+                uklProBdv.zivoty = budovaObjekt.zivoty;
                 uklProBdv.Y = budovaObjekt.pozice.y;
                 uklProBdv.X = budovaObjekt.pozice.x;
+                uklProBdv.Z = budovaObjekt.pozice.z;
                 jablkoBudova.Add(uklProBdv);
+                
             }
 
         }
@@ -158,9 +162,10 @@ public class UkladaniProHracMimo
     public float Z;
 }
 [Serializable]
-public struct UkladaniProBudovuMimo
+public class UkladaniProBudovuMimo
 {
     public string nazev;
+    public float zivoty;
     public float X;
     public float Y;
     public float Z;

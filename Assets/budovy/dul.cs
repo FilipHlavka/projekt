@@ -10,7 +10,7 @@ public class dul : budova
         pozice = transform.position;
 
         jmeno = "dul";
-        aktSprite();
+        //aktSprite();
     }
     public override void akt()
     {

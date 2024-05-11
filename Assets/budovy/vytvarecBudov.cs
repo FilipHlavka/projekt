@@ -23,7 +23,8 @@ public class vytvarecBudov : MonoBehaviour
     GameObject player;
     bool pom = true;
     bool pom2= false;
-
+    [SerializeField]
+    budovyScriptable bdv;
     
     // Start is called before the first frame update
  
@@ -42,7 +43,7 @@ public class vytvarecBudov : MonoBehaviour
 
         foreach (var pozice in BudovaCont.poziceZnicenychBudov)
         {
-            if (Vector2.Distance(pozice, transform.position) < 7)
+            if (Vector3.Distance(pozice, transform.position) < 7)
             {
                 Destroy(gameObject);
             }
@@ -51,7 +52,10 @@ public class vytvarecBudov : MonoBehaviour
         StartCoroutine(pockej());
         op.enabled = false;
         vrtTlac.onClick.AddListener(() => spawnVrt(true));
-        dulTlac.onClick.AddListener(() => spawnDul(true));
+        dulTlac.onClick.AddListener(() => {
+            spawn(true, bdv.bdv[0], bdv.bdv[0].prefab.zivoty);
+
+        });
         bankaTlac.onClick.AddListener(() => spawnBanka(true));
     }
     IEnumerator pockej()
@@ -75,6 +79,43 @@ public class vytvarecBudov : MonoBehaviour
         }
     }
     #region spawny
+
+    void spawn(bool platim, budovyHolder budova, int zivoty)
+    {
+        //Debug.Log("òaf òaf " + zivoty);
+        if (platim)
+        {
+            if (PowerPointGenerator.instance.mena - budova.cena >= 0)
+            {
+                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - budova.cena);
+                PowerPointGenerator.instance.mena -= budova.cena;
+
+
+                budova gm = Instantiate(budova.prefab, transform.position, transform.rotation);
+                gm.transform.SetParent(gameObject.transform);
+                gm.powerPointGenerator = powerPointGenerator;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+               /* gm.zivoty = zivoty;
+                gm.slider.value = zivoty;
+               */
+                Destroy(this);
+
+            }
+        }
+        else
+        {
+            budova gm = Instantiate(budova.prefab, transform.position, transform.rotation);
+            gm.transform.SetParent(gameObject.transform);
+            gm.powerPointGenerator = powerPointGenerator;
+            gm.zivoty = zivoty;
+            gm.slider.value = zivoty;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Destroy(this);
+
+        }
+       
+      
+    }
     void spawnBanka(bool platim)
     {
         if (platim)
@@ -181,16 +222,18 @@ public class vytvarecBudov : MonoBehaviour
     public void postav(List<UkladaniProBudovu> listBdv)
     {
         
+        
 
         foreach (var budova in listBdv)
         {
-            
-            if (Vector2.Distance(budova.pozice,(Vector2)transform.position) < 1)
+            Debug.Log("no nìco" + budova.zivoty);
+            if (Vector3.Distance(budova.pozice,transform.position) < 1)
             {
-                Debug.Log("nice" + (Vector2)transform.position);
+                Debug.Log("nice" + budova.nazev);
+
                 if(budova.nazev == "radar")
                 {
-                    spawnDul(false); //radar !!!!!!!!!!!
+                    spawn(false, bdv.bdv[0], budova.zivoty); //radar !!!!!!!!!!!
 
                 }
                 if (budova.nazev == "vrt")
