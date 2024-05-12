@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dacea7b26fbb44a8f65cf7c2d03764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   Mask:
     serializedVersion: 2
     m_Bits: 136
@@ -156,11 +157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zivoty: 20
-  atk: 15
+  atk: 12
   def: 10
   rychlost: 3
-  range: 7
-  dosahDetekce: 15
+  range: 15
+  dosahDetekce: 40
   aktDef: 1
   atkMulti: 0
   nazev: zaklenemy

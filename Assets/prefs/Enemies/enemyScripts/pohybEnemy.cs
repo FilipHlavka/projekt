@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,7 +11,8 @@ using UnityEngine.Events;
 public class pohybEnemy : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    Transform player;
+    [SerializeField]
+    public Transform player;
     [SerializeField]
     LayerMask Mask;
     public NavMeshAgent agent;
@@ -23,7 +25,8 @@ public class pohybEnemy : MonoBehaviour
     UnityEvent<bool,GameObject> utoc;
     //bool stuj = false;
     bool protekce = false;
-
+    bool megaPom = true;
+    bool pomNaNeco = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -71,16 +74,18 @@ public class pohybEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cont.prvniInstance && player != null && protekce)
+        if(cont.prvniInstance && player != null && protekce && pomNaNeco)
         Delej();
 
         if (player == null)
         {
-            try { 
-                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            /* try { 
+                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-                }
-            catch { }
+                 }
+             catch { }*/
+            if(megaPom)
+            StartCoroutine(pockej());
         }
         
 
@@ -91,35 +96,35 @@ public class pohybEnemy : MonoBehaviour
         yield return new WaitForSeconds(5);
         protekce = true;
     }
+    IEnumerator pockej()
+    {
+        megaPom = false;
+        yield return new WaitForSeconds(1.5f);
+        try
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        }
+        catch { Debug.Log("zkouška"); }
+        megaPom = true;
+       
+    }
+
 
     private void Delej()
     {
-
-        RaycastHit hit;
-       
-         if (Physics.Raycast(transform.position, player.position - transform.position,out hit, dosahDetekce, Mask))
-
-
-        if (hit.collider != null)
-        {
-
-            //Debug.Log(hit.collider.name);
-            if (hit.collider.gameObject.GetComponent<pohybHrace>() == null && hit.collider.gameObject.GetComponent<ingameStatusy>() == null)
+        Debug.Log("co se to dìje");
+            if (Vector3.Distance(transform.position, player.position) <= AtkRange)
             {
+                    agent.isStopped = true;
 
-                 Debug.DrawRay(transform.position, player.position - transform.position, Color.red);
-
-
-            }
-            else if (Vector3.Distance(transform.position, player.position) <= AtkRange)
-            {
-                agent.isStopped = true;
-
-                    Debug.Log("co se to dìje");
-                utoc.Invoke(true,gameObject);
+                    
+                     utoc.Invoke(true,gameObject);
+                    pomNaNeco = false;
+                        
                 // utok enemy
             }
-            else
+            else if(Vector3.Distance(transform.position, player.position) <= dosahDetekce)
             {
                 agent.isStopped = false;
 
@@ -130,6 +135,6 @@ public class pohybEnemy : MonoBehaviour
             }
 
 
-        }
+        
     }
 }

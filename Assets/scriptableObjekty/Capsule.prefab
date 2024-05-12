@@ -271,17 +271,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Zivoty: 25
   Def: 5
-  range: 35
+  range: 55
   Atk: 20
   Rychlost: 6
-  prefab: {fileID: 6492578292000027000}
   agent: {fileID: 0}
   maska: {fileID: 0}
   enemies: []
   maskaPrekazka:
     serializedVersion: 2
     m_Bits: 72
-  dosah: 50
+  dosah: 70
   nameHr: Motorized infantry
   pozice: {x: 0, y: 0, z: 0}
   bonusRychlost: 0

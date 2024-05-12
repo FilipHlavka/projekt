@@ -140,9 +140,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5004777159125502062, guid: 5546fa741c1d9f94b9e7a6e460bfb752, type: 3}
+  m_Sprite: {fileID: 649865209376638314, guid: cd44f6549281425428ba77f11290b5bf, type: 3}
   m_Type: 3
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 0
@@ -221,7 +221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1.0000001}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5668303531862814118
@@ -461,6 +461,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6330008394885525558}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1792449673761494513}
   m_SourcePrefab: {fileID: 100100000, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
 --- !u!4 &1720774592827490942 stripped
 Transform:
@@ -485,8 +488,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zivoty: 10
-  jmeno: 
+  jmeno: radar
   powerPointGenerator: {fileID: 0}
   pozice: {x: 0, y: 0, z: 0}
   enemies: []
   slider: {fileID: 5668303531862814118}
+--- !u!208 &1792449673761494513
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720774592827989598}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

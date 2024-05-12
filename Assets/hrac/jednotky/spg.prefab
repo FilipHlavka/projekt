@@ -139,8 +139,8 @@ GameObject:
   - component: {fileID: 4987313213695343116}
   - component: {fileID: 1913923490726519820}
   - component: {fileID: 2255859584444060980}
-  - component: {fileID: 1466835561464581736}
   - component: {fileID: 6619157309991568467}
+  - component: {fileID: 1466835561464581736}
   - component: {fileID: 6739148934848258759}
   - component: {fileID: 4507725155754928341}
   m_Layer: 7
@@ -270,12 +270,34 @@ MonoBehaviour:
     m_Bits: 64
   dosah: 80
   nameHr: spg
-  pozice: {x: 0, y: 0}
+  pozice: {x: 0, y: 0, z: 0}
   bonusRychlost: 0
   zaklRychlost: 0
   aktDef: 0
   kolajdr: {fileID: 0}
   vybuch: {fileID: 279098925368928721, guid: 1a272e1efa528b6499d8e5a5b113610b, type: 3}
+--- !u!195 &6619157309991568467
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464040587062689483}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 1.85
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.62
+  m_BaseOffset: 0.77
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!50 &1466835561464581736
 Rigidbody2D:
   serializedVersion: 4
@@ -303,28 +325,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!195 &6619157309991568467
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4464040587062689483}
-  m_Enabled: 1
-  m_AgentTypeID: -1372625422
-  m_Radius: 1.85
-  m_Speed: 4
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.62
-  m_BaseOffset: 0.77
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!58 &6739148934848258759
 CircleCollider2D:
   m_ObjectHideFlags: 0

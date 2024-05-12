@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 98def85dde0767d4e9f6fa0cdbee6e46
+timeCreated: 1508206223
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101487
+  packageName: Artillery Tank
+  packageVersion: 1.0
+  assetPath: Assets/Artillery Tank/Demo Scene/CameraController.cs
+  uploadId: 206638

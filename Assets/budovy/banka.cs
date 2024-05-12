@@ -7,9 +7,9 @@ public class banka : budova
     // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
         pozice = transform.position;
-        jmeno = "banka";
+        jmeno = "nemocnice";
         //aktSprite();
     }
     

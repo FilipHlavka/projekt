@@ -88,7 +88,9 @@ public class pohybHrace : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
                 {
-
+                    /*Vector3 smer =  new Vector3(hit.point.x,0,hit.point.z) - new Vector3(transform.position.x,0,transform.position.y);
+                    Quaternion rotace = Quaternion.LookRotation(smer);
+                    transform.rotation = Quaternion.Lerp(transform.rotation,rotace,Time.deltaTime * 20);*/
                     agent.SetDestination(hit.point);
                    // Debug.Log(hit.point);
 

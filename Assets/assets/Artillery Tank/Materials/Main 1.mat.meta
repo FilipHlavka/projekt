@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f402b486b819e634ebba5c4cc4f687a2
+timeCreated: 1506631249
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101487
+  packageName: Artillery Tank
+  packageVersion: 1.0
+  assetPath: Assets/Artillery Tank/Materials/Main 1.mat
+  uploadId: 206638

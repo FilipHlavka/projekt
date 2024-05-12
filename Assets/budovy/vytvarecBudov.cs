@@ -51,12 +51,12 @@ public class vytvarecBudov : MonoBehaviour
 
         StartCoroutine(pockej());
         op.enabled = false;
-        vrtTlac.onClick.AddListener(() => spawnVrt(true));
+        vrtTlac.onClick.AddListener(() => spawn(false, bdv.bdv[1], bdv.bdv[1].prefab.zivoty));
         dulTlac.onClick.AddListener(() => {
             spawn(true, bdv.bdv[0], bdv.bdv[0].prefab.zivoty);
 
         });
-        bankaTlac.onClick.AddListener(() => spawn(true,null,4));
+        bankaTlac.onClick.AddListener(() => spawn(true, bdv.bdv[2], bdv.bdv[2].prefab.zivoty));
     }
     IEnumerator pockej()
     {
@@ -91,24 +91,24 @@ public class vytvarecBudov : MonoBehaviour
                 PowerPointGenerator.instance.mena -= budova.cena;
 
 
-                budova gm = Instantiate(budova.prefab, transform.position, transform.rotation);
+                budova gm = Instantiate(budova.prefab, new Vector3(transform.position.x,transform.position.y-0.6f,transform.position.z), transform.rotation);
                 gm.transform.SetParent(gameObject.transform);
                 gm.powerPointGenerator = powerPointGenerator;
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-               /* gm.zivoty = zivoty;
                 gm.slider.value = zivoty;
-               */
+                gm.akt();
                 Destroy(this);
 
             }
         }
         else
         {
-            budova gm = Instantiate(budova.prefab, transform.position, transform.rotation);
+            budova gm = Instantiate(budova.prefab, new Vector3(transform.position.x, transform.position.y - 0.6f, transform.position.z), transform.rotation);
             gm.transform.SetParent(gameObject.transform);
             gm.powerPointGenerator = powerPointGenerator;
             gm.zivoty = zivoty;
             gm.slider.value = zivoty;
+            gm.akt();
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             Destroy(this);
 
@@ -118,56 +118,9 @@ public class vytvarecBudov : MonoBehaviour
     }
  
 
-    void spawnDul(bool platim) // radar !!!!!!!!!!!!!!!!!
-    {
-        if (platim)
-        {
-            if (PowerPointGenerator.instance.mena - 10 >= 0)
-            {
-                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - 10);
-                PowerPointGenerator.instance.mena -= 10;
-               
+   
 
-                Budova = gameObject.AddComponent<radar>();
-                Budova.powerPointGenerator = powerPointGenerator;
-                Budova.akt();
-                Destroy(this);
-            }
-        }
-        else
-        {
-            Budova = gameObject.AddComponent<radar>();
-            Budova.powerPointGenerator = powerPointGenerator;
-            Budova.akt();
-            Destroy(this);
-        }
-    }
-
-    void spawnVrt(bool platim)
-    {
-
-        if (platim)
-        {
-            if (PowerPointGenerator.instance.mena - 15 >= 0)
-            {
-                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - 15);
-                PowerPointGenerator.instance.mena -= 15;
-                
-
-                Budova = gameObject.AddComponent<vrt>();
-                Budova.powerPointGenerator = powerPointGenerator;
-                Budova.akt();
-                Destroy(this);
-            }
-        }
-        else
-        {
-            Budova = gameObject.AddComponent<vrt>();
-            Budova.powerPointGenerator = powerPointGenerator;
-            Budova.akt();
-            Destroy(this);
-        }
-    }
+  
     #endregion
     // Update is called once per frame
     void Update()
@@ -225,13 +178,11 @@ public class vytvarecBudov : MonoBehaviour
                 }
                 if (budova.nazev == "vrt")
                 {
-
-                    spawnVrt(false);
+                    spawn(false, bdv.bdv[1], budova.zivoty);
                 }
-                if (budova.nazev == "banka")
+                if (budova.nazev == "nemocnice")
                 {
-                    spawn(true, null, 4);
-
+                    spawn(true, bdv.bdv[2], budova.zivoty);
 
                 }
             }

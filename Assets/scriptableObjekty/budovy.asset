@@ -15,3 +15,7 @@ MonoBehaviour:
   bdv:
   - prefab: {fileID: 6330008394885525558, guid: 758e299851cedcf4f8d73eeb05f002a1, type: 3}
     cena: 10
+  - prefab: {fileID: 2334420860179155597, guid: c1e3760a8214d6047b2d660cc7aed1f5, type: 3}
+    cena: 15
+  - prefab: {fileID: 7105308638502935502, guid: b626a2c19b493bc47b8551a65bce8ace, type: 3}
+    cena: 20

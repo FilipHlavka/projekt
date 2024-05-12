@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d97f4ac64a918a74e8a8aac778b7be52
+timeCreated: 1506631249
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101487
+  packageName: Artillery Tank
+  packageVersion: 1.0
+  assetPath: Assets/Artillery Tank/Materials/Trim 3.mat
+  uploadId: 206638

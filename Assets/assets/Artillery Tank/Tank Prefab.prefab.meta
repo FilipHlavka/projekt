@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 26b1a3466d0b8f341bcc73e6ab2937eb
+timeCreated: 1506638880
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 101487
+  packageName: Artillery Tank
+  packageVersion: 1.0
+  assetPath: Assets/Artillery Tank/Tank Prefab.prefab
+  uploadId: 206638
