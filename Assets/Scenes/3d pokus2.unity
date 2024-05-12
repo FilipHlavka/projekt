@@ -825,6 +825,7 @@ MonoBehaviour:
       m_Calls: []
   nacitani: {fileID: 0}
   hrci: {fileID: 11400000, guid: 74946ef94c6b6a247a23b041f91b34bc, type: 2}
+  enmci: {fileID: 11400000, guid: 0290dceaeb9270a4094c4ad0cfeb703e, type: 2}
 --- !u!4 &532382458
 Transform:
   m_ObjectHideFlags: 0

@@ -163,7 +163,7 @@ MonoBehaviour:
   dosahDetekce: 15
   aktDef: 1
   atkMulti: 0
-  nazev: 
+  nazev: zaklenemy
   bojuje: 0
   pozice: {x: 0, y: 0, z: 0}
   jeNaTahu: 0

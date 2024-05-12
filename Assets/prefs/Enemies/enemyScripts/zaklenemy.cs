@@ -8,7 +8,7 @@ public class zaklenemy : enemy
     public void Start()
     {
         base.Start();
-        nazev = "zaklenemy";
+        //nazev = "zaklenemy";
     }
     
     public override void Delej()

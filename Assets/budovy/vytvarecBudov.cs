@@ -56,7 +56,7 @@ public class vytvarecBudov : MonoBehaviour
             spawn(true, bdv.bdv[0], bdv.bdv[0].prefab.zivoty);
 
         });
-        bankaTlac.onClick.AddListener(() => spawnBanka(true));
+        bankaTlac.onClick.AddListener(() => spawn(true,null,4));
     }
     IEnumerator pockej()
     {
@@ -82,7 +82,7 @@ public class vytvarecBudov : MonoBehaviour
 
     void spawn(bool platim, budovyHolder budova, int zivoty)
     {
-        //Debug.Log("òaf òaf " + zivoty);
+        
         if (platim)
         {
             if (PowerPointGenerator.instance.mena - budova.cena >= 0)
@@ -116,31 +116,7 @@ public class vytvarecBudov : MonoBehaviour
        
       
     }
-    void spawnBanka(bool platim)
-    {
-        if (platim)
-        {
-            if(PowerPointGenerator.instance.mena - 10 >= 0)
-            {
-                PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - 10);
-                PowerPointGenerator.instance.mena -= 10;
-               
-                Budova = gameObject.AddComponent<banka>();
-                Budova.powerPointGenerator = powerPointGenerator;
-                Budova.akt();
-                Destroy(this);
-            }
-        }
-        else
-        {
-            Budova = gameObject.AddComponent<banka>();
-            Budova.powerPointGenerator = powerPointGenerator;
-            Budova.akt();
-            Destroy(this);
-            
-        }
-      
-    }
+ 
 
     void spawnDul(bool platim) // radar !!!!!!!!!!!!!!!!!
     {
@@ -198,19 +174,30 @@ public class vytvarecBudov : MonoBehaviour
     {
         if (pom2)
         {
-            
+          
             if (player != null)
             {
+              
+
                 if (Vector3.Distance(player.transform.position, transform.position) < 7)
                 {
+                   
+
                     op.enabled = true;
                     pom = false;
                 }
                 else if (!pom)
                 {
+                   
+
                     op.enabled = false;
                     pom = true;
                 }
+            }
+            else
+            {
+                pom2 = false;   
+                StartCoroutine(pockej());
             }
            
             
@@ -243,8 +230,9 @@ public class vytvarecBudov : MonoBehaviour
                 }
                 if (budova.nazev == "banka")
                 {
-                    spawnBanka(false);
-                    
+                    spawn(true, null, 4);
+
+
                 }
             }
         }

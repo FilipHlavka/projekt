@@ -28,13 +28,6 @@ public class cont : MonoBehaviour
     respawnScript res;
 
     #region pridelovani
-    [SerializeField]
-    public List<GameObject> enemaci, hraci;
-    [SerializeField]
-    public List<string> enemyNames, playerNames;
-
-    [SerializeField]
-    public Dictionary<string, GameObject> slovnik = new Dictionary<string, GameObject>();
     #endregion
     public static bool prvniInstance = true;
 
@@ -47,7 +40,9 @@ public class cont : MonoBehaviour
 
     [SerializeField]
     hracScriptable hrci;
-    //enemyTypy typy;
+    [SerializeField]
+    enemyScriptable enmci;
+ 
 
     void Awake()
     {
@@ -89,17 +84,11 @@ public class cont : MonoBehaviour
         
         if (zacniBojovat == null)
             zacniBojovat = new UnityEvent<bool>();
-
-       
-
-        //typy = gameObject.GetComponent<enemyTypy>();
-      
-        //slovnik = typy.slovnik;
     }
 
     private void AktivujNacteni(Zavin strudl)
     {
-        slovnik.Clear();
+        
         vyhra.stuj = true;
         
         listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
@@ -140,33 +129,22 @@ public class cont : MonoBehaviour
         hrJednodusiData.zivoty = strudl.hrDt.zivoty;
         hrJednodusiData.pozice = new Vector3(strudl.hrDt.X,strudl.hrDt.Y, strudl.hrDt.Z);
         Debug.Log(hrJednodusiData.pozice);
-        int j = 0;
-        /*
-        for (int i = enemaci.Count; i < enemaci.Count + hraci.Count; i++)
-        {
-            slovnik.Add(playerNames[j], hraci[j]);
-            j++;
-        }
-        j = 0;
-        */
+       
+        
         if (hrJednodusiData.zivoty > 0)
         {
-            // kamera.movex = hrJednodusiData.pozice.x;
-            // kamera.movey = hrJednodusiData.pozice.y;
-            /*slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
-
-            GameObject novyHrac = Instantiate(hracObj, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));*/
+            
             GameObject novyHrac = new GameObject();
             foreach (var hr in hrci.prefs)
             {
                 if (hrJednodusiData.nazev == hr.hrac.nameHr)
                 {
-                    novyHrac = Instantiate(hr.hrac.prefab, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+                    novyHrac = Instantiate(hr.hrac.gameObject, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
 
                 }
             }
 
-             
+
             hrDt = novyHrac.GetComponent<zakl>();
             hrDt.Zivoty = hrJednodusiData.zivoty;
             hrDt.Atk = hrJednodusiData.atk;
@@ -204,26 +182,16 @@ public class cont : MonoBehaviour
         zakl hrDt;
         UkladaniProHrac hrJednodusiData = zabal.hrDt;
 
-       /* int j = 0;
-       
-        for (int i = enemaci.Count; i < enemaci.Count + hraci.Count; i++)
-        {
-            slovnik.Add(playerNames[j], hraci[j]);
-            j++;
-        }
-        j = 0;
-       */
+      
         if (hrJednodusiData.zivoty > 0)
         {
-            // kamera.movex = hrJednodusiData.pozice.x;
-            //kamera.movey = hrJednodusiData.pozice.y;
-            // slovnik.TryGetValue(hrJednodusiData.nazev, out GameObject hracObj);
+           
             GameObject novyHrac = new GameObject();
             foreach (var hr in hrci.prefs)
             {
                 if (hrJednodusiData.nazev == hr.hrac.nameHr)
                 {
-                    novyHrac = Instantiate(hr.hrac.prefab, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+                    novyHrac = Instantiate(hr.hrac.gameObject, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
 
                 }
             }
@@ -244,7 +212,7 @@ public class cont : MonoBehaviour
                 Debug.Log(hrDt.aktDef);
             }
             
-            //hracObj.tag = "Player";
+           
            
         }
         else
@@ -270,11 +238,7 @@ public class cont : MonoBehaviour
 
     private void NactiEnemaky() // pøi naètení 
     {
-        
-        for (int i = 0; i < enemaci.Count; i++)
-        {
-            slovnik.Add(enemyNames[i], enemaci[i]);
-        }
+       
         int enmPom = 0;
         Debug.Log("Uložených emeies: " + strudl.obj.Count);
        
@@ -282,19 +246,20 @@ public class cont : MonoBehaviour
         {
             if (strudl.obj[i].zivoty > 0)
             {
-               
-                
-                
-                    slovnik.TryGetValue(strudl.obj[i].nazev, out GameObject enemyObj);
-                    GameObject enm = Instantiate(enemyObj, new Vector3(strudl.obj[i].X, strudl.obj[i].Y, strudl.obj[i].Z), Quaternion.Euler(0, 0, 0));
+                Debug.Log("jsem tu");
+                foreach (var enmb in enmci.enemies)
+                {
+                   // Debug.Log("òaf òaf" + enmb.enemak.nazev);
+                    if (enmb.enemak.nazev == strudl.obj[i].nazev)
+                    {
+                        GameObject enm = Instantiate(enmb.enemak.gameObject, new Vector3(strudl.obj[i].X, strudl.obj[i].Y, strudl.obj[i].Z), Quaternion.Euler(0, 0, 0));
 
-                    enm.name = "enemy" + enmPom;
-                    enemy ll = enm.GetComponent<enemy>();
-                    ll.zivoty = strudl.obj[i].zivoty;
-                    enmPom++;
-                   
-              
-               
+                        enm.name = "enemy" + enmPom;
+                        enemy ll = enm.GetComponent<enemy>();
+                        ll.zivoty = strudl.obj[i].zivoty;
+                        enmPom++;
+                    }
+                }     
             }
         }
        
@@ -302,12 +267,6 @@ public class cont : MonoBehaviour
 
     private void RozdelAPanuj() // pøi vrácení ze souboje
     {
-        for (int i = 0; i < enemaci.Count; i++)
-        {
-            slovnik.Add(enemyNames[i], enemaci[i]);
-        }
-
-
         string filePath = Application.dataPath + "/enemies.json";
 
         string jsonData = File.ReadAllText(filePath);
@@ -319,12 +278,19 @@ public class cont : MonoBehaviour
         {
             if (enemy.zivoty > 0)
             {
-                slovnik.TryGetValue(enemy.nazev, out GameObject enemyObj);
-                GameObject enm = Instantiate(enemyObj, enemy.pozice, Quaternion.Euler(0, 0, 0));
-                enemy ll = enm.GetComponent<enemy>();
-                ll.zivoty = enemy.zivoty;
-                enm.name = "enemy" + enmPom;
-                enmPom++;
+
+                foreach (var enmb in enmci.enemies)
+                {
+                   
+                    if (enmb.enemak.nazev == enemy.nazev)
+                    {
+                        GameObject enm = Instantiate(enmb.enemak.gameObject, enemy.pozice, Quaternion.Euler(0, 0, 0));
+                        enemy ll = enm.GetComponent<enemy>();
+                        ll.zivoty = enemy.zivoty;
+                        enm.name = "enemy" + enmPom;
+                        enmPom++;
+                    }
+                }
             }
 
         }

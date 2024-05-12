@@ -25,7 +25,7 @@ public class nacteniSceny : MonoBehaviour
 
         strudl = (Zavin)formator.Deserialize(stream);
         stream.Close();
-       Debug.Log("mòau mòau mòau" + strudl.bdv[0].zivoty);
+       
        eventNacteni.Invoke(strudl);
     }
    

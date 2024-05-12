@@ -163,7 +163,7 @@ public class respawnScript : MonoBehaviour
                     PowerPointGenerator.instance.ZmenText(PowerPointGenerator.instance.mena, PowerPointGenerator.instance.mena - hr.cenaOtaznik);
                     PowerPointGenerator.instance.mena = PowerPointGenerator.instance.mena - hr.cenaOtaznik;
                     PowerPointGenerator.instance.Max = PowerPointGenerator.instance.Max - hr.cenaOtaznik;
-                    Instantiate(hr.hrac.prefab, spawnPoint.transform.position, Quaternion.Euler(0, 0, 0));
+                    Instantiate(hr.hrac, spawnPoint.transform.position, Quaternion.Euler(0, 0, 0));
                     panel.SetActive(false);
                    
 

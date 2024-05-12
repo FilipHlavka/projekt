@@ -18,8 +18,6 @@ public abstract class zakl : MonoBehaviour
     public int Atk;
     [SerializeField]
     public float Rychlost;
-    [SerializeField]
-    public GameObject prefab;
     public NavMeshAgent agent;
     public Transform maska;
     [SerializeField]
