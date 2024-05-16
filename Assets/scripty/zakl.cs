@@ -156,7 +156,7 @@ public abstract class zakl : MonoBehaviour
 
                             if (hitRay.collider.CompareTag("enemy"))
                             {
-                            //Debug.Log("furry");
+                            
                                 lineRenderer.positionCount = 2;
 
                                 lineRenderer.SetPosition(0, transform.position);
@@ -170,17 +170,24 @@ public abstract class zakl : MonoBehaviour
                                     blbost++;
                                 }
 
-                            }
-                            
-                            
-                           
-                            
-
-
-
-
-
                         }
+                        else
+                        {
+                            lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
+                            lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+                            
+                        }
+
+
+
+
+
+
+
+
+
+
+                    }
                         else
                         {
                         lineRenderer.SetPosition(0, new Vector3(0, 0, 0));

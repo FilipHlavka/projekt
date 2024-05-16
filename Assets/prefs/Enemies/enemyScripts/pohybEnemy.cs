@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,7 +20,7 @@ public class pohybEnemy : MonoBehaviour
    
     public float AtkRange = 0;
     public float dosahDetekce = 0;
-    
+    bool vidiHrace = false;
     enemy Enemy;
    
     UnityEvent<bool,GameObject> utoc;
@@ -31,8 +32,7 @@ public class pohybEnemy : MonoBehaviour
     private void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+       
         if (!cont.prvniInstance)        // muže být problém!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! <byl>
             Destroy(gameObject);
     }
@@ -72,7 +72,7 @@ public class pohybEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(cont.prvniInstance && player != null && protekce && pomNaNeco)
         Delej();
@@ -110,29 +110,50 @@ public class pohybEnemy : MonoBehaviour
        
     }
 
-
+    
     private void Delej()
     {
-        Debug.Log("co se to dìje");
-            if (Vector3.Distance(transform.position, player.position) <= AtkRange)
-            {
-                    agent.isStopped = true;
+            Debug.Log(vidiHrace);
+        Vector3 dir = player.position - transform.position;
+        LayerMask ignore = LayerMask.GetMask("player");
+        if (Physics.Raycast(transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
+        {
+            Debug.DrawRay(transform.position, dir.normalized * hit.distance, Color.blue);
+            // Debug.Log("aaa");
+            vidiHrace = !hit.collider.CompareTag("hora");
+        }
+        else
+        {
+            if (Vector3.Distance(transform.position, player.position) <= dosahDetekce)
+                vidiHrace = true;
+        }
 
-                    
-                     utoc.Invoke(true,gameObject);
-                    pomNaNeco = false;
+        if (Vector3.Distance(transform.position, player.position) <= AtkRange && vidiHrace)
+        {
+           
+            
+                agent.isStopped = true;
+                utoc.Invoke(true, gameObject);
+                pomNaNeco = false;
+            
+            
                         
                 // utok enemy
-            }
-            else if(Vector3.Distance(transform.position, player.position) <= dosahDetekce)
+        }
+        else if(Vector3.Distance(transform.position, player.position) <= dosahDetekce)
+        {
+            
+
+            if (vidiHrace)
             {
                 agent.isStopped = false;
 
-                //Debug.DrawRay(transform.position, player.position - transform.position, Color.green);
                 agent.SetDestination(player.position);
-
-
             }
+                
+
+
+        }
 
 
         

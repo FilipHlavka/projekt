@@ -11,6 +11,7 @@ TagManager:
   - generator
   - budova
   - svine
+  - hora
   layers:
   - Default
   - TransparentFX

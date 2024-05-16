@@ -100,10 +100,10 @@ public class pohybHrace : MonoBehaviour
 
             }
         }
-        if (Vector3.Distance(rigitbody.position, vec) < 0.1f)
+        /*if (Vector3.Distance(rigitbody.position, vec) < 0.1f)
         {
             rigitbody.velocity = Vector3.zero;
-        }
+        }*/
 
     }
 }

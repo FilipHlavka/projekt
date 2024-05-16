@@ -60,7 +60,7 @@ public class ingameStatusy : MonoBehaviour
         else
         {
             hrac = gameObject.GetComponentInParent<zakl>();
-            maska = hrac.maska;
+           maska = hrac.maska;
             zakRange = hrac.dosah;
             Rychlost = hrac.Rychlost;
             zaklRange = hrac.range;

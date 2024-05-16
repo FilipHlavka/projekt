@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 8193190195463962618}
   - component: {fileID: 7096370153247902398}
   - component: {fileID: 6139387429121063489}
-  - component: {fileID: 435452581848670696}
   - component: {fileID: 2453906628899036319}
   m_Layer: 7
   m_Name: Tank Prefab
@@ -365,7 +364,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 959521726932000676}
@@ -467,33 +466,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &435452581848670696
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221449496419812}
-  serializedVersion: 4
-  m_Mass: 900
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!135 &2453906628899036319
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2572,7 +2544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505369180147795991}
   - component: {fileID: 197163406054820997}
-  - component: {fileID: 6132562566826540566}
+  - component: {fileID: 5982409524653590076}
   m_Layer: 7
   m_Name: collider
   m_TagString: Untagged
@@ -2610,7 +2582,7 @@ MonoBehaviour:
   enemy: 0
   canvas: {fileID: 827868084347388365}
   zaklRange: 0
---- !u!136 &6132562566826540566
+--- !u!136 &5982409524653590076
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2629,10 +2601,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.0320249
-  m_Height: 4.46
+  m_Radius: 0.5
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 1.32, z: 0.5320278}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8950887285339065235
 GameObject:
   m_ObjectHideFlags: 0
