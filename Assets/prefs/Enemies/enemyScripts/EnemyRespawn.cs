@@ -5,20 +5,32 @@ using UnityEngine.Events;
 
 public class EnemyRespawn : MonoBehaviour
 {
+    public static EnemyRespawn instance;
+
     [SerializeField]
     public static int maxRespawn;
     public static int pocetRespawnu;
     [SerializeField]
-    public List<GameObject> enemies;
+    enemyScriptable enemies;
     [SerializeField]
-    public Collider2D SpawnPlocha;
+    public Terrain SpawnPlocha;
     public UnityEvent<GameObject> enemyRespawn;
+    Bounds spawnBounds;
+    TerrainData data;
+    public bool spawnuj = true;
     // Start is called before the first frame update
-    
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
+        data = SpawnPlocha.terrainData;
+        spawnBounds = data.bounds;
 
-        InvokeRepeating("Spawn", 25, 45);
+        StartCoroutine(SpawnCoroutine());
     }
 
     // Update is called once per frame
@@ -30,9 +42,26 @@ public class EnemyRespawn : MonoBehaviour
     {
         Debug.Log("spawn");
 
-        Bounds spawnBounds = SpawnPlocha.bounds;
+        float x = Random.Range(spawnBounds.min.x, spawnBounds.max.x) + SpawnPlocha.transform.position.x;
+        float z = Random.Range(spawnBounds.min.z, spawnBounds.max.z) + SpawnPlocha.transform.position.z;
+        float y = SpawnPlocha.SampleHeight(new Vector3(x, 0, z)) + SpawnPlocha.transform.position.y;
 
-        GameObject enemy = Instantiate(enemies[Random.Range(0,enemies.Count)], new Vector3(Random.Range(spawnBounds.min.x,spawnBounds.max.x),Random.Range(spawnBounds.min.y,spawnBounds.max.y),0), Quaternion.identity);
+        GameObject enemy = Instantiate(
+            enemies.enemies[Random.Range(0,enemies.enemies.Count)].enemak.gameObject,
+            new Vector3(x,y,z), 
+            Quaternion.Euler(0, Random.Range(0, 360), 0));
         enemyRespawn.Invoke(enemy);
+    }
+
+    IEnumerator SpawnCoroutine()
+    {
+        
+        
+        while (spawnuj)
+        {
+            yield return new WaitForSeconds(25f);
+            Spawn();
+
+        }
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class PowerPointGenerator : MonoBehaviour
 {
     public static PowerPointGenerator instance;
-    public static PowerPointGenerator Instance => instance;
     public int mena;
     public bool stuj;
     [SerializeField]

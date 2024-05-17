@@ -13,20 +13,14 @@ using NUnit;
 public class cont : MonoBehaviour
 {
     public static cont instance;
-    public static cont Instance => instance;
     [SerializeField]
     camPohyb kamera;
-    /*[SerializeField]                    // zkusit pøes static
-    Camera kameraSouboje;*/
    
     [SerializeField]
     GameObject KontrolerSouboj;
     public UnityEvent<bool> zacniBojovat;
     [SerializeField]
     public Zabal zabal = new Zabal();
-    //List<GameObject> enemiesToApear;
-    respawnScript res;
-
     #region pridelovani
     #endregion
     public static bool prvniInstance = true;
@@ -55,8 +49,8 @@ public class cont : MonoBehaviour
 
     private void Start()
     {
-        res = gameObject.GetComponent<respawnScript>();
-        Respawn.AddListener(res.DelejNeco);
+     
+        Respawn.AddListener(respawnScript.instance.DelejNeco);
 
         nacitani = gameObject.GetComponent<nacteniSceny>();
         nacitani.eventNacteni.AddListener(AktivujNacteni);

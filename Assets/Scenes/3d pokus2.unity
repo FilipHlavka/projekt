@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 83533581}
   m_Layer: 3
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: hora
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -868,12 +868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd05fd39645984e4683b00093f97578d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 1635277470663661892, guid: 04d960b716b0cc449b77db6b9b4a61f2, type: 3}
-  SpawnPlocha: {fileID: 0}
+  enemies: {fileID: 11400000, guid: 0290dceaeb9270a4094c4ad0cfeb703e, type: 2}
+  SpawnPlocha: {fileID: 83533579}
   enemyRespawn:
     m_PersistentCalls:
       m_Calls: []
+  spawnuj: 1
 --- !u!114 &532382455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3173,7 +3173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353636593502140411, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.193585
+      value: -13.221585
       objectReference: {fileID: 0}
     - target: {fileID: 3353636593502140411, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
       propertyPath: m_LocalPosition.z

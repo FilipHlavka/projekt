@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Zivoty: 5
-  Def: 10
+  Def: 15
   range: 80
   Atk: 40
   Rychlost: 3

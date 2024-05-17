@@ -56,11 +56,12 @@ public abstract class zakl : MonoBehaviour
 
     public virtual void Start()
     {
-
+        lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
+        lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
         if (!cont.prvniInstance)
         {
             Destroy(gameObject);
-            //Debug.Log("nyaaaaaaa");
+           
         }
        
 
@@ -101,7 +102,7 @@ public abstract class zakl : MonoBehaviour
     {
        
        enemies.Add(enem);
-       Debug.Log(enemies);
+      // Debug.Log(enemies);
     }
 
     public void Zastav()

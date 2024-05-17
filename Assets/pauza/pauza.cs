@@ -39,6 +39,7 @@ public class pauza : MonoBehaviour
         pohybHrace.nehejbat = true;
         PowerPointGenerator.instance.stuj = true;
         PowerPointGenerator.instance.pom = false;
+        EnemyRespawn.instance.spawnuj = false;
         pom = !pom;
         panel.SetActive(true);
 
@@ -49,7 +50,7 @@ public class pauza : MonoBehaviour
         pohybHrace.nehejbat = false;
         PowerPointGenerator.instance.stuj = false;
         PowerPointGenerator.instance.pom = true;
-
+        EnemyRespawn.instance.spawnuj = true;
         Time.timeScale = 1f;
         pom = !pom;
         panel.SetActive(false);

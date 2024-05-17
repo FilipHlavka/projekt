@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class ingamemanager : MonoBehaviour
 {
-    soubojContainer controller;
+    //soubojContainer controller;
     public static int l = 0;
     List<GameObject> entity = new List<GameObject>();
     [SerializeField]

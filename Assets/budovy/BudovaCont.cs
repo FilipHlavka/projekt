@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class BudovaCont : MonoBehaviour
 {
+    public static BudovaCont instance;
     public Zabal zabal = new Zabal();
     public List<UkladaniProBudovu> listBudov;
     //cont Controller;
@@ -14,7 +15,7 @@ public class BudovaCont : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-       
+       instance = this;
     }
     private void Start()
     {

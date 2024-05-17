@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: enemaci
   m_EditorClassIdentifier: 
   enemies:
-  - enemak: {fileID: 8950679579795630270, guid: 04d960b716b0cc449b77db6b9b4a61f2, type: 3}
+  - enemak: {fileID: 5916990156664070915, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}

@@ -6,7 +6,7 @@ using TMPro;
 
 public class respawnScript : MonoBehaviour
 {
-    
+    public static respawnScript instance;
     [SerializeField]
     private List<GameObject> jednotky;
     [SerializeField]
@@ -17,7 +17,7 @@ public class respawnScript : MonoBehaviour
     Button button;
     RectTransform ptf;
     int k = 60;
-    string jm;
+    //string jm;
     [SerializeField]
     GameObject spawnPoint;
 
@@ -26,7 +26,7 @@ public class respawnScript : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-       
+        instance = this;
         ptf = panel.GetComponent<RectTransform>();
 
     }
