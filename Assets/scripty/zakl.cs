@@ -32,12 +32,15 @@ public abstract class zakl : MonoBehaviour
     int blbost= 0;
     public string nameHr;
     public Vector3 pozice;
+    public Vector3 rotace;
     LineRenderer lineRenderer;
     GameObject controller;
     public float bonusRychlost;
     public float zaklRychlost;
     public float aktDef;
     public SphereCollider kolajdr;
+    [SerializeField]
+    GameObject RaycastObj;
     
     public void Awake()
     {
@@ -123,7 +126,7 @@ public abstract class zakl : MonoBehaviour
             lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
             }
            
-        updatePozice();
+        //updatePozice();
         
     }
 
@@ -145,7 +148,7 @@ public abstract class zakl : MonoBehaviour
 
 
                         RaycastHit hitRay;
-                        bool hit = Physics.Raycast(transform.position, enemy.transform.position - transform.position, out hitRay, dosah, maskaPrekazka);
+                        bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - transform.position, out hitRay, dosah, maskaPrekazka);
 
 
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
@@ -160,7 +163,7 @@ public abstract class zakl : MonoBehaviour
                             
                                 lineRenderer.positionCount = 2;
 
-                                lineRenderer.SetPosition(0, transform.position);
+                                lineRenderer.SetPosition(0, RaycastObj.transform.position);
                                 lineRenderer.SetPosition(1, enemy.transform.position);
                                 Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
                                 if (Input.GetKeyDown(KeyCode.Space))
@@ -193,7 +196,7 @@ public abstract class zakl : MonoBehaviour
                         {
                         lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
                         lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
-                        Debug.Log("aa");
+                       // Debug.Log("aa");
                         }
 
 

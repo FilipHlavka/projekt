@@ -17,6 +17,8 @@ public class pohybEnemy : MonoBehaviour
     [SerializeField]
     LayerMask Mask;
     public NavMeshAgent agent;
+    [SerializeField]
+    GameObject raycastObj;
    
     public float AtkRange = 0;
     public float dosahDetekce = 0;
@@ -113,12 +115,12 @@ public class pohybEnemy : MonoBehaviour
     
     private void Delej()
     {
-            Debug.Log(vidiHrace);
+           //Debug.Log(vidiHrace);
         Vector3 dir = player.position - transform.position;
         LayerMask ignore = LayerMask.GetMask("player");
-        if (Physics.Raycast(transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
+        if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
         {
-            Debug.DrawRay(transform.position, dir.normalized * hit.distance, Color.blue);
+            Debug.DrawRay(raycastObj.transform.position, dir.normalized * hit.distance, Color.blue);
             // Debug.Log("aaa");
             vidiHrace = !hit.collider.CompareTag("hora");
         }

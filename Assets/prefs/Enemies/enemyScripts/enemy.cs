@@ -36,7 +36,7 @@ public abstract class enemy : MonoBehaviour
     }
     public void Update()
     {
-        updatePozice();
+        //updatePozice();
     }
     protected void Start()
     {

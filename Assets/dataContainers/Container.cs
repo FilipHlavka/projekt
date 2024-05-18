@@ -78,7 +78,8 @@ public class Container : MonoBehaviour
             ukl.atk = hracData.Atk;
             ukl.def = hracData.aktDef;
             ukl.nazev = hracData.nameHr;
-            ukl.pozice = hracData.pozice;
+            ukl.pozice = new Vector3(hracData.transform.position.x, hracData.transform.position.y, hracData.transform.position.z);
+            ukl.rotace = new Vector3(hracData.transform.rotation.eulerAngles.x,hracData.transform.rotation.eulerAngles.y,hracData.transform.rotation.eulerAngles.z);
         }
         
 
@@ -96,9 +97,9 @@ public class Container : MonoBehaviour
                 nvm.atk = enemy.atk;
                 nvm.def = enemy.aktDef;
                 nvm.bojuje = enemy.bojuje;
-                nvm.pozice = enemy.pozice;
+                nvm.pozice = new Vector3(enemy.transform.position.x,enemy.transform.position.y,enemy.transform.position.z);
                 nvm.jeNaTahu = enemyNaTahu;
-
+                nvm.rotace = new Vector3(enemy.transform.rotation.eulerAngles.x,enemy.transform.rotation.eulerAngles.y,enemy.transform.rotation.eulerAngles.z);
                 UzFaktNevimEnemy.Add(nvm);
             }
         }
@@ -131,6 +132,7 @@ public class Container : MonoBehaviour
                 uklProBdv.nazev = budovaObjekt.jmeno;
                 uklProBdv.pozice = budovaObjekt.pozice;
                 uklProBdv.zivoty = budovaObjekt.zivoty;
+                uklProBdv.rotace = new Vector3(budovaObjekt.transform.rotation.eulerAngles.x, budovaObjekt.transform.rotation.eulerAngles.y,budovaObjekt.transform.rotation.eulerAngles.z);
                 UzFaktNevimBudova.Add(uklProBdv);
             }
 
@@ -151,7 +153,8 @@ public struct UkladaniProEnemy
     public string nazev;
     public bool bojuje;
     public Vector3 pozice;
-   
+    public Vector3 rotace;
+
     public bool jeNaTahu;
 }
 [Serializable]
@@ -162,12 +165,13 @@ public class UkladaniProHrac
     public float def;
     public string nazev;
     public Vector3 pozice;
-
+    public Vector3 rotace;
 
 }
 [Serializable]
 public struct UkladaniProBudovu
 {
+    public Vector3 rotace;
     public string nazev;
     public Vector3 pozice;
     public int zivoty;

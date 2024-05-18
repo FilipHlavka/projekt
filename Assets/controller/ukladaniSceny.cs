@@ -83,9 +83,14 @@ public class ukladaniSceny : MonoBehaviour
             ukl.def = hracData.aktDef;
             ukl.nazev = hracData.nameHr;
           
-            ukl.Y = hracData.pozice.y;
-            ukl.X = hracData.pozice.x;
-            ukl.Z = hracData.pozice.z;
+            ukl.Y = hracData.transform.position.y;
+            ukl.X = hracData.transform.position.x;
+            ukl.Z = hracData.transform.position.z;
+
+            ukl.Xrotation = hracData.transform.rotation.eulerAngles.x;
+            ukl.Yrotation = hracData.transform.rotation.eulerAngles.y;
+            ukl.Zrotation = hracData.transform.rotation.eulerAngles.z;
+            
         }
 
         jablkoEnemy.Clear();
@@ -99,10 +104,13 @@ public class ukladaniSceny : MonoBehaviour
                 nvm.atk = enemy.atk;
                 nvm.def = enemy.aktDef;
              
-                nvm.X = enemy.pozice.x;
-                nvm.Y = enemy.pozice.y;
-                nvm.Z = enemy.pozice.z;
+                nvm.X = enemy.transform.position.x;
+                nvm.Y = enemy.transform.position.y;
+                nvm.Z = enemy.transform.position.z;
                 //Debug.Log(enemy.name);
+                nvm.Xrotation = enemy.transform.rotation.eulerAngles.x;
+                nvm.Yrotation = enemy.transform.rotation.eulerAngles.y;
+                nvm.Zrotation = enemy.transform.rotation.eulerAngles.z;
 
                 jablkoEnemy.Add(nvm);
             }
@@ -127,6 +135,9 @@ public class ukladaniSceny : MonoBehaviour
                 uklProBdv.Y = budovaObjekt.pozice.y;
                 uklProBdv.X = budovaObjekt.pozice.x;
                 uklProBdv.Z = budovaObjekt.pozice.z;
+                uklProBdv.Xrotation = budovaObjekt.transform.rotation.eulerAngles.x;
+                uklProBdv.Yrotation = budovaObjekt.transform.rotation.eulerAngles.y;
+                uklProBdv.Zrotation = budovaObjekt.transform.rotation.eulerAngles.z;
                 jablkoBudova.Add(uklProBdv);
                 
             }
@@ -148,7 +159,9 @@ public struct UkladaniProEnemyMimo
     public float X;
     public float Y;
     public float Z;
-    public int id;
+    public float Xrotation;
+    public float Yrotation;
+    public float Zrotation;
 }
 [Serializable]
 public class UkladaniProHracMimo
@@ -160,6 +173,9 @@ public class UkladaniProHracMimo
     public float X;
     public float Y;
     public float Z;
+    public float Xrotation;
+    public float Yrotation;
+    public float Zrotation;
 }
 [Serializable]
 public class UkladaniProBudovuMimo
@@ -169,6 +185,9 @@ public class UkladaniProBudovuMimo
     public float X;
     public float Y;
     public float Z;
+    public float Xrotation;
+    public float Yrotation;
+    public float Zrotation;
 }
 [Serializable]
 public struct Zavin

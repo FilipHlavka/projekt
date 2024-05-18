@@ -114,16 +114,18 @@ public class cont : MonoBehaviour
 
     public void ukazHraceDoSceny(Zavin strudl)
     {
-        
-        zakl hrDt;
-        UkladaniProHrac hrJednodusiData = new UkladaniProHrac();
-        hrJednodusiData.atk = strudl.hrDt.atk;
-        hrJednodusiData.def = strudl.hrDt.def;
-        hrJednodusiData.nazev = strudl.hrDt.nazev;
-        hrJednodusiData.zivoty = strudl.hrDt.zivoty;
-        hrJednodusiData.pozice = new Vector3(strudl.hrDt.X,strudl.hrDt.Y, strudl.hrDt.Z);
-        Debug.Log(hrJednodusiData.pozice);
-       
+
+          zakl hrDt;
+          UkladaniProHrac hrJednodusiData = new UkladaniProHrac();
+          hrJednodusiData.atk = strudl.hrDt.atk;
+          hrJednodusiData.def = strudl.hrDt.def;
+          hrJednodusiData.nazev = strudl.hrDt.nazev;
+          hrJednodusiData.zivoty = strudl.hrDt.zivoty;
+          hrJednodusiData.pozice = new Vector3(strudl.hrDt.X,strudl.hrDt.Y, strudl.hrDt.Z);
+          hrJednodusiData.rotace = new Vector3(strudl.hrDt.Xrotation,strudl.hrDt.Yrotation,strudl.hrDt.Zrotation);
+          Debug.Log(hrJednodusiData.pozice);
+         
+       // UkladaniProHracMimo hrJednodusiData = strudl.hrDt;
         
         if (hrJednodusiData.zivoty > 0)
         {
@@ -133,8 +135,9 @@ public class cont : MonoBehaviour
             {
                 if (hrJednodusiData.nazev == hr.hrac.nameHr)
                 {
-                    novyHrac = Instantiate(hr.hrac.gameObject, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
-
+                    novyHrac = Instantiate(hr.hrac.gameObject, hrJednodusiData.pozice, Quaternion.Euler(hrJednodusiData.rotace));
+                    Debug.Log(hrJednodusiData.rotace);
+                    
                 }
             }
 
@@ -185,7 +188,7 @@ public class cont : MonoBehaviour
             {
                 if (hrJednodusiData.nazev == hr.hrac.nameHr)
                 {
-                    novyHrac = Instantiate(hr.hrac.gameObject, hrJednodusiData.pozice, Quaternion.Euler(0, 0, 0));
+                    novyHrac = Instantiate(hr.hrac.gameObject, hrJednodusiData.pozice, Quaternion.Euler(hrJednodusiData.rotace));
 
                 }
             }
@@ -246,8 +249,8 @@ public class cont : MonoBehaviour
                    // Debug.Log("òaf òaf" + enmb.enemak.nazev);
                     if (enmb.enemak.nazev == strudl.obj[i].nazev)
                     {
-                        GameObject enm = Instantiate(enmb.enemak.gameObject, new Vector3(strudl.obj[i].X, strudl.obj[i].Y, strudl.obj[i].Z), Quaternion.Euler(0, 0, 0));
-
+                        GameObject enm = Instantiate(enmb.enemak.gameObject, new Vector3(strudl.obj[i].X, strudl.obj[i].Y, strudl.obj[i].Z), Quaternion.Euler(strudl.obj[i].Xrotation, strudl.obj[i].Yrotation, strudl.obj[i].Zrotation));
+                        
                         enm.name = "enemy" + enmPom;
                         enemy ll = enm.GetComponent<enemy>();
                         ll.zivoty = strudl.obj[i].zivoty;
@@ -278,7 +281,7 @@ public class cont : MonoBehaviour
                    
                     if (enmb.enemak.nazev == enemy.nazev)
                     {
-                        GameObject enm = Instantiate(enmb.enemak.gameObject, enemy.pozice, Quaternion.Euler(0, 0, 0));
+                        GameObject enm = Instantiate(enmb.enemak.gameObject, enemy.pozice, Quaternion.Euler(enemy.rotace));
                         enemy ll = enm.GetComponent<enemy>();
                         ll.zivoty = enemy.zivoty;
                         enm.name = "enemy" + enmPom;

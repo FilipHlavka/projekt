@@ -38,7 +38,7 @@ public class vyhra : MonoBehaviour
             }
         }
         
-        Debug.Log(pocetEnemy + "pocet");
+        //Debug.Log(pocetEnemy + "pocet");
     }
 
     private void vyhralHrac()
