@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/konecHry.unity
     guid: 7898d791d47d95f4cbd6d98665adc4f7
+  - enabled: 1
+    path: Assets/Scenes/fakeLoadingScreen.unity
+    guid: e9053d0684a24be42bf04b0dcd8c5c50
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  terrain: {fileID: 0}
 --- !u!195 &8166514798071853401
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4508,7 +4509,7 @@ CapsuleCollider:
   m_Radius: 0.8056495
   m_Height: 2.668671
   m_Direction: 1
-  m_Center: {x: -0.11427178, y: 1.25, z: 0}
+  m_Center: {x: 0, y: 1.53, z: 0}
 --- !u!1 &7430311449763477705
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,7 +4675,7 @@ Transform:
   m_GameObject: {fileID: 9033412374239098735}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.279485, y: 1.6393442, z: -2.8545835}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1.6393442, y: 1.6393442, z: 1.6393442}
   m_ConstrainProportionsScale: 0
   m_Children: []

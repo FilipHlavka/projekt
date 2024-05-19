@@ -147,20 +147,20 @@ public abstract class zakl : MonoBehaviour
                     {
 
 
-                        RaycastHit hitRay;
-                        bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - transform.position, out hitRay, dosah, maskaPrekazka);
+                        
+                        bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - RaycastObj.transform.position, out RaycastHit hitRay, dosah, maskaPrekazka);
 
 
-                        Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.gray);
+                        Debug.DrawRay(RaycastObj.transform.position, enemy.transform.position - transform.position, Color.yellow);
 
                         if (hitRay.collider != null)
                         {
-
-                        
+                        Debug.Log("nyyyyyyyyyyyyyyyyyyyyaaaaaaaaaaa" + hitRay.collider);
 
                             if (hitRay.collider.CompareTag("enemy"))
                             {
-                            
+                                
+
                                 lineRenderer.positionCount = 2;
 
                                 lineRenderer.SetPosition(0, RaycastObj.transform.position);

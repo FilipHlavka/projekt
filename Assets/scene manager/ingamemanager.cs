@@ -27,6 +27,7 @@ public class ingamemanager : MonoBehaviour
         if (fakeScreen != null)
             fakeScreen.enabled = false;
 
+        if (vyhra.instance != null)
         vyhra.instance.konec.AddListener(stavKonce);
     }
 
