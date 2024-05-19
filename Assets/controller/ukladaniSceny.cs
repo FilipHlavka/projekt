@@ -34,6 +34,7 @@ public class ukladaniSceny : MonoBehaviour
         strudl.hrDt = ukl;
         strudl.powePoints = PowerPointGenerator.instance.mena;
         strudl.pocetUlozeni = pocetUlozeni;
+        strudl.pocetZivotu = vyhra.pocetZivotu;
         BinaryFormatter formator = new BinaryFormatter();
         try
         {
@@ -198,5 +199,7 @@ public struct Zavin
     public string sceneJm;
     public int powePoints;
     public int pocetUlozeni;
+    public int pocetZivotu;
+   
 }
 #endregion

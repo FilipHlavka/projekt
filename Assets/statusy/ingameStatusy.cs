@@ -230,7 +230,7 @@ public class ingameStatusy : MonoBehaviour
 
     private void UdelejObr(string jmeno)
     {
-        if (!vyhra.nenene)
+        if (!vyhra.instance.nenene)
         {
             GameObject obrObj = new GameObject(jmeno);
             /*SpriteRenderer sp = obrObj.AddComponent<SpriteRenderer>();

@@ -1,1 +1,1 @@
-změnit respawn hráče
+životy a kontrola výhry a prohry v souboji

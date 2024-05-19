@@ -54,7 +54,7 @@ public class Container : MonoBehaviour
         Whopper.hrDt = ukl;
         Whopper.sceneJm = currentScene.name;
         Whopper.bdv = UzFaktNevimBudova;
-
+        Whopper.pocetZivotu = vyhra.pocetZivotu;
         enemyData = new List<enemy>(enemies.Count);
 
         foreach (GameObject enemyObject in enemies)
@@ -184,5 +184,6 @@ public struct Zabal
     public List<UkladaniProEnemy> obj;
     public UkladaniProHrac hrDt;
     public string sceneJm;
+    public int pocetZivotu;
 }
 #endregion

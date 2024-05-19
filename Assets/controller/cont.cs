@@ -36,7 +36,7 @@ public class cont : MonoBehaviour
     hracScriptable hrci;
     [SerializeField]
     enemyScriptable enmci;
- 
+   // public int pocetZivotu;
 
     void Awake()
     {
@@ -61,7 +61,7 @@ public class cont : MonoBehaviour
             
             aktBudovy.Invoke(false,new Zavin());
             listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
-            vyhra.stuj = true;
+            vyhra.instance.stuj = true;
             foreach (GameObject obj in listEnemaku)
             {
                 //listEnemaku.Remove(obj);
@@ -73,9 +73,12 @@ public class cont : MonoBehaviour
             }
             RozdelAPanuj();
             ukazHrace();
-            vyhra.stuj = false;
+            vyhra.instance.stuj = false;
+            vytvarecBudov.muzePricist = true;
+            Zivoty.instance.aktText();
+
         }
-        
+
         if (zacniBojovat == null)
             zacniBojovat = new UnityEvent<bool>();
     }
@@ -83,7 +86,7 @@ public class cont : MonoBehaviour
     private void AktivujNacteni(Zavin strudl)
     {
         
-        vyhra.stuj = true;
+        vyhra.instance.stuj = true;
         
         listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
         foreach (GameObject obj in listEnemaku)
@@ -104,8 +107,11 @@ public class cont : MonoBehaviour
         NactiEnemaky();
         ukazHraceDoSceny(strudl);
         aktBudovy.Invoke(true,strudl);
-        vyhra.stuj = false;
-        
+        vyhra.instance.stuj = false;
+        vytvarecBudov.muzePricist = true;
+
+        Zivoty.instance.aktText();
+
     }
 
 
@@ -269,7 +275,7 @@ public class cont : MonoBehaviour
         string jsonData = File.ReadAllText(filePath);
 
         zabal = JsonUtility.FromJson<Zabal>(jsonData);
-
+        vyhra.pocetZivotu = zabal.pocetZivotu;
         int enmPom = 0;
         foreach (UkladaniProEnemy enemy in zabal.obj)
         {

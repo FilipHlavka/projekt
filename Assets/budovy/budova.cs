@@ -17,7 +17,7 @@ public class budova : MonoBehaviour
     [SerializeField]
     public Slider slider;
     bool inProgress = false;
-
+    protected bool znicenEnemy = false;
 
     // BudovaCont bdvCont;
 
@@ -54,6 +54,7 @@ public class budova : MonoBehaviour
                     {
                         BudovaCont.poziceZnicenychBudov.Add(transform.position);
                         Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
+                        znicenEnemy = true;
                         Destroy(gameObject);
                     }
                 }

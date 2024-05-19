@@ -1,24 +1,40 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class vyhra : MonoBehaviour
-{
+{   
+    public static vyhra instance;
     [SerializeField]
-    public static int pocetEnemy = 0;
+    public static int pocetEnemy = 0; //nestíhá kontrola
     bool pom = false;
-    public static bool stuj = false;
-    public static bool nenene = false;
+    public bool stuj = false;
+    public bool nenene = false;
+    [SerializeField]
+    public static int pocetZivotu = 3;
+   
+    public static bool prohra;
+    public UnityEvent konec;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
+        if (konec == null)
+            konec = new UnityEvent();
         StartCoroutine(pockej());
+        StartCoroutine(kontrolaNumerator());
     }
 
     // Update is called once per frame
-    void Update()
+    
+    private void kontrolaVyhry()
     {
         if (!stuj)
         {
@@ -27,9 +43,10 @@ public class vyhra : MonoBehaviour
                 if (pocetEnemy <= 0)
                 {
                     Debug.Log("Vyhra");
+                   
                     nenene = true;
                     List<GameObject> list = GameObject.FindGameObjectsWithTag("svine").ToList();
-                    foreach(var idk in list)
+                    foreach (var idk in list)
                     {
                         Destroy(idk);
                     }
@@ -37,15 +54,25 @@ public class vyhra : MonoBehaviour
                 }
             }
         }
-        
-        //Debug.Log(pocetEnemy + "pocet");
     }
-
+ 
     private void vyhralHrac()
     {
-        
+        prohra = false;
+        konec.Invoke();
     }
 
+    IEnumerator kontrolaNumerator()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            //kontrolaVyhry();
+        }
+      
+       
+
+    }
     IEnumerator pockej()
     {
    

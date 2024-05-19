@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,17 @@ public class banka : budova
     
     public override void akt()
     {
-        PowerPointGenerator.instance.bonusMax += 10;
+        if(vytvarecBudov.muzePricist)
+        vyhra.pocetZivotu++;
+        
+        Zivoty.instance.aktText();
 
     }
     private void OnDestroy()
     {
-        PowerPointGenerator.instance.bonusMax -= 10;
+        if(znicenEnemy)
+        vyhra.pocetZivotu--;
+
+        Zivoty.instance.aktText();
     }
 }

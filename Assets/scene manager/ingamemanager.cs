@@ -14,31 +14,20 @@ public class ingamemanager : MonoBehaviour
     List<GameObject> entity = new List<GameObject>();
     [SerializeField]
     Image fakeScreen;
-    private static ingamemanager instance;
-    public static ingamemanager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new ingamemanager();
-            }
-            return instance;
-        }
-    }
+    public static ingamemanager instance;
+   
     void Awake()
     {
-        if (instance == null)
             instance = this;
-        else
-            Destroy(this);
     }
 
 
     void Start()
     {
         if (fakeScreen != null)
-            fakeScreen.enabled = false;   
+            fakeScreen.enabled = false;
+
+        vyhra.instance.konec.AddListener(stavKonce);
     }
 
     public void PrepniNascenu(string scena)
@@ -50,6 +39,11 @@ public class ingamemanager : MonoBehaviour
         ZnicTyZatracenyObjekty();
         SceneManager.LoadScene(scena);
 
+        
+    }
+    public void stavKonce()
+    {
+        PrepniNascenu("konecHry");
         
     }
 

@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/obchod.unity
     guid: a6ff1822ec256b4409c05c99f098a89e
+  - enabled: 1
+    path: Assets/Scenes/konecHry.unity
+    guid: 7898d791d47d95f4cbd6d98665adc4f7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

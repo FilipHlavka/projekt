@@ -5,6 +5,7 @@ using static UnityEngine.UI.Image;
 using Unity.AI;
 using UnityEngine.AI;
 using System;
+using Unity.Burst.CompilerServices;
 
 public class pohybHrace : MonoBehaviour
 {
@@ -20,11 +21,14 @@ public class pohybHrace : MonoBehaviour
     public static bool nehejbat = false;
     GameObject camGm;
     Camera cam;
-
+    Quaternion pomRotace;
+    [SerializeField]
+    public Terrain terrain;
+    private Quaternion lookRotation;
     private void Awake()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-
+       // agent.updateRotation = false;
 
         if (!cont.prvniInstance) // muže dìlat problém !!!!!!!!!!!!!!!!!!
         {
@@ -78,32 +82,53 @@ public class pohybHrace : MonoBehaviour
     }
     private void HejbniSe()
     {
+       // Narovnej(); fuj tajbl
         if(!nehejbat){ 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
                 LayerMask layerMask = ~LayerMask.GetMask("player");
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    /*Vector3 smer =  new Vector3(hit.point.x,0,hit.point.z) - new Vector3(transform.position.x,0,transform.position.y);
-                    Quaternion rotace = Quaternion.LookRotation(smer);
-                    transform.rotation = Quaternion.Lerp(transform.rotation,rotace,Time.deltaTime * 20);*/
+                    
                     agent.SetDestination(hit.point);
-                   // Debug.Log(hit.point);
-
+                
                 }
 
 
 
             }
         }
-        /*if (Vector3.Distance(rigitbody.position, vec) < 0.1f)
-        {
-            rigitbody.velocity = Vector3.zero;
-        }*/
+       
 
+    }
+
+    void Narovnej()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        LayerMask layerMask = ~LayerMask.GetMask("player");
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 5f, layerMask))
+        {
+
+            /*Vector3 normVektor = hit.normal;
+            Quaternion rotace = Quaternion.FromToRotation(Vector3.up, normVektor);
+            Quaternion pomRotation = Quaternion.Euler(rotace.eulerAngles.x, transform.rotation.eulerAngles.y , rotace.eulerAngles.z);
+            
+            transform.rotation = rotace;*/
+            /*Vector3 normVektor = hit.normal;
+             Quaternion rotace = Quaternion.FromToRotation(Vector3.up, normVektor);
+             Vector3 pomRotation = rotace.eulerAngles;
+             pomRotation.y = transform.rotation.eulerAngles.y;
+
+             transform.rotation = Quaternion.Euler(pomRotation);*/
+
+
+            
+        }
+        
+        
     }
 }

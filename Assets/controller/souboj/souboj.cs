@@ -16,7 +16,7 @@ public class soubojSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mngr = ingamemanager.Instance;
+        mngr = ingamemanager.instance;
         NactiJson();
        // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
     }

@@ -30,7 +30,6 @@ public abstract class enemy : MonoBehaviour
     public abstract void Delej();
     protected void Awake()
     {
-
         vyhra.pocetEnemy++;
 
     }
@@ -40,6 +39,7 @@ public abstract class enemy : MonoBehaviour
     }
     protected void Start()
     {
+
         aktDef = def;
     }
     private void updatePozice()

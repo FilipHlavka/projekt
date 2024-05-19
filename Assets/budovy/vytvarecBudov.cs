@@ -25,7 +25,7 @@ public class vytvarecBudov : MonoBehaviour
     bool pom2= false;
     [SerializeField]
     budovyScriptable bdv;
-    
+    public static bool muzePricist = true;
     // Start is called before the first frame update
  
     private void Awake()
@@ -51,7 +51,7 @@ public class vytvarecBudov : MonoBehaviour
 
         StartCoroutine(pockej());
         op.enabled = false;
-        vrtTlac.onClick.AddListener(() => spawn(false, bdv.bdv[1], bdv.bdv[1].prefab.zivoty));
+        vrtTlac.onClick.AddListener(() => spawn(true, bdv.bdv[1], bdv.bdv[1].prefab.zivoty));
         dulTlac.onClick.AddListener(() => {
             spawn(true, bdv.bdv[0], bdv.bdv[0].prefab.zivoty);
 
@@ -161,8 +161,8 @@ public class vytvarecBudov : MonoBehaviour
 
     public void postav(List<UkladaniProBudovu> listBdv)
     {
-        
-        
+
+        muzePricist = false;
 
         foreach (var budova in listBdv)
         {
@@ -182,7 +182,7 @@ public class vytvarecBudov : MonoBehaviour
                 }
                 if (budova.nazev == "nemocnice")
                 {
-                    spawn(true, bdv.bdv[2], budova.zivoty);
+                    spawn(false, bdv.bdv[2], budova.zivoty);
 
                 }
             }
