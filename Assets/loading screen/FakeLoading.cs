@@ -43,7 +43,7 @@ public class FakeLoading : MonoBehaviour
         }
 
        
-       //SceneManager.LoadScene("NextScene"); 
+       SceneManager.LoadScene(ingamemanager.dalsiScena); 
     }
 
     private IEnumerator pockej()

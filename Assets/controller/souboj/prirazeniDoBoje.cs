@@ -59,17 +59,17 @@ public class prirazeniDoBoje : MonoBehaviour
         
         if (vyhraEnemy)
         {
-            text.text = "vítìz je nepøítel";
+            text.text = "You lost";
         }
         else
         {
-            text.text = "Vyhrál jsi";
+            text.text = "You won";
         }
         Souboj.hracDt = actSouboj.hracDt;
         listEnemies.Add(actSouboj.enemyVSouboji);
         Souboj.listEnemies = listEnemies;
 
-        Invoke("ulozZpet",4);
+        Invoke("ulozZpet",3);
     }
     public void ulozZpet()
     {

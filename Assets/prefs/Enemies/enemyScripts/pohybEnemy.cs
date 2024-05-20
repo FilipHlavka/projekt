@@ -13,7 +13,8 @@ public class pohybEnemy : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     [SerializeField]
-    public Transform player;
+    public Transform playerTf;
+   
     [SerializeField]
     LayerMask Mask;
     public NavMeshAgent agent;
@@ -60,7 +61,8 @@ public class pohybEnemy : MonoBehaviour
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+       
+        playerTf = GameObject.FindGameObjectWithTag("Player").transform;
         
         Enemy = gameObject.GetComponent<enemy>();
 
@@ -76,10 +78,10 @@ public class pohybEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(cont.prvniInstance && player != null && protekce && pomNaNeco)
+        if(cont.prvniInstance && playerTf != null && protekce && pomNaNeco)
         Delej();
 
-        if (player == null)
+        if (playerTf == null)
         {
             /* try { 
                  player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -104,8 +106,7 @@ public class pohybEnemy : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         try
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
+            playerTf = GameObject.FindGameObjectWithTag("Player").transform;
         }
         catch { Debug.Log("zkouška"); }
         megaPom = true;
@@ -116,7 +117,7 @@ public class pohybEnemy : MonoBehaviour
     private void Delej()
     {
            //Debug.Log(vidiHrace);
-        Vector3 dir = player.position - transform.position;
+        Vector3 dir = playerTf.position - transform.position;
         LayerMask ignore = LayerMask.GetMask("player");
         if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
         {
@@ -126,11 +127,11 @@ public class pohybEnemy : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(transform.position, player.position) <= dosahDetekce)
+            if (Vector3.Distance(transform.position, playerTf.position) <= dosahDetekce)
                 vidiHrace = true;
         }
 
-        if (Vector3.Distance(transform.position, player.position) <= AtkRange && vidiHrace)
+        if (Vector3.Distance(transform.position, playerTf.position) <= AtkRange && vidiHrace)
         {
            
             
@@ -142,7 +143,7 @@ public class pohybEnemy : MonoBehaviour
                         
                 // utok enemy
         }
-        else if(Vector3.Distance(transform.position, player.position) <= dosahDetekce)
+        else if(Vector3.Distance(transform.position, playerTf.position) <= dosahDetekce)
         {
             
 
@@ -150,7 +151,7 @@ public class pohybEnemy : MonoBehaviour
             {
                 agent.isStopped = false;
 
-                agent.SetDestination(player.position);
+                agent.SetDestination(playerTf.position);
             }
                 
 

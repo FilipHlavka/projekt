@@ -40,7 +40,7 @@ public abstract class zakl : MonoBehaviour
     public float aktDef;
     public SphereCollider kolajdr;
     [SerializeField]
-    GameObject RaycastObj;
+    public GameObject RaycastObj;
     
     public void Awake()
     {
@@ -53,8 +53,6 @@ public abstract class zakl : MonoBehaviour
        
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
-        lineRenderer.startColor = Color.red;
-        lineRenderer.endColor = Color.red;
     }
 
     public virtual void Start()
@@ -130,10 +128,6 @@ public abstract class zakl : MonoBehaviour
         
     }
 
-    private void updatePozice()
-    {
-        pozice = transform.position;
-    }
 
     protected void Raycastuj()
     {
@@ -143,70 +137,38 @@ public abstract class zakl : MonoBehaviour
             {
                 if (enemy != null)
                 {
-                    if (Vector3.Distance(transform.position, enemy.transform.position) < range/3)
+                if (Vector3.Distance(transform.position, enemy.transform.position) < range / 3)
+                {
+
+
+
+                    bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - RaycastObj.transform.position, out RaycastHit hitRay, dosah, maskaPrekazka);
+
+
+                    Debug.DrawRay(RaycastObj.transform.position, enemy.transform.position - transform.position, Color.yellow);
+
+                    if (hit && hitRay.collider != null && hitRay.collider.CompareTag("enemy"))
                     {
 
+                        Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
+                        lineRenderer.SetPositions(new Vector3[] { RaycastObj.transform.position, enemy.transform.position });
 
-                        
-                        bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - RaycastObj.transform.position, out RaycastHit hitRay, dosah, maskaPrekazka);
-
-
-                        Debug.DrawRay(RaycastObj.transform.position, enemy.transform.position - transform.position, Color.yellow);
-
-                        if (hitRay.collider != null)
+                        if (Input.GetKeyDown(KeyCode.Space))
                         {
-                        Debug.Log("nyyyyyyyyyyyyyyyyyyyyaaaaaaaaaaa" + hitRay.collider);
+                            if (blbost == 0)
+                                utoc.Invoke(false, enemy);
 
-                            if (hitRay.collider.CompareTag("enemy"))
-                            {
-                                
-
-                                lineRenderer.positionCount = 2;
-
-                                lineRenderer.SetPosition(0, RaycastObj.transform.position);
-                                lineRenderer.SetPosition(1, enemy.transform.position);
-                                Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
-                                if (Input.GetKeyDown(KeyCode.Space))
-                                {
-                                    if(blbost == 0)
-                                    utoc.Invoke(false, enemy);
-
-                                    blbost++;
-                                }
-
+                            blbost++;
                         }
-                        else
-                        {
-                            lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
-                            lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
-                            
-                        }
-
-
-
-
-
-
-
-
-
-
-                    }
-                        else
-                        {
-                        lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
-                        lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
-                       // Debug.Log("aa");
-                        }
-
 
                     }
                     else
                     {
-                    lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
-                    lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+                        lineRenderer.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
+
                     }
 
+                }
                 
                 }
 

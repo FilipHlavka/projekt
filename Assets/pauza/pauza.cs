@@ -9,6 +9,7 @@ public class pauza : MonoBehaviour
     bool pom = true;
     [SerializeField]
     GameObject panel;
+    public static bool funguj = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class pauza : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(funguj)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (pom)

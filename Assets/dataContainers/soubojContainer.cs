@@ -10,7 +10,7 @@ public class soubojContainer : MonoBehaviour
     ingamemanager ingamemanager;
    /* public GameObject hrac;
     public GameObject enemy;*/
-    UnityEvent<string> prepniScenu;
+    UnityEvent<string, bool> prepniScenu;
     public UnityEvent<bool> uloz;
 
 
@@ -19,7 +19,7 @@ public class soubojContainer : MonoBehaviour
         if (uloz == null)
             uloz = new UnityEvent<bool>();
         if (prepniScenu == null)
-            prepniScenu = new UnityEvent<string>();
+            prepniScenu = new UnityEvent<string,bool>();
         
         cont.instance.zacniBojovat.AddListener(DoBoje);
         ingamemanager = ingamemanager.instance;
@@ -35,7 +35,7 @@ public class soubojContainer : MonoBehaviour
        
         uloz.Invoke(EnemyNaRade);
 
-        prepniScenu.Invoke("souboj");
+        prepniScenu.Invoke("souboj",false);
         
         
 

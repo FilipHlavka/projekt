@@ -13,6 +13,8 @@ public class soubojSceneController : MonoBehaviour
     public UkladaniProHrac hracDt;
     ingamemanager mngr;
     string sceneJm;
+    bool neKonecEnemy = false;
+    bool enemyVyhral = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,18 +44,61 @@ public class soubojSceneController : MonoBehaviour
     }
     public void Uloz()
     {
-        Debug.Log("jsem tu");
+        
         zabal.hrDt = hracDt;
         zabal.obj = listEnemies;
+
+       
+        Debug.Log(cont.prvniInstance);
+        Kontrola();
+
+        // zmenit senu
+    }
+    void Kontrola()
+    {
+        Debug.Log("nyaaa");
+       
+        foreach(var enemy in listEnemies)
+        {
+            if(enemy.zivoty > 0)
+                neKonecEnemy = true;
+           Debug.Log(neKonecEnemy);
+            Debug.Log(enemy.zivoty + "ziv");
+            
+        }
+        if (hracDt.zivoty > 0)
+            enemyVyhral = false;
+        else
+            zabal.pocetZivotu--;
+
 
         string jsonData = JsonUtility.ToJson(zabal);
         File.WriteAllText(Application.dataPath + "/enemies.json", jsonData);
         cont.prvniInstance = false;
-        Debug.Log(cont.prvniInstance);
-        // zmenit senu
-        mngr.PrepniNascenu(sceneJm);
-    }
 
+
+        if (!neKonecEnemy)
+        {
+            vyhra.prohra = false;
+            
+            mngr.PrepniNascenu("konecHry", true);
+        }else if (enemyVyhral && zabal.pocetZivotu == 0)
+        {
+            vyhra.prohra = true;
+            //Debug.Log("wtf");
+            mngr.PrepniNascenu("konecHry", true);
+
+        }
+        else
+        {
+            mngr.PrepniNascenu(sceneJm, false);
+
+        }
+
+
+
+
+    }
     // Update is called once per frame
     void Update()
     {

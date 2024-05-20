@@ -15,7 +15,7 @@ public class ingamemanager : MonoBehaviour
     [SerializeField]
     Image fakeScreen;
     public static ingamemanager instance;
-   
+    public static string dalsiScena;
     void Awake()
     {
             instance = this;
@@ -31,20 +31,31 @@ public class ingamemanager : MonoBehaviour
         vyhra.instance.konec.AddListener(stavKonce);
     }
 
-    public void PrepniNascenu(string scena)
+    public void PrepniNascenu(string scena, bool loading)
     {
         // Zapnout fake loading screen!!!!!!!!!!!!!!!!!!!!! >w<
         if (fakeScreen != null)
             fakeScreen.enabled = true;
         
+        dalsiScena = scena;
         ZnicTyZatracenyObjekty();
-        SceneManager.LoadScene(scena);
+        if(!loading)
+            SceneManager.LoadScene(scena);
+        else
+        {
+           // Debug.Log("wtf");
+            SceneManager.LoadScene("fakeLoadingScreen");
 
-        
+        }
+
+    }
+    public void PrepniNascenuJednodusi(string scena)
+    {
+            SceneManager.LoadScene(scena);
     }
     public void stavKonce()
     {
-        PrepniNascenu("konecHry");
+        PrepniNascenu("konecHry",true);
         
     }
 
