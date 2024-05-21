@@ -15,7 +15,7 @@ public class vyhra : MonoBehaviour
     public bool stuj = false;
     public bool nenene = false;
     [SerializeField]
-    public static int pocetZivotu = 3;
+    public static int pocetZivotu = 2;
    
     public static bool prohra;
     public UnityEvent konec;

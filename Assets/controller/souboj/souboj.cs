@@ -56,7 +56,7 @@ public class soubojSceneController : MonoBehaviour
     }
     void Kontrola()
     {
-        Debug.Log("nyaaa");
+       
        
         foreach(var enemy in listEnemies)
         {
@@ -82,7 +82,7 @@ public class soubojSceneController : MonoBehaviour
             vyhra.prohra = false;
             
             mngr.PrepniNascenu("konecHry", true);
-        }else if (enemyVyhral && zabal.pocetZivotu == 0)
+        }else if (enemyVyhral && zabal.pocetZivotu == -1)
         {
             vyhra.prohra = true;
             //Debug.Log("wtf");
