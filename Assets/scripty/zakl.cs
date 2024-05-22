@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public abstract class zakl : MonoBehaviour
+public abstract class zakl : MonoBehaviour, IProSchopnost
 {
     [SerializeField]
     public int Zivoty;
@@ -24,20 +24,21 @@ public abstract class zakl : MonoBehaviour
     List<GameObject> enemies;
     [SerializeField]
     public LayerMask maskaPrekazka;
-    EnemyRespawn? enresp;
+    EnemyRespawn enresp; // muže být null
     public float dosah;
     UnityEvent<bool,GameObject> utoc;
     bool stuj = false;
     hracData hracdata;
     int blbost= 0;
     public string nameHr;
-    public Vector3 pozice;
-    public Vector3 rotace;
+    //public Vector3 pozice;
+    //public Vector3 rotace;
     LineRenderer lineRenderer;
     GameObject controller;
     public float bonusRychlost;
     public float zaklRychlost;
     public float aktDef;
+    
     public SphereCollider kolajdr;
     [SerializeField]
     public GameObject RaycastObj;
@@ -146,10 +147,10 @@ public abstract class zakl : MonoBehaviour
 
 
                     Debug.DrawRay(RaycastObj.transform.position, enemy.transform.position - transform.position, Color.yellow);
-
-                    if (hit && hitRay.collider != null && hitRay.collider.CompareTag("enemy"))
+                   
+                    if (hit && hitRay.collider != null && (hitRay.collider.CompareTag("enemy") || hitRay.collider.CompareTag("enemyCollider")))
                     {
-
+                        Debug.Log(hitRay.collider.name + " " + hitRay.collider.tag);
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
                         lineRenderer.SetPositions(new Vector3[] { RaycastObj.transform.position, enemy.transform.position });
 
@@ -177,6 +178,13 @@ public abstract class zakl : MonoBehaviour
         
     }
 
-    
+    public void TakeDamage(int dmg)
+    {
+        if(Zivoty - dmg > 0)
+            Zivoty -= dmg;
+        else
+            Zivoty = 1;
+    }
 
+    
 }

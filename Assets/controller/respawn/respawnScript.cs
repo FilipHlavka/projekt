@@ -16,7 +16,7 @@ public class respawnScript : MonoBehaviour
     [SerializeField]
     Button button;
     RectTransform ptf;
-    int k = 60;
+    //int k = 60;
     //string jm;
     [SerializeField]
     GameObject spawnPoint;
@@ -50,7 +50,7 @@ public class respawnScript : MonoBehaviour
         }*/
 
         VytvorTlacitko();
-        
+       
     }
 
     void VytvorTlacitko()

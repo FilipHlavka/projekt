@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public abstract class enemy : MonoBehaviour
+[Serializable]
+public abstract class enemy : MonoBehaviour, IProSchopnost
 {
     [SerializeField]
     public int zivoty;
@@ -42,13 +42,18 @@ public abstract class enemy : MonoBehaviour
 
         aktDef = def;
     }
-    private void updatePozice()
-    {
-        pozice = transform.position;
-    }
+
     private void OnDestroy()
     {
         vyhra.pocetEnemy--;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        if (zivoty - dmg > 0)
+            zivoty -= dmg;
+        else
+            zivoty = 1;
     }
 
 }

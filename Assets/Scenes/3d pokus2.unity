@@ -498,7 +498,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 974719823049831127, guid: bae0c81228594264491543e5f01ed894, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982409524653590076, guid: bae0c81228594264491543e5f01ed894, type: 3}
+      propertyPath: m_Height
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982409524653590076, guid: bae0c81228594264491543e5f01ed894, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5982409524653590076, guid: bae0c81228594264491543e5f01ed894, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -825,6 +838,7 @@ GameObject:
   - component: {fileID: 532382450}
   - component: {fileID: 532382449}
   - component: {fileID: 532382459}
+  - component: {fileID: 532382460}
   m_Layer: 0
   m_Name: Controller
   m_TagString: GameController
@@ -1041,6 +1055,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1269952039}
+--- !u!114 &532382460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532382448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a236f5e9937114429cb88a5d722feb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 11400000, guid: ba71f3eb8897a90468bb72447ae96781, type: 2}
+  aktSchopnost: gas
 --- !u!1 &552028431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,6 +3473,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1655830253440489824, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1788451793792189928, guid: 5f3d07d75c5cb02478bb3154bf64bc0d, type: 3}
       propertyPath: m_Name
       value: Tank

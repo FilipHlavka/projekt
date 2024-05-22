@@ -12,6 +12,8 @@ TagManager:
   - budova
   - svine
   - hora
+  - PlayerCollider
+  - enemyCollider
   layers:
   - Default
   - TransparentFX
