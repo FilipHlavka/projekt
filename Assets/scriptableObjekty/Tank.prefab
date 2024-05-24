@@ -5009,6 +5009,7 @@ GameObject:
   - component: {fileID: 5916990156664070915}
   - component: {fileID: 2387733445413433621}
   - component: {fileID: 1528684949793755703}
+  - component: {fileID: 4732863230755205184}
   m_Layer: 6
   m_Name: Tank
   m_TagString: enemy
@@ -5133,6 +5134,23 @@ NavMeshAgent:
   m_BaseOffset: 0.74
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4732863230755205184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788451793792189928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704de5c65e51a8f4f9a8a99760de4892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _contributeToFOV: 1
+  _sightRange: 30
+  _sightAngle: 360
+  _disappearInFOW: 0
+  _disappearAlphaThreshold: 0.1
 --- !u!1 &2397618157613924280
 GameObject:
   m_ObjectHideFlags: 0

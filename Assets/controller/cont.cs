@@ -9,6 +9,7 @@ using System.IO;
 using UnityEngine.U2D;
 using Unity.VisualScripting;
 using NUnit;
+using FOVMapping;
 
 public class cont : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class cont : MonoBehaviour
     hracScriptable hrci;
     [SerializeField]
     enemyScriptable enmci;
+    [SerializeField]
+    FOVManager mg;
    // public int pocetZivotu;
 
     void Awake()
@@ -76,6 +79,7 @@ public class cont : MonoBehaviour
             vyhra.instance.stuj = false;
             vytvarecBudov.muzePricist = true;
             Zivoty.instance.aktText();
+            mg.FindAllFOVAgents();
 
         }
 
@@ -111,6 +115,7 @@ public class cont : MonoBehaviour
         vytvarecBudov.muzePricist = true;
 
         Zivoty.instance.aktText();
+        mg.FindAllFOVAgents();
 
     }
 

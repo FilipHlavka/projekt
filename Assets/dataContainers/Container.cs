@@ -42,6 +42,7 @@ public class Container : MonoBehaviour
 
     private void DoJSNu()
     {
+        SpawnIt.instance.Uloz();
         enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
         enemies.Add(hrac);
 

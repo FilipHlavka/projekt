@@ -4932,9 +4932,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288a5522dcac459489b04323a8dee2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nazev: gas
+  nazev: Poisonous gas
   dobaTrvani: 8
   dmg: 20
+  popis: Non-lethal poisonous gas that deals 20 damage in small radius.
+  cena: 1
 --- !u!135 &4279533562546284027
 SphereCollider:
   m_ObjectHideFlags: 0

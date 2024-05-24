@@ -1,3 +1,4 @@
+using FOVMapping;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ public class vytvarecBudov : MonoBehaviour
     [SerializeField]
     budovyScriptable bdv;
     public static bool muzePricist = true;
+    [SerializeField]
+    FOVManager mg;
     // Start is called before the first frame update
  
     private void Awake()
@@ -113,7 +116,7 @@ public class vytvarecBudov : MonoBehaviour
             Destroy(this);
 
         }
-       
+       mg.FindAllFOVAgents();
       
     }
  

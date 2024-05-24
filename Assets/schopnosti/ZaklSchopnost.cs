@@ -10,6 +10,9 @@ public abstract class ZaklSchopnost : MonoBehaviour
     public float dobaTrvani;
     [SerializeField]
     public int dmg;
+    public string popis;
+    [SerializeField]
+    public int cena;
    
     public virtual void Start()
     {
