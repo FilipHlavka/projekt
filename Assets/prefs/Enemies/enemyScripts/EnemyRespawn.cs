@@ -1,3 +1,4 @@
+using FOVMapping;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,7 @@ public class EnemyRespawn : MonoBehaviour
             new Vector3(x,y,z), 
             Quaternion.Euler(0, Random.Range(0, 360), 0));
         enemyRespawn.Invoke(enemy);
+        FOVManager.instance.FindAllFOVAgents();
     }
 
     IEnumerator SpawnCoroutine()

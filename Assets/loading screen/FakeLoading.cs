@@ -35,7 +35,7 @@ public class FakeLoading : MonoBehaviour
                 doba += Time.deltaTime;
                 text.text = "Loading... " + Mathf.FloorToInt((doba / dobaTrvani) * 100) + "%";
                 sl.value = Mathf.FloorToInt((doba / dobaTrvani) * 100);
-                if (Random.Range(0, 301) % 300 == 0)
+                if (Random.Range(0, 501) % 500 == 0)
                     StartCoroutine(pockej());
             }
             

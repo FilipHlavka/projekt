@@ -1,3 +1,4 @@
+using FOVMapping;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -73,6 +74,8 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
 
     private void Zacni()
     {
+        //FOVManager.instance.FindAllFOVAgents();
+        Invoke("resetLineRenderer", 1);
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
@@ -176,6 +179,11 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
             }
 
         
+    }
+    void resetLineRenderer()
+    {
+        lineRenderer.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
+        Debug.Log("reset");
     }
 
     public void TakeDamage(int dmg)

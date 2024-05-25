@@ -5146,10 +5146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704de5c65e51a8f4f9a8a99760de4892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contributeToFOV: 1
+  _contributeToFOV: 0
   _sightRange: 30
   _sightAngle: 360
-  _disappearInFOW: 0
+  _disappearInFOW: 1
   _disappearAlphaThreshold: 0.1
 --- !u!1 &2397618157613924280
 GameObject:

@@ -37,8 +37,7 @@ public class cont : MonoBehaviour
     hracScriptable hrci;
     [SerializeField]
     enemyScriptable enmci;
-    [SerializeField]
-    FOVManager mg;
+    
    // public int pocetZivotu;
 
     void Awake()
@@ -79,7 +78,7 @@ public class cont : MonoBehaviour
             vyhra.instance.stuj = false;
             vytvarecBudov.muzePricist = true;
             Zivoty.instance.aktText();
-            mg.FindAllFOVAgents();
+            FOVManager.instance.FindAllFOVAgents();
 
         }
 
@@ -115,7 +114,7 @@ public class cont : MonoBehaviour
         vytvarecBudov.muzePricist = true;
 
         Zivoty.instance.aktText();
-        mg.FindAllFOVAgents();
+        FOVManager.instance.FindAllFOVAgents();
 
     }
 
@@ -152,7 +151,8 @@ public class cont : MonoBehaviour
                 }
             }
 
-
+            GameObject cam = GameObject.FindGameObjectWithTag("cameraHolder");
+            cam.transform.position = new Vector3(hrJednodusiData.pozice.x, cam.transform.position.y, hrJednodusiData.pozice.z);
             hrDt = novyHrac.GetComponent<zakl>();
             hrDt.Zivoty = hrJednodusiData.zivoty;
             hrDt.Atk = hrJednodusiData.atk;
@@ -190,7 +190,7 @@ public class cont : MonoBehaviour
         zakl hrDt;
         UkladaniProHrac hrJednodusiData = zabal.hrDt;
 
-      
+        PowerPointGenerator.instance.mena = zabal.pocetPointu;
         if (hrJednodusiData.zivoty > 0)
         {
            
@@ -207,6 +207,8 @@ public class cont : MonoBehaviour
             hrDt = novyHrac.GetComponent<zakl>();
             hrDt.Zivoty = hrJednodusiData.zivoty;
             hrDt.Atk = hrJednodusiData.atk;
+            GameObject cam = GameObject.FindGameObjectWithTag("cameraHolder");
+            cam.transform.position = new Vector3(hrJednodusiData.pozice.x, cam.transform.position.y, hrJednodusiData.pozice.z);
             if(((int)hrJednodusiData.def - hrDt.Def) > 0)
             {
 

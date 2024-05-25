@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 434267373}
   - component: {fileID: 434267372}
   m_Layer: 5
-  m_Name: Button
+  m_Name: 3d pokus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,19 +612,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 434267373}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1073910834}
-        m_TargetAssemblyTypeName: ingamemanager, Assembly-CSharp
-        m_MethodName: PrepniNascenu
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: mapa2
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &434267373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1271,7 @@ GameObject:
   - component: {fileID: 1073910833}
   - component: {fileID: 1073910834}
   - component: {fileID: 1073910835}
+  - component: {fileID: 1073910836}
   m_Layer: 0
   m_Name: controller
   m_TagString: Untagged
@@ -1331,6 +1320,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tezka: 0
+--- !u!114 &1073910836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073910832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ac0e534754e254685755db2faa923f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 434267372}
 --- !u!1 &1168340167
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,39 +97,17 @@ public class kamPohyb3d : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-           /* a = cam.transform.position.x;
-            b = 0;
-            c = cam.transform.position.z;
-            a2 = transform.position.x;
-            b2 = 0;
-            c2 = transform.position.z;*/
-            /*
-             (a  | b  c ) a  b
-             (a2 | b2 c2) a2 b2
-             */
-
 
             normVector = Vector3.Cross(
                 new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z),
                 new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
                 );
             
-            transform.position -= normVector * speed * Time.deltaTime /15 / (Vector3.Distance(transform.position, cam.transform.position) / 20);
+            transform.position -= normVector * speed * Time.deltaTime /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
 
         }
         if (Input.GetKey(KeyCode.D))
         {
-
-           /* a = cam.transform.position.x;
-            b = 0;
-            c = cam.transform.position.z;
-            a2 = transform.position.x;
-            b2 = 0;
-            c2 = transform.position.z;*/
-            /*
-             (a  | b  c ) a  b
-             (a2 | b2 c2) a2 b2
-             */
 
 
             normVector = Vector3.Cross(
@@ -137,20 +115,20 @@ public class kamPohyb3d : MonoBehaviour
                 new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
                 );
 
-            transform.position += normVector * speed * Time.deltaTime /15 / (Vector3.Distance(transform.position, cam.transform.position) / 20);
+            transform.position += normVector * speed * Time.deltaTime  /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
 
         }
         if (Input.GetKey(KeyCode.W))
         {
 
             smer = new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-            transform.position -= smer * speed * Time.deltaTime / (Vector3.Distance(transform.position, cam.transform.position)/20);
+            transform.position -= smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position)/10);
 
         }
         if (Input.GetKey(KeyCode.S))
         {
             smer = new Vector3(cam.transform.position.x,0,cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-            transform.position += smer * speed * Time.deltaTime / (Vector3.Distance(transform.position, cam.transform.position) / 20);
+            transform.position += smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position)/10 );
         }
 
 
@@ -158,14 +136,14 @@ public class kamPohyb3d : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            otoc =  Quaternion.Euler(0f, -speed * Time.deltaTime * 40, 0f);
+            otoc =  Quaternion.Euler(0f, -speed * Time.deltaTime * 20, 0f);
             transform.rotation *= otoc;
                 
            
         }
         if (Input.GetKey(KeyCode.E))
         {
-            otoc = Quaternion.Euler(0f, speed * Time.deltaTime * 40, 0f);
+            otoc = Quaternion.Euler(0f, speed * Time.deltaTime * 20, 0f);
             transform.rotation *= otoc;
 
 

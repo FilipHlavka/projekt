@@ -95,11 +95,11 @@ public class FOVManager : MonoBehaviour
 	[Tooltip("(Do not modify) Pixel reader computer shader")]
 	private ComputeShader pixelReader;
 
-	
-	
+
+	public static FOVManager instance;
 	private void Awake()
 	{
-		
+		instance = this;
 		FOVMaterial = new Material(FOVShader);
 
 		FOWMaterial = new Material(FOWProjectorShader);

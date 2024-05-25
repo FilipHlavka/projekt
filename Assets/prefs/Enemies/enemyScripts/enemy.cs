@@ -1,3 +1,4 @@
+using FOVMapping;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ public abstract class enemy : MonoBehaviour, IProSchopnost
     //public bool JeEnemy = true;
    // data enemydata;
     public float atkMulti;
+    [SerializeField]
     public string nazev;
     public bool bojuje = false;
     public Vector3 pozice;
@@ -39,7 +41,7 @@ public abstract class enemy : MonoBehaviour, IProSchopnost
     }
     protected void Start()
     {
-
+        FOVManager.instance.FindAllFOVAgents();
         aktDef = def;
     }
 

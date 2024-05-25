@@ -61,9 +61,17 @@ public class pohybEnemy : MonoBehaviour
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
-       
-        playerTf = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        try
+        {
+            playerTf = GameObject.FindGameObjectWithTag("Player").transform;
+
+        }
+        catch
+        {
+
+        }
+
+
         Enemy = gameObject.GetComponent<enemy>();
 
         

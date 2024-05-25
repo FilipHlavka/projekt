@@ -7,8 +7,8 @@ using TMPro;
 
 public class prirazeniDoBoje : MonoBehaviour
 {
-    [SerializeField]
-    Dictionary<string,Sprite> slovnik = new Dictionary<string,Sprite>();
+   /* [SerializeField]
+    Dictionary<string,Sprite> slovnik = new Dictionary<string,Sprite>();*/
 
     [SerializeField]
     List<Sprite> spriteList, hracspriteList;
@@ -23,6 +23,9 @@ public class prirazeniDoBoje : MonoBehaviour
     GameObject enemyObjekt;
     [SerializeField]
     GameObject hracObjekt;
+
+    [SerializeField]
+    public List<model> modely;
 
     public UnityEvent zacniEvent;
 
@@ -78,10 +81,7 @@ public class prirazeniDoBoje : MonoBehaviour
     #region prirazeniSpritu
     public void priratEnemy()
     {
-        for (int i = 0; i < spriteList.Count; i++)
-        {
-            slovnik.Add(nazevList[i], spriteList[i]);
-        }
+       
        
         foreach (UkladaniProEnemy enemy in Souboj.listEnemies)
         {
@@ -95,9 +95,15 @@ public class prirazeniDoBoje : MonoBehaviour
                 listEnemies.Remove(listEnemies[i]);
             }
         }
-        Sprite sprite = null;
-        slovnik.TryGetValue(enemyVSouboji.nazev, out sprite);
-        enemyObjekt.GetComponent<SpriteRenderer>().sprite = sprite;
+       
+        foreach(model m in modely)
+        {
+            if(m.nazev == enemyVSouboji.nazev)
+            {
+                Instantiate(m,enemyObjekt.transform);
+            }
+        }
+       
         //Debug.Log(listEnemies.Count);
     }
 
@@ -105,15 +111,15 @@ public class prirazeniDoBoje : MonoBehaviour
     {
         int j = 0;
         hracDt = Souboj.hracDt;
-        for (int i = spriteList.Count; i < spriteList.Count + hracspriteList.Count; i++)
+        foreach (model m in modely)
         {
-            slovnik.Add(hracNazev[j], hracspriteList[j]);
-            j++;
+            if (m.nazev == hracDt.nazev)
+            {
+                Instantiate(m, hracObjekt.transform);
+            }
         }
         j = 0;
-        Sprite sprite = null;
-        slovnik.TryGetValue(hracDt.nazev, out sprite);
-        hracObjekt.GetComponent<SpriteRenderer>().sprite = sprite;
+       
         
     }
     #endregion

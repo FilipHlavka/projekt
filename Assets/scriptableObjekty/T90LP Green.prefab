@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 2147214386507736365}
   - component: {fileID: 7235507903192678348}
   - component: {fileID: 2982990323787269358}
+  - component: {fileID: 7475477522295432866}
   m_Layer: 7
   m_Name: T90LP Green
   m_TagString: Player
@@ -873,6 +874,23 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.029959
   m_Center: {x: 0, y: 1.1540594, z: 0.17465399}
+--- !u!114 &7475477522295432866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153684337135672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704de5c65e51a8f4f9a8a99760de4892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _contributeToFOV: 1
+  _sightRange: 20
+  _sightAngle: 360
+  _disappearInFOW: 0
+  _disappearAlphaThreshold: 0.1
 --- !u!1 &1157108966359106
 GameObject:
   m_ObjectHideFlags: 0

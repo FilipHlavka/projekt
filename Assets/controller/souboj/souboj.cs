@@ -80,12 +80,14 @@ public class soubojSceneController : MonoBehaviour
         if (!neKonecEnemy)
         {
             vyhra.prohra = false;
-            
+            cont.prvniInstance = true;
+
             mngr.PrepniNascenu("konecHry", true);
         }else if (enemyVyhral && zabal.pocetZivotu == -1)
         {
             vyhra.prohra = true;
             //Debug.Log("wtf");
+            cont.prvniInstance = true;
             mngr.PrepniNascenu("konecHry", true);
 
         }

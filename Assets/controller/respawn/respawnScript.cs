@@ -24,8 +24,7 @@ public class respawnScript : MonoBehaviour
 
     [SerializeField]
     camPohyb kamera;
-    [SerializeField]
-    FOVManager mg;
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -73,7 +72,7 @@ public class respawnScript : MonoBehaviour
                     PowerPointGenerator.instance.Max = PowerPointGenerator.instance.Max - hr.cenaOtaznik;
                     Instantiate(hr.hrac, spawnPoint.transform.position, Quaternion.Euler(0, 0, 0));
                     panel.SetActive(false);
-                    mg.FindAllFOVAgents();
+                    FOVManager.instance.FindAllFOVAgents();
 
                     pauza.funguj = true;
                 }
