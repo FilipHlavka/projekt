@@ -18,6 +18,7 @@ public class FakeLoading : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FakeLoadingCoroutine());
+      
     }
     private void Update()
     {
@@ -45,6 +46,7 @@ public class FakeLoading : MonoBehaviour
        
        SceneManager.LoadScene(ingamemanager.dalsiScena); 
     }
+
 
     private IEnumerator pockej()
     {

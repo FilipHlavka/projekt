@@ -5,26 +5,13 @@ using TMPro;
 
 public class obtiznost : MonoBehaviour
 {
-    private static obtiznost instance;
+    public static obtiznost instance;
     [SerializeField]
     public bool tezka = false;
-    public static obtiznost Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new obtiznost();
-            }
-            return instance;
-        }
-    }
+    
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this);
+       instance = this;
     }
 
     public void DejmiObtiznost(int n)
@@ -33,8 +20,6 @@ public class obtiznost : MonoBehaviour
             tezka = false;
         else
             tezka = true;
-
-        Debug.Log(tezka);
     }
    
 }

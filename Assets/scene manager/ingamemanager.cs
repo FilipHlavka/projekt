@@ -43,7 +43,8 @@ public class ingamemanager : MonoBehaviour
             SceneManager.LoadScene(scena);
         else
         {
-           // Debug.Log("wtf");
+            // Debug.Log("wtf");
+            vyhra.pocetZivotu = 2;
             SceneManager.LoadScene("fakeLoadingScreen");
 
         }

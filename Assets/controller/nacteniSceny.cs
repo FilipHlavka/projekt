@@ -26,6 +26,7 @@ public class nacteniSceny : MonoBehaviour
         strudl = (Zavin)formator.Deserialize(stream);
         stream.Close();
         vyhra.pocetZivotu = strudl.pocetZivotu;
+        obtiznost.instance.tezka = strudl.tezky;
         eventNacteni.Invoke(strudl);
     }
    

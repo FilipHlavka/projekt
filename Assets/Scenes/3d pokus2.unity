@@ -194,7 +194,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1332
+  m_Name: pb_Mesh-1322
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -697,7 +697,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-96614
+  m_Name: pb_Mesh-1922
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1189,6 +1189,7 @@ GameObject:
   - component: {fileID: 532382449}
   - component: {fileID: 532382459}
   - component: {fileID: 532382460}
+  - component: {fileID: 532382461}
   m_Layer: 0
   m_Name: Controller
   m_TagString: GameController
@@ -1282,6 +1283,8 @@ MonoBehaviour:
       rotace: {x: 0, y: 0, z: 0}
     sceneJm: 
     pocetZivotu: 0
+    pocetPointu: 0
+    timer: 0
   listBudov: []
   stav:
     m_PersistentCalls:
@@ -1368,6 +1371,8 @@ MonoBehaviour:
       rotace: {x: 0, y: 0, z: 0}
     sceneJm: 
     pocetZivotu: 0
+    pocetPointu: 0
+    timer: 0
   Respawn:
     m_PersistentCalls:
       m_Calls: []
@@ -1375,6 +1380,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   nacitani: {fileID: 0}
+  mapa: France
   hrci: {fileID: 11400000, guid: 74946ef94c6b6a247a23b041f91b34bc, type: 2}
   enmci: {fileID: 11400000, guid: 0290dceaeb9270a4094c4ad0cfeb703e, type: 2}
 --- !u!4 &532382458
@@ -1418,6 +1424,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 11400000, guid: ba71f3eb8897a90468bb72447ae96781, type: 2}
+--- !u!114 &532382461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532382448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc19b6cb8bdea24d9ee5d6c734dcb83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
 --- !u!1 &552028431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,7 +2866,7 @@ Transform:
   m_GameObject: {fileID: 1114302602}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
-  m_LocalPosition: {x: 0, y: 10.76, z: -1}
+  m_LocalPosition: {x: 0, y: 27.89, z: -7.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3448,7 +3467,7 @@ Transform:
   m_GameObject: {fileID: 1354258713}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -13.41, z: 5}
+  m_LocalPosition: {x: 0, y: -15.2, z: 8.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3467,7 +3486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4f6b18d7342d04e9bd1a375bcfb5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 5
   scrol: 10
   cam: {fileID: 1114302604}
   movex: 0

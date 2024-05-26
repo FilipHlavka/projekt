@@ -26,6 +26,19 @@ public class vyhra : MonoBehaviour
     }
     void Start()
     {
+        try
+        {
+            if (obtiznost.instance.tezka && obtiznost.instance != null)
+            {
+                pocetZivotu = 0;
+                Zivoty.instance.aktText();
+            }
+        }
+        catch
+        {
+            Debug.Log("ve høe v poho");
+        }
+       
         if (konec == null)
             konec = new UnityEvent();
         StartCoroutine(pockej());
@@ -67,6 +80,7 @@ public class vyhra : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2f);
+           
             //kontrolaVyhry();
         }
       

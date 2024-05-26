@@ -43,6 +43,7 @@ public class Container : MonoBehaviour
     private void DoJSNu()
     {
         SpawnIt.instance.Uloz();
+
         enemies = GameObject.FindGameObjectsWithTag("enemy").ToList();
         enemies.Add(hrac);
 
@@ -58,6 +59,7 @@ public class Container : MonoBehaviour
         Whopper.pocetZivotu = vyhra.pocetZivotu;
         enemyData = new List<enemy>(enemies.Count);
         Whopper.pocetPointu = PowerPointGenerator.instance.mena;
+        Whopper.timer = pocitadlo.instance.timer;
         foreach (GameObject enemyObject in enemies)
         {
             if (enemyObject.TryGetComponent<enemy>(out var enemyComponent))
@@ -187,5 +189,6 @@ public struct Zabal
     public string sceneJm;
     public int pocetZivotu;
     public int pocetPointu;
+    public float timer;
 }
 #endregion

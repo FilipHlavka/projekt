@@ -32,7 +32,8 @@ public class cont : MonoBehaviour
     public nacteniSceny nacitani;
 
     Zavin strudl;
-
+    [SerializeField]
+    public string mapa;
     [SerializeField]
     hracScriptable hrci;
     [SerializeField]
@@ -75,6 +76,7 @@ public class cont : MonoBehaviour
             }
             RozdelAPanuj();
             ukazHrace();
+            
             vyhra.instance.stuj = false;
             vytvarecBudov.muzePricist = true;
             Zivoty.instance.aktText();
@@ -90,7 +92,7 @@ public class cont : MonoBehaviour
     {
         
         vyhra.instance.stuj = true;
-        
+        pocitadlo.instance.timer = strudl.timer;
         listEnemaku = GameObject.FindGameObjectsWithTag("enemy").ToList();
         foreach (GameObject obj in listEnemaku)
         {
@@ -283,6 +285,7 @@ public class cont : MonoBehaviour
 
         zabal = JsonUtility.FromJson<Zabal>(jsonData);
         vyhra.pocetZivotu = zabal.pocetZivotu;
+        pocitadlo.instance.timer = zabal.timer;
         int enmPom = 0;
         foreach (UkladaniProEnemy enemy in zabal.obj)
         {

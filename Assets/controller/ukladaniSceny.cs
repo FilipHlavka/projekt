@@ -35,6 +35,8 @@ public class ukladaniSceny : MonoBehaviour
         strudl.powePoints = PowerPointGenerator.instance.mena;
         strudl.pocetUlozeni = pocetUlozeni;
         strudl.pocetZivotu = vyhra.pocetZivotu;
+        strudl.timer = pocitadlo.instance.timer;
+        strudl.tezky = obtiznost.instance.tezka;
         BinaryFormatter formator = new BinaryFormatter();
         try
         {
@@ -148,7 +150,7 @@ public class ukladaniSceny : MonoBehaviour
     }
     
 }
-#region structy
+#region dataHoldery
 
 [Serializable]
 public struct UkladaniProEnemyMimo
@@ -200,6 +202,7 @@ public struct Zavin
     public int powePoints;
     public int pocetUlozeni;
     public int pocetZivotu;
-   
+    public float timer;
+    public bool tezky;
 }
 #endregion

@@ -22,6 +22,7 @@ public class SpawnIt : MonoBehaviour
 
     private void Start()
     {
+       
         KontrolaANacteni();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
@@ -29,6 +30,7 @@ public class SpawnIt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!PowerPointGenerator.instance.stuj)
         {
             if (Input.GetKeyDown(KeyCode.Mouse2))
@@ -71,7 +73,7 @@ public class SpawnIt : MonoBehaviour
         {
             Debug.Log("sakra");
         }
-        wp.hvezdy = 5; // smazat
+        //wp.hvezdy = 5; // smazat
         FileStream stream = File.Create(Application.dataPath + "/Hvezdy.bin");
         formator.Serialize(stream, wp);
         stream.Close();

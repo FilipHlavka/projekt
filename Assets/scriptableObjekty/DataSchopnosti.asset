@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefs:
   - schopnost: {fileID: 846125212681524622, guid: 63d2f64320fe6ed429b0a858232dfc39, type: 3}
-  - schopnost: {fileID: 846125212681524622, guid: 30d74c7b39cb62e4d860c125c10ac721, type: 3}
+  - schopnost: {fileID: 6246799344389728986, guid: b60786e7b9bab9e4cabb9dcf21f96972, type: 3}

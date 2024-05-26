@@ -6,6 +6,7 @@ using TMPro;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
+using UnityEditor;
 
 public class VyberSch : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class VyberSch : MonoBehaviour
         textJm.text = sch.prefs[0].schopnost.nazev;
         cena.text = "Cost: " + sch.prefs[0].schopnost.cena + " *";
     }
+    
     public void Prepni(bool vpred)
     {
         if (vpred)
@@ -169,7 +171,19 @@ public class VyberSch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            hvezdy++;
+            textHvezdy.text = hvezdy + " *";
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            hvezdy--;
+            textHvezdy.text = hvezdy + " *";
+        }
+
+
     }
     [Serializable]
     public struct HvezdyASchWrapper
