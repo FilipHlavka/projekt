@@ -28,22 +28,31 @@ public class vyhra : MonoBehaviour
     {
         try
         {
-            if (obtiznost.instance.tezka && obtiznost.instance != null)
+            if (obtiznost.instance.tezka)
             {
                 pocetZivotu = 0;
                 Zivoty.instance.aktText();
+                Debug.Log("ejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtu");
             }
+
         }
         catch
         {
             Debug.Log("ve høe v poho");
+
         }
-       
+
+
+
+
+        Debug.Log(obtiznost.instance.tezka);
+
         if (konec == null)
             konec = new UnityEvent();
         StartCoroutine(pockej());
         StartCoroutine(kontrolaNumerator());
     }
+
 
     // Update is called once per frame
     

@@ -113,6 +113,7 @@ public class konec : MonoBehaviour
         public float time;
         public bool tezky;
         public string mapa;
+        public int id;
     }
 
     [Serializable]
