@@ -20,7 +20,8 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     [SerializeField]
     public float Rychlost;
     public NavMeshAgent agent;
-    public Transform maska;
+    [SerializeField]
+    public FOVAgent fovAgent;
     [SerializeField]
     List<GameObject> enemies;
     [SerializeField]
@@ -84,7 +85,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
         
                                                                                  // pøiøazení dohledu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         kolajdr = gameObject.GetComponent<SphereCollider>();
-        kolajdr.radius = (float)range/2;
+        kolajdr.radius = fovAgent.sightRange*1.2f;
         AktualizujSeznamEnemy();
         
         controller = GameObject.FindGameObjectWithTag("GameController");

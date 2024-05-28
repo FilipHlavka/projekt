@@ -126,7 +126,7 @@ public class pohybEnemy : MonoBehaviour
     {
            //Debug.Log(vidiHrace);
         Vector3 dir = playerTf.position - transform.position;
-        LayerMask ignore = LayerMask.GetMask("player");
+        LayerMask ignore = LayerMask.GetMask("player","Water");
         if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
         {
             Debug.DrawRay(raycastObj.transform.position, dir.normalized * hit.distance, Color.blue);

@@ -16,7 +16,7 @@ public class vyhra : MonoBehaviour
     public bool nenene = false;
     [SerializeField]
     public static int pocetZivotu = 2;
-   
+    public int colliderCounter;
     public static bool prohra;
     public UnityEvent konec;
     // Start is called before the first frame update
@@ -53,6 +53,11 @@ public class vyhra : MonoBehaviour
         StartCoroutine(kontrolaNumerator());
     }
 
+    public int dejId()
+    {
+        colliderCounter++;
+        return colliderCounter;
+    }
 
     // Update is called once per frame
     

@@ -434,8 +434,8 @@ MonoBehaviour:
   range: 80
   Atk: 40
   Rychlost: 3
-  agent: {fileID: 0}
-  maska: {fileID: 0}
+  agent: {fileID: 6139387429121063489}
+  fovAgent: {fileID: 947775010493027308}
   enemies: []
   maskaPrekazka:
     serializedVersion: 2
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contributeToFOV: 1
-  _sightRange: 25
+  _sightRange: 32
   _sightAngle: 360
   _disappearInFOW: 0
   _disappearAlphaThreshold: 0.1
@@ -7463,6 +7463,8 @@ MonoBehaviour:
   enemy: 0
   canvas: {fileID: 827868084347388365}
   zaklRange: 0
+  enemyObj: {fileID: 0}
+  id: 0
 --- !u!135 &974719823049831127
 SphereCollider:
   m_ObjectHideFlags: 0

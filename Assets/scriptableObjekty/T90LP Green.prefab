@@ -827,8 +827,8 @@ MonoBehaviour:
   range: 60
   Atk: 15
   Rychlost: 3
-  agent: {fileID: 0}
-  maska: {fileID: 0}
+  agent: {fileID: 8166514798071853401}
+  fovAgent: {fileID: 7475477522295432866}
   enemies: []
   maskaPrekazka:
     serializedVersion: 2
@@ -4468,6 +4468,7 @@ GameObject:
   - component: {fileID: 1794202541082808081}
   - component: {fileID: 6902471978352505932}
   - component: {fileID: 4074798160113317261}
+  - component: {fileID: 7364761998686454576}
   m_Layer: 7
   m_Name: collider
   m_TagString: PlayerCollider
@@ -4553,6 +4554,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7364761998686454576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083728594344849190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddb29ab3c5b33943835a8d02a33f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: 0
+  canvas: {fileID: 8823213450460207957}
+  zaklRange: 0
 --- !u!1 &6277757390017400618
 GameObject:
   m_ObjectHideFlags: 0

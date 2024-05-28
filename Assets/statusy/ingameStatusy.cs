@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.TextCore.Text;
 using UnityEngine.U2D;
 //using UnityEngine.UIElements;
 using UnityEngine.UI;
@@ -33,10 +34,13 @@ public class ingameStatusy : MonoBehaviour
     public int zaklRange;
     bool videt = false;
     bool pomVidet = false;
+    
+    public int id;
 
     // Start is called before the first frame update
     void Start()
     {
+        id = vyhra.instance.dejId();
         canvas.enabled = true;
         if(enemy)
         canvas.enabled = false;
@@ -51,22 +55,22 @@ public class ingameStatusy : MonoBehaviour
         
         if (enemy)
         {
-            enemyPohyb = gameObject.GetComponent<pohybEnemy>();
-            Enemy = gameObject.GetComponent<enemy>();
+            enemyPohyb = gameObject.GetComponentInParent<pohybEnemy>();
+            Enemy = gameObject.GetComponentInParent<enemy>();
             Rychlost = enemyPohyb.agent.speed;
             zakRange = Enemy.range;
             
         }
         else
         {
-            hrac = gameObject.GetComponentInParent<zakl>();
-           maska = hrac.maska;
+            hrac = GameObject.FindGameObjectWithTag("Player").GetComponent<zakl>();
+           
             zakRange = hrac.dosah;
             Rychlost = hrac.Rychlost;
             zaklRange = hrac.range;
         }
     }
-    private void prepinac(bool co, Collider2D col)
+    private void prepinac(bool co, Collider col)
     {
         //Debug.Log("ja jsem " + gameObject.name + "hledam " + col.gameObject.name);
         if(col.gameObject.name == gameObject.name)
@@ -88,9 +92,10 @@ public class ingameStatusy : MonoBehaviour
             pomVidet = false;
         }
     }
-    private void Zmena(Staty st, Collider2D col)
+    private void Zmena(Staty st, int ID)
     {
-        if (col.name == gameObject.name)
+        Debug.Log("svine");
+        if (ID == id)
         {
             stav = st.druh;
             if (enemy)
@@ -207,22 +212,22 @@ public class ingameStatusy : MonoBehaviour
     {
         if (st.range == Vyditelnost.vic)
         {
-            hrac.maska.localScale = hrac.maska.localScale * 1.3f;
+            hrac.fovAgent.sightRange = hrac.fovAgent.sightRange * 1.3f;
             hrac.kolajdr.radius = hrac.kolajdr.radius * 1.3f;
             vyditelnostByla = true;
             UdelejObr("oko");
         }
         else if (st.range == Vyditelnost.min)
         {
-            hrac.maska.localScale = hrac.maska.localScale * 0.6f;
+            hrac.fovAgent.sightRange = hrac.fovAgent.sightRange * 0.6f;
             hrac.kolajdr.radius = hrac.kolajdr.radius * 0.6f;
             vyditelnostByla = true;
             UdelejObr("neOko");
         }
         else
         {
-            hrac.maska.localScale = new Vector3 (zaklRange, zaklRange, zaklRange);
-            hrac.kolajdr.radius = (float)zaklRange/2;
+            hrac.fovAgent.sightRange = (float)zaklRange/3;
+            hrac.kolajdr.radius = (float)zaklRange/3/2;
             OdstranObr(vyditelnostByla);
             vyditelnostByla = false;
         }
@@ -269,6 +274,7 @@ public class ingameStatusy : MonoBehaviour
                 foreach (GameObject stat in objekty)
                 {
                     stat.transform.SetParent(null, false);
+                    Destroy(stat);
                 }
                 objekty.Clear();
             }
