@@ -48,6 +48,7 @@ public class SpawnIt : MonoBehaviour
                         {
                             Instantiate(particle.schopnost, hit.point, Quaternion.identity);
                             //pouzito = true;
+                            Uloz();
 
                         }
 

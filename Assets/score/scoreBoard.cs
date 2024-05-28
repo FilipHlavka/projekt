@@ -48,7 +48,7 @@ public class scoreBoard : MonoBehaviour
         {
 
             scoreObj obj = Instantiate(sc, Panel.transform);
-            Debug.Log(vec.time + "   " + vec.tezky);
+           // Debug.Log(vec.time + "   " + vec.tezky);
             obj.id = i;
             vec.id = i;
             obj.eventOdstran.AddListener(odstran);

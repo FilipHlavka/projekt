@@ -401,6 +401,8 @@ MonoBehaviour:
       rotace: {x: 0, y: 0, z: 0}
     sceneJm: 
     pocetZivotu: 0
+    pocetPointu: 0
+    timer: 0
   listEnemies: []
   hracDt:
     zivoty: 0
@@ -409,6 +411,7 @@ MonoBehaviour:
     nazev: 
     pozice: {x: 0, y: 0, z: 0}
     rotace: {x: 0, y: 0, z: 0}
+  timer: 0
 --- !u!4 &602705624
 Transform:
   m_ObjectHideFlags: 0
@@ -436,13 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6689f88d3044eb3479a087d548922cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteList:
-  - {fileID: -3376040835097526051, guid: 532789e9f2e4ea5418b1778c17a6e3a2, type: 3}
-  hracspriteList:
-  - {fileID: 7144790253285599880, guid: cbf32bbc9fc6b1c4abfecea21dd7725d, type: 3}
-  - {fileID: -1400955761145318268, guid: d7981ce5f787ba34e8313d6601a2446d, type: 3}
-  - {fileID: -4936941884703722275, guid: 4a291f09b666c0641940bfc7cbfaedbb, type: 3}
-  - {fileID: -1680142709063003249, guid: 4d7d0eed85d4e2340bc653699b354c50, type: 3}
+  spriteList: []
+  hracspriteList: []
   nazevList:
   - zaklenemy
   hracNazev:

@@ -15,6 +15,8 @@ public class soubojSceneController : MonoBehaviour
     string sceneJm;
     bool neKonecEnemy = false;
     bool enemyVyhral = true;
+    public float timer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,16 +40,18 @@ public class soubojSceneController : MonoBehaviour
             listEnemies = zabal.obj;
             hracDt = zabal.hrDt;
             sceneJm = zabal.sceneJm;
+            timer = zabal.timer;
             //Debug.Log(listEnemies.Count);
         }
         
     }
+
     public void Uloz()
     {
         
         zabal.hrDt = hracDt;
         zabal.obj = listEnemies;
-
+        zabal.timer = timer;
        
         Debug.Log(cont.prvniInstance);
         Kontrola();
@@ -104,6 +108,7 @@ public class soubojSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(soubojContainer.enemy+" "+soubojContainer.hrac+" "+soubojContainer.enemyNaTahu);
+        timer += Time.deltaTime;
+
     }
 }

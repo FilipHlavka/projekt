@@ -62,6 +62,7 @@ public class EnemyRespawn : MonoBehaviour
         while (spawnuj)
         {
             yield return new WaitForSeconds(25f);
+            if(spawnuj)
             Spawn();
 
         }

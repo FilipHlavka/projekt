@@ -75,7 +75,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     private void Zacni()
     {
         //FOVManager.instance.FindAllFOVAgents();
-        Invoke("resetLineRenderer", 1);
+        Invoke("resetLineRenderer", 0.1f);
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 

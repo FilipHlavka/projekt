@@ -103,7 +103,7 @@ public class kamPohyb3d : MonoBehaviour
                 new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
                 );
             
-            transform.position -= normVector * speed * Time.deltaTime /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
+            transform.position -= normVector * (speed - 1) * Time.deltaTime /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
 
         }
         if (Input.GetKey(KeyCode.D))
@@ -115,7 +115,7 @@ public class kamPohyb3d : MonoBehaviour
                 new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
                 );
 
-            transform.position += normVector * speed * Time.deltaTime  /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
+            transform.position += normVector * (speed -1) * Time.deltaTime  /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
 
         }
         if (Input.GetKey(KeyCode.W))
