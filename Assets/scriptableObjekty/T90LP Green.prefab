@@ -665,9 +665,9 @@ GameObject:
   - component: {fileID: 8166514798071853401}
   - component: {fileID: 4947659441688896237}
   - component: {fileID: 2147214386507736365}
-  - component: {fileID: 7235507903192678348}
   - component: {fileID: 2982990323787269358}
   - component: {fileID: 7475477522295432866}
+  - component: {fileID: 5044157513746981985}
   m_Layer: 7
   m_Name: T90LP Green
   m_TagString: Player
@@ -838,21 +838,10 @@ MonoBehaviour:
   bonusRychlost: 0
   zaklRychlost: 0
   aktDef: 0
+  rangePom: 1.5
   kolajdr: {fileID: 6902471978352505932}
   RaycastObj: {fileID: 9033412374239098735}
   vybuch: {fileID: 0}
---- !u!114 &7235507903192678348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153684337135672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d7b0e70ffd63447a799683620beff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &2982990323787269358
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -891,6 +880,18 @@ MonoBehaviour:
   _sightAngle: 360
   _disappearInFOW: 0
   _disappearAlphaThreshold: 0.1
+--- !u!114 &5044157513746981985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153684337135672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7b0e70ffd63447a799683620beff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1157108966359106
 GameObject:
   m_ObjectHideFlags: 0
@@ -4465,7 +4466,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7220345522606656422}
-  - component: {fileID: 1794202541082808081}
   - component: {fileID: 6902471978352505932}
   - component: {fileID: 4074798160113317261}
   - component: {fileID: 7364761998686454576}
@@ -4491,21 +4491,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4955077662473162}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1794202541082808081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3083728594344849190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddb29ab3c5b33943835a8d02a33f7ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: 0
-  canvas: {fileID: 8823213450460207957}
-  zaklRange: 0
 --- !u!135 &6902471978352505932
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4567,8 +4552,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  canvas: {fileID: 8823213450460207957}
+  canvas: {fileID: 7430311449763477705}
   zaklRange: 0
+  id: 0
 --- !u!1 &6277757390017400618
 GameObject:
   m_ObjectHideFlags: 0

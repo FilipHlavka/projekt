@@ -341,13 +341,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4249338741251280}
-  - component: {fileID: 558840027222816703}
   - component: {fileID: 3793019907842988674}
   - component: {fileID: 8193190195463962618}
   - component: {fileID: 7096370153247902398}
   - component: {fileID: 6139387429121063489}
   - component: {fileID: 2453906628899036319}
   - component: {fileID: 947775010493027308}
+  - component: {fileID: 1021995653616918049}
   m_Layer: 7
   m_Name: Tank Prefab
   m_TagString: Player
@@ -379,18 +379,6 @@ Transform:
   - {fileID: 9091971537142636597}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &558840027222816703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221449496419812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d7b0e70ffd63447a799683620beff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3793019907842988674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +433,7 @@ MonoBehaviour:
   bonusRychlost: 0
   zaklRychlost: 0
   aktDef: 0
+  rangePom: 1.2
   kolajdr: {fileID: 974719823049831127}
   RaycastObj: {fileID: 2726503430590890225}
   vybuch: {fileID: 0}
@@ -508,6 +497,18 @@ MonoBehaviour:
   _sightAngle: 360
   _disappearInFOW: 0
   _disappearAlphaThreshold: 0.1
+--- !u!114 &1021995653616918049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221449496419812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7b0e70ffd63447a799683620beff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1226052184545614
 GameObject:
   m_ObjectHideFlags: 0
@@ -7461,9 +7462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: 0
-  canvas: {fileID: 827868084347388365}
+  canvas: {fileID: 8950887285339065235}
   zaklRange: 0
-  enemyObj: {fileID: 0}
   id: 0
 --- !u!135 &974719823049831127
 SphereCollider:

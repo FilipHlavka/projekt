@@ -5,24 +5,26 @@ using UnityEngine.Events;
 
 public class praceScanvasem : MonoBehaviour
 {
-    public static UnityEvent<bool,Collider> nastavCanvasNaEnemy;
+    public static UnityEvent<bool,int> nastavCanvasNaEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
         if (nastavCanvasNaEnemy == null)
-            nastavCanvasNaEnemy = new UnityEvent<bool,Collider>();
+            nastavCanvasNaEnemy = new UnityEvent<bool,int>();
     }
 
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("halo halo");
-        nastavCanvasNaEnemy.Invoke(true,collision);
+        Debug.Log("halo halo" + collision.tag);
+        if (collision.CompareTag("enemyCollider"))
+            nastavCanvasNaEnemy.Invoke(true, collision.gameObject.GetComponent<ingameStatusy>().id);
     }
     private void OnTriggerExit(Collider collision)
     {
-        nastavCanvasNaEnemy.Invoke(false,collision);
+        if (collision.CompareTag("PlayerCollider") || collision.CompareTag("enemyCollider"))
+        nastavCanvasNaEnemy.Invoke(false, collision.gameObject.GetComponent<ingameStatusy>().id);
     }
     // Update is called once per frame
     void Update()

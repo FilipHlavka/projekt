@@ -1,4 +1,5 @@
 //using Microsoft.Unity.VisualStudio.Editor;
+using FOVMapping;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ public class ingameStatusy : MonoBehaviour
     float Rychlost;
     zakl hrac;
     [SerializeField]
-    Canvas canvas;
+    GameObject canvas;
     Transform maska;
     List<GameObject> objekty = new List<GameObject>();
     bool speedByl = false;
@@ -34,18 +35,23 @@ public class ingameStatusy : MonoBehaviour
     public int zaklRange;
     bool videt = false;
     bool pomVidet = false;
-    
+    FOVAgent fovAgent;
+    float rangePom;
     public int id;
 
     // Start is called before the first frame update
     void Start()
     {
         id = vyhra.instance.dejId();
-        canvas.enabled = true;
-        if(enemy)
-        canvas.enabled = false;
-        
-        if(akceProStatus.nastavStatus != null)
+        canvas.SetActive(true);
+        if (enemy)
+        {
+            canvas.SetActive(true);
+            canvas.SetActive(false);
+
+        }
+
+        if (akceProStatus.nastavStatus != null)
         akceProStatus.nastavStatus.AddListener(Zmena);
         if (enemy)
         {
@@ -64,37 +70,39 @@ public class ingameStatusy : MonoBehaviour
         else
         {
             hrac = GameObject.FindGameObjectWithTag("Player").GetComponent<zakl>();
-           
+            fovAgent = hrac.fovAgent;
+            rangePom = hrac.rangePom;
             zakRange = hrac.dosah;
             Rychlost = hrac.Rychlost;
             zaklRange = hrac.range;
         }
     }
-    private void prepinac(bool co, Collider col)
+    private void prepinac(bool co, int ID)
     {
-        //Debug.Log("ja jsem " + gameObject.name + "hledam " + col.gameObject.name);
-        if(col.gameObject.name == gameObject.name)
+        //Debug.Log("ja jsem " + gameObject.name + "hledam " + id); problém ve vrracení velikosti kolajdru
+        if(ID == id)
         {
             videt = co;
+        }
+        if (videt)
+        {
+            canvas.SetActive(true);
+            pomVidet = true;
+        }
+        if (!videt && pomVidet)
+        {
+            canvas.SetActive(false);
+            pomVidet = false;
         }
     }
 
     private void Update()
     {
-        if (videt)
-        {
-            canvas.enabled = true;
-            pomVidet = true;
-        }
-        if(!videt && pomVidet)
-        {
-            canvas.enabled = false;
-            pomVidet = false;
-        }
+        
     }
     private void Zmena(Staty st, int ID)
     {
-        Debug.Log("svine");
+       
         if (ID == id)
         {
             stav = st.druh;
@@ -227,7 +235,7 @@ public class ingameStatusy : MonoBehaviour
         else
         {
             hrac.fovAgent.sightRange = (float)zaklRange/3;
-            hrac.kolajdr.radius = (float)zaklRange/3/2;
+            hrac.kolajdr.radius = fovAgent.sightRange * rangePom;
             OdstranObr(vyditelnostByla);
             vyditelnostByla = false;
         }
@@ -294,7 +302,7 @@ public class ingameStatusy : MonoBehaviour
     {
         if (stav == Stat.high)
         {
-            enemyPohyb.AtkRange = enemyPohyb.AtkRange * 1.5f;
+            enemyPohyb.AtkRange = enemyPohyb.AtkRange * 1.2f;
             UdelejObr("terc");
             rangeByl = true;
             Debug.Log(enemyPohyb.AtkRange);

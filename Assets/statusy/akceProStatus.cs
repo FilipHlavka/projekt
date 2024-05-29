@@ -19,7 +19,7 @@ public class akceProStatus : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         
-        //Debug.Log(collision.name + "Triggered");
+        Debug.Log(collision.name + "Triggered");
         if(collision.CompareTag("PlayerCollider") || collision.CompareTag("enemyCollider"))
         nastavStatus.Invoke(st,collision.gameObject.GetComponent<ingameStatusy>().id);
     }

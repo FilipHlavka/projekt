@@ -40,7 +40,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     public float bonusRychlost;
     public float zaklRychlost;
     public float aktDef;
-    
+    public float rangePom;
     public SphereCollider kolajdr;
     [SerializeField]
     public GameObject RaycastObj;
@@ -85,7 +85,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
         
                                                                                  // pøiøazení dohledu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         kolajdr = gameObject.GetComponent<SphereCollider>();
-        kolajdr.radius = fovAgent.sightRange*1.2f;
+        kolajdr.radius = fovAgent.sightRange * rangePom;
         AktualizujSeznamEnemy();
         
         controller = GameObject.FindGameObjectWithTag("GameController");
