@@ -4,6 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class actuallSouboj : MonoBehaviour
 {
@@ -27,11 +28,19 @@ public class actuallSouboj : MonoBehaviour
     [SerializeField]
     TMP_Text HrcHp;
     [SerializeField]
+    Slider HrcHpSlider;
+    [SerializeField]
     TMP_Text HrcSH;
+    [SerializeField]
+    Slider HrcSHSlider;
     [SerializeField]
     TMP_Text EnmHp;
     [SerializeField]
+    Slider EnmHpSlider;
+    [SerializeField]
     TMP_Text EnmSh;
+    [SerializeField]
+    Slider EnmShSlider;
     [SerializeField]
     TMP_Text Log;
     string zpoznenejText;
@@ -64,12 +73,19 @@ public class actuallSouboj : MonoBehaviour
     }
     public void Pridej()
     {
-       
+      
         hracDt = boj.hracDt;
+        hracDt.def = (int)Mathf.Round(boj.hracDt.def);
+        hracDt.zivoty = (int)Mathf.Round(boj.hracDt.def);
         enemyVSouboji = boj.enemyVSouboji;
+        enemyVSouboji.zivoty = (int)Mathf.Round(boj.enemyVSouboji.zivoty);
+        enemyVSouboji.def = (int)Mathf.Round(boj.enemyVSouboji.def);
         maxZivoty = hracDt.zivoty;
         maxDef = (int)hracDt.def;
-
+        HrcHpSlider.maxValue = maxZivoty;
+        HrcSHSlider.maxValue = maxDef;
+        EnmHpSlider.maxValue = enemyVSouboji.zivoty;
+        EnmShSlider.maxValue = enemyVSouboji.def;
         aktUI();
         
         if (enemyVSouboji.jeNaTahu)
@@ -84,6 +100,11 @@ public class actuallSouboj : MonoBehaviour
         HrcSH.text = hracDt.def + " SH";
         EnmHp.text = enemyVSouboji.zivoty + " HP ";
         EnmSh.text = enemyVSouboji.def + " SH";
+
+        HrcHpSlider.value = hracDt.zivoty;
+        HrcSHSlider.value = hracDt.def;
+        EnmHpSlider.value = enemyVSouboji.zivoty;
+        EnmShSlider.value = enemyVSouboji.def;
 
     }
 
@@ -305,6 +326,7 @@ public class actuallSouboj : MonoBehaviour
     public void BranSe()
     {
         hracDt.def += 5;
+        HrcSHSlider.maxValue += 5;
         enemyVSouboji.jeNaTahu = true;
         Debug.Log("hryc defence" + hracDt.def);
         aktUI();
@@ -365,6 +387,7 @@ public class actuallSouboj : MonoBehaviour
     public void BranSeEnemy()
     {
         enemyVSouboji.def += 5;
+        EnmShSlider.maxValue += 5;
         aktUI();
 
 

@@ -203,9 +203,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1038,9 +1038,13 @@ MonoBehaviour:
       m_Calls: []
   vyhraEnemy: 0
   HrcHp: {fileID: 1962159398}
+  HrcHpSlider: {fileID: 942389204}
   HrcSH: {fileID: 1544589996}
+  HrcSHSlider: {fileID: 1221061850}
   EnmHp: {fileID: 102137480}
+  EnmHpSlider: {fileID: 1254227439}
   EnmSh: {fileID: 1470159144}
+  EnmShSlider: {fileID: 64965910}
   Log: {fileID: 760958231}
 --- !u!114 &602705627
 MonoBehaviour:
@@ -2061,9 +2065,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

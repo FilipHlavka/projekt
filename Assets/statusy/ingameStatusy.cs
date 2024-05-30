@@ -34,7 +34,7 @@ public class ingameStatusy : MonoBehaviour
     bool pom = false;
     public int zaklRange;
     bool videt = false;
-    bool pomVidet = false;
+   // bool pomVidet = false;
     FOVAgent fovAgent;
     [SerializeField]
     GameObject particles;
@@ -46,11 +46,13 @@ public class ingameStatusy : MonoBehaviour
     {
         id = vyhra.instance.dejId();
         canvas.SetActive(true);
+       // particles.SetActive(true);
         if (enemy)
         {
             canvas.SetActive(true);
+            particles.SetActive(true);
             canvas.SetActive(false);
-
+            particles.SetActive(false);
         }
 
         if (akceProStatus.nastavStatus != null)
