@@ -124,13 +124,13 @@ public class pohybEnemy : MonoBehaviour
     
     private void Delej()
     {
-           //Debug.Log(vidiHrace);
-        Vector3 dir = playerTf.position - transform.position;
+           Debug.Log(vidiHrace);
+        Vector3 dir = new Vector3(playerTf.position.x,playerTf.position.y,playerTf.position.z) - transform.position;
         LayerMask ignore = LayerMask.GetMask("player","Water");
         if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
         {
-            Debug.DrawRay(raycastObj.transform.position, dir.normalized * hit.distance, Color.blue);
-            // Debug.Log("aaa");
+            Debug.DrawRay(raycastObj.transform.position, dir, Color.blue);
+             Debug.Log(hit.collider.gameObject.name);
             vidiHrace = !hit.collider.CompareTag("hora");
         }
         else

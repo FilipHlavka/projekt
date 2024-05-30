@@ -3,6 +3,7 @@ using FOVMapping;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -25,7 +26,6 @@ public class ingameStatusy : MonoBehaviour
     zakl hrac;
     [SerializeField]
     GameObject canvas;
-    Transform maska;
     List<GameObject> objekty = new List<GameObject>();
     bool speedByl = false;
     bool rangeByl = false;
@@ -36,6 +36,8 @@ public class ingameStatusy : MonoBehaviour
     bool videt = false;
     bool pomVidet = false;
     FOVAgent fovAgent;
+    [SerializeField]
+    GameObject particles;
     float rangePom;
     public int id;
 
@@ -69,7 +71,8 @@ public class ingameStatusy : MonoBehaviour
         }
         else
         {
-            hrac = GameObject.FindGameObjectWithTag("Player").GetComponent<zakl>();
+            
+            hrac = gameObject.GetComponentInParent<zakl>();
             fovAgent = hrac.fovAgent;
             rangePom = hrac.rangePom;
             zakRange = hrac.dosah;
@@ -83,16 +86,20 @@ public class ingameStatusy : MonoBehaviour
         if(ID == id)
         {
             videt = co;
+
         }
         if (videt)
         {
+
             canvas.SetActive(true);
-            pomVidet = true;
+            particles.SetActive(true);
+            //pomVidet = true;
         }
-        if (!videt && pomVidet)
+        if (!videt)
         {
             canvas.SetActive(false);
-            pomVidet = false;
+            particles.SetActive(false);
+            //pomVidet = false;
         }
     }
 
@@ -113,7 +120,7 @@ public class ingameStatusy : MonoBehaviour
                 
                 PridejStatus(st); // ostatni
             }
-            else
+            else 
             {
                  hracCont();
                  PridejStatus(st);
@@ -160,7 +167,7 @@ public class ingameStatusy : MonoBehaviour
                 speedByl = true;
                 UdelejObr("speedDeBuff");
             }
-            else
+            else 
             {
                 hrac.agent.speed = Rychlost + hrac.bonusRychlost;
                 OdstranObr(speedByl);
@@ -348,7 +355,10 @@ public class ingameStatusy : MonoBehaviour
         }
        //Debug.Log(hrac.dosah);
     }
-    
+
+   
+
+
 }
 #region enumy
 public enum Stat

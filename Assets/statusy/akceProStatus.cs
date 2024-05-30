@@ -7,6 +7,7 @@ public class akceProStatus : MonoBehaviour
 {
     Staty st;
     public static UnityEvent<Staty,int> nastavStatus;
+   
     
     // Start is called before the first frame update
     void Awake()
@@ -14,18 +15,27 @@ public class akceProStatus : MonoBehaviour
         if (nastavStatus == null)
             nastavStatus = new UnityEvent<Staty, int>();
         st = gameObject.GetComponent<Staty>();
+
+        
+        
         //Debug.Log("aaaaaaaaaaa");
+    }
+    private void Start()
+    {
+       
     }
     private void OnTriggerEnter(Collider collision)
     {
+      
+            Debug.Log(collision.name + "Triggered");
+            if (collision.CompareTag("PlayerCollider") || collision.CompareTag("enemyCollider"))
+                nastavStatus.Invoke(st, collision.gameObject.GetComponent<ingameStatusy>().id);
         
-        Debug.Log(collision.name + "Triggered");
-        if(collision.CompareTag("PlayerCollider") || collision.CompareTag("enemyCollider"))
-        nastavStatus.Invoke(st,collision.gameObject.GetComponent<ingameStatusy>().id);
+        
     }
     private void OnTriggerExit(Collider collision)
     {
-        
+      
         Staty sta = new Staty();
         sta.druh = Stat.nic;
         sta.druhSpeed = Speed.nic;
@@ -39,4 +49,5 @@ public class akceProStatus : MonoBehaviour
     {
         
     }
+   
 }

@@ -4469,7 +4469,7 @@ GameObject:
   - component: {fileID: 6902471978352505932}
   - component: {fileID: 4074798160113317261}
   - component: {fileID: 7364761998686454576}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: collider
   m_TagString: PlayerCollider
   m_Icon: {fileID: 0}
@@ -4485,7 +4485,7 @@ Transform:
   m_GameObject: {fileID: 3083728594344849190}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17307693, y: 1.6393442, z: 0}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0}
   m_LocalScale: {x: 1.6346153, y: 1.6346153, z: 1.6346153}
   m_ConstrainProportionsScale: 1
   m_Children: []

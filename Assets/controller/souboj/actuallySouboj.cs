@@ -25,9 +25,13 @@ public class actuallSouboj : MonoBehaviour
     int maxDef;
 
     [SerializeField]
-    TMP_Text Hrctext;
+    TMP_Text HrcHp;
     [SerializeField]
-    TMP_Text EnmText;
+    TMP_Text HrcSH;
+    [SerializeField]
+    TMP_Text EnmHp;
+    [SerializeField]
+    TMP_Text EnmSh;
     [SerializeField]
     TMP_Text Log;
     string zpoznenejText;
@@ -65,15 +69,25 @@ public class actuallSouboj : MonoBehaviour
         enemyVSouboji = boj.enemyVSouboji;
         maxZivoty = hracDt.zivoty;
         maxDef = (int)hracDt.def;
-        EnmText.text = enemyVSouboji.zivoty + " životù " + enemyVSouboji.def + " štítù";
-        Hrctext.text = hracDt.zivoty + " životù " + hracDt.def + " štítù";
+
+        aktUI();
+        
         if (enemyVSouboji.jeNaTahu)
         {
             EnemyBoj();
         }
 
     }
-    
+    void aktUI()
+    {
+        HrcHp.text = hracDt.zivoty + " HP ";
+        HrcSH.text = hracDt.def + " SH";
+        EnmHp.text = enemyVSouboji.zivoty + " HP ";
+        EnmSh.text = enemyVSouboji.def + " SH";
+
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -138,8 +152,7 @@ public class actuallSouboj : MonoBehaviour
         else
             enemyVSouboji.def -= (hracDt.atk/3 * hracAtkMulti);
 
-        // Debug.Log(enemyVSouboji.zivoty + " " + enemyVSouboji.def + "enemy");
-        EnmText.text = enemyVSouboji.zivoty + " životù " + enemyVSouboji.def + " štítù";
+        aktUI();
         doba--;
         if(doba <= 0)
         {
@@ -197,7 +210,7 @@ public class actuallSouboj : MonoBehaviour
         if (maxZivoty <= hracDt.zivoty)
             hracDt.zivoty = maxZivoty;
 
-        Hrctext.text = hracDt.zivoty + " životù " + hracDt.def+" štítù";
+        aktUI();
 
         if (idk)
         {
@@ -224,7 +237,7 @@ public class actuallSouboj : MonoBehaviour
             Log.text = "útok hráè" + "\n" + zpoznenejText;
             zpoznenejText = "útok hráè";
             Debug.Log(enemyVSouboji.zivoty + " " + enemyVSouboji.def + "enemy");
-            EnmText.text = enemyVSouboji.zivoty + " životù " + enemyVSouboji.def + " štítù";
+            aktUI();
             muzu = true;
 
         }
@@ -294,7 +307,8 @@ public class actuallSouboj : MonoBehaviour
         hracDt.def += 5;
         enemyVSouboji.jeNaTahu = true;
         Debug.Log("hryc defence" + hracDt.def);
-        Hrctext.text = hracDt.zivoty + " životù " + hracDt.def + " štítù";
+        aktUI();
+
     }
     public void ZvisAtk()
     {
@@ -328,7 +342,8 @@ public class actuallSouboj : MonoBehaviour
         {
             UtocEnemy();
             Debug.Log(hracDt.zivoty + " " + hracDt.def + "hraè");
-            Hrctext.text = hracDt.zivoty + " životù " + hracDt.def + " štítù";
+            aktUI();
+
             Debug.Log("útok");
             Log.text = "Enemy útok" + "\n" + zpoznenejText;
             zpoznenejText = "Enemy útok";
@@ -350,7 +365,8 @@ public class actuallSouboj : MonoBehaviour
     public void BranSeEnemy()
     {
         enemyVSouboji.def += 5;
-        EnmText.text = enemyVSouboji.zivoty + " životù " + enemyVSouboji.def + " štítù";
+        aktUI();
+
 
     }
     public void ZvisAtkEnemy()
