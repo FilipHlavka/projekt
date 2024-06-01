@@ -14,8 +14,7 @@ public class Nuke : ZaklSchopnost
             Destroy(go);
             EnemyRespawn.instance.spawnuj = false;
         }
-        LineRenderer line = GameObject.FindGameObjectWithTag("line").GetComponent<LineRenderer>();
-        line.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
+       
         pauza.funguj = false;
     }
     private void OnDestroy()

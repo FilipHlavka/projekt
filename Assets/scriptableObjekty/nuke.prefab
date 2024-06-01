@@ -9864,6 +9864,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sys: {fileID: 1975643043707555078}
+  pust: 1
+  rozsirO: 1
+  rychlost: 0
 --- !u!114 &6246799344389728986
 MonoBehaviour:
   m_ObjectHideFlags: 0

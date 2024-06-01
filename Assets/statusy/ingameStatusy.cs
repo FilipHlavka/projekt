@@ -338,6 +338,8 @@ public class ingameStatusy : MonoBehaviour
     {
         if (stav == Stat.high)
         {
+            ukazZarovku.instance.sviti = false;
+
             hrac.dosah = hrac.dosah * 1.5f;
             UdelejObr("terc");
             rangeByl = true;
@@ -345,12 +347,15 @@ public class ingameStatusy : MonoBehaviour
 
         } else if (stav == Stat.low)
         {
+            ukazZarovku.instance.sviti = false;
             hrac.dosah = hrac.dosah * 0.75f;
             UdelejObr("neterc");
             rangeByl = true;
         }
         else
         {
+            ukazZarovku.instance.sviti = false;
+
             hrac.dosah = zakRange;
             OdstranObr(rangeByl);
             rangeByl = false;

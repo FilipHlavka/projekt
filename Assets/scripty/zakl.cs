@@ -35,7 +35,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     public string nameHr;
     //public Vector3 pozice;
     //public Vector3 rotace;
-    LineRenderer lineRenderer;
+    
     GameObject controller;
     public float bonusRychlost;
     public float zaklRychlost;
@@ -44,6 +44,8 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     public SphereCollider kolajdr;
     [SerializeField]
     public GameObject RaycastObj;
+    public List<Vector3> poziceLineRendereru;
+    int vEnemy;
     
     public void Awake()
     {
@@ -52,16 +54,12 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
        
         dosah = (float)(range / 3.5);
 
-        lineRenderer = GameObject.FindWithTag("line").GetComponent<LineRenderer>() ;
        
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
+       
     }
 
     public virtual void Start()
     {
-        lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
-        lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
         if (!cont.prvniInstance)
         {
             Destroy(gameObject);
@@ -76,7 +74,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     private void Zacni()
     {
         //FOVManager.instance.FindAllFOVAgents();
-        Invoke("resetLineRenderer", 0.1f);
+       // Invoke("resetLineRenderer", 0.1f);
         if (utoc == null)
             utoc = new UnityEvent<bool,GameObject>();
 
@@ -119,15 +117,12 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
 
     public virtual void Update()
     {
+       
 
-        
+
         if (!stuj)
                 Raycastuj();
-            else
-            {
-            lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
-            lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
-            }
+          
            
         //updatePozice();
         
@@ -137,14 +132,16 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     protected void Raycastuj()
     {
         
-           
-            foreach (GameObject enemy in enemies)
-            {
+
+
+        foreach (GameObject enemy in enemies)
+        {
                 if (enemy != null)
                 {
                 if (Vector3.Distance(transform.position, enemy.transform.position) < range / 3)
                 {
 
+                    
 
 
                     bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - RaycastObj.transform.position, out RaycastHit hitRay, dosah, maskaPrekazka);
@@ -156,11 +153,15 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
                     {
                         Debug.Log(hitRay.collider.name + " " + hitRay.collider.tag);
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
-                        lineRenderer.SetPositions(new Vector3[] { RaycastObj.transform.position, enemy.transform.position });
+
+                        ukazZarovku.instance.sviti = true;
+                       
+                    
+                       
 
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
-                            if (blbost == 0)
+                           if (blbost == 0)
                                 utoc.Invoke(false, enemy);
 
                             blbost++;
@@ -169,23 +170,27 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
                     }
                     else
                     {
-                        lineRenderer.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
+                      
+                        ukazZarovku.instance.sviti = false;
+                        //resetLineRenderer();
 
                     }
 
+                    
                 }
-                
+               
+                      
+                    
                 }
+          
 
-            }
+        }
 
         
     }
-    void resetLineRenderer()
-    {
-        lineRenderer.SetPositions(new Vector3[] { Vector3.zero, Vector3.zero });
-        Debug.Log("reset");
-    }
+    
+
+    
 
     public void TakeDamage(int dmg)
     {

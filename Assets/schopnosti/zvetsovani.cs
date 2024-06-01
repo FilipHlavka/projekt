@@ -6,15 +6,21 @@ public class zvetsovani : MonoBehaviour
 {
     [SerializeField]
     ParticleSystem sys;
+    [SerializeField]
+    float pust;
+    [SerializeField]
+    float rozsirO;
+    [SerializeField]
+    float rychlost;
 
     private void Start()
     {
         //sys.shape.radius
-        Invoke("pockej",1);
+        Invoke("pockej",pust);
     }
     private void Update()
     {
-        
+       
     }
     private void pockej()
     {
@@ -27,7 +33,7 @@ public class zvetsovani : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
             var tvar = sys.shape;
-            tvar.radius += 1f;
+            tvar.radius += rozsirO;
            
         }
         

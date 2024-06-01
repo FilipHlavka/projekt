@@ -66,13 +66,11 @@ public class Container : MonoBehaviour
             {
                 enemyData.Add(enemyComponent);
             }
-            else if(enemyObject.TryGetComponent<zakl>(out var hracComponent))
-            {
-                hracData = hracComponent;
-            }
+           
         }
-
-        if(hracData != null)
+        hracData = hrac.GetComponent<zakl>();
+        Debug.Log(hrac);
+        if (hracData != null)
         {
             
             ukl.zivoty = hracData.Zivoty;

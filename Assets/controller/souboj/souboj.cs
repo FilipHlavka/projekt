@@ -18,10 +18,14 @@ public class soubojSceneController : MonoBehaviour
     public float timer = 0;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        NactiJson();
+
+    }
     void Start()
     {
         mngr = ingamemanager.instance;
-        NactiJson();
        // Debug.Log(BudovaCont.poziceZnicenychBudov.Count() + " to je ten list");
     }
     public void NactiJson()
@@ -36,8 +40,9 @@ public class soubojSceneController : MonoBehaviour
             
             zabal = JsonUtility.FromJson<Zabal>(jsonData);
 
-           
+            Debug.Log(zabal.obj.Count);
             listEnemies = zabal.obj;
+            Debug.Log(listEnemies.Count);
             hracDt = zabal.hrDt;
             sceneJm = zabal.sceneJm;
             timer = zabal.timer;

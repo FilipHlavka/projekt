@@ -63,7 +63,7 @@ public class pohybEnemy : MonoBehaviour
 
         try
         {
-            playerTf = GameObject.FindGameObjectWithTag("Player").transform;
+            playerTf = GameObject.FindGameObjectWithTag("PlayerCollider").transform;
 
         }
         catch
@@ -114,7 +114,7 @@ public class pohybEnemy : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         try
         {
-            playerTf = GameObject.FindGameObjectWithTag("Player").transform;
+            playerTf = GameObject.FindGameObjectWithTag("PlayerCollider").transform;
         }
         catch { Debug.Log("zkouška"); }
         megaPom = true;
@@ -125,8 +125,8 @@ public class pohybEnemy : MonoBehaviour
     private void Delej()
     {
            Debug.Log(vidiHrace);
-        Vector3 dir = new Vector3(playerTf.position.x,playerTf.position.y,playerTf.position.z) - transform.position;
-        LayerMask ignore = LayerMask.GetMask("player","Water");
+        Vector3 dir = playerTf.position - transform.position;
+        LayerMask ignore = LayerMask.GetMask("player","Water","Default");
         if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
         {
             Debug.DrawRay(raycastObj.transform.position, dir, Color.blue);
