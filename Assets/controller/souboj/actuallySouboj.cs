@@ -45,12 +45,17 @@ public class actuallSouboj : MonoBehaviour
     TMP_Text Log;
     string zpoznenejText;
     bool jeZpozden= false;
+    public UnityEvent<bool> pal;
+    bool uzKonci = false;
 
     // Start is called before the first frame update
     void Awake()
     {
         if(vyhraEnemyOtaznik == null) 
             vyhraEnemyOtaznik = new UnityEvent<bool>();
+
+        if (pal == null)
+            pal = new UnityEvent<bool>();
 
 
         boj = gameObject.GetComponent<prirazeniDoBoje>();
@@ -59,11 +64,11 @@ public class actuallSouboj : MonoBehaviour
         Debug.Log(schopnostCislo + "schopnost");
        if(schopnostCislo == 0)
         {
-            Log.text = "schopnost je Bleeding";
+            Log.text = "Your power is Bleeding";
            
         }else if(schopnostCislo == 1)
         {
-            Log.text = "schopnost je Healing";
+            Log.text = "Your power is Healing";
         }
         zpoznenejText = Log.text;
    
@@ -90,7 +95,8 @@ public class actuallSouboj : MonoBehaviour
         
         if (enemyVSouboji.jeNaTahu)
         {
-            EnemyBoj();
+            enemyVSouboji.jeNaTahu = false;
+            Invoke("EnemyBoj",2);
         }
 
     }
@@ -133,13 +139,29 @@ public class actuallSouboj : MonoBehaviour
             else
             {
                 if (enemyVSouboji.zivoty <= 0)
+                {
                     vyhraEnemy = false;
-                else vyhraEnemy = true;
+                    enemyVSouboji.zivoty = 0;
+                    aktUI();
+                }
+                else {
+                    hracDt.zivoty = 0;
+                    aktUI();
+                    vyhraEnemy = true;
+                } 
 
                 konec = true;
-                vyhraEnemyOtaznik.Invoke(vyhraEnemy);
+                if(!uzKonci)
+                Invoke("zkonci",2);
+                uzKonci = true;
             }
         }
+    }
+
+    public void zkonci()
+    {
+        Log.text = "";
+        vyhraEnemyOtaznik.Invoke(vyhraEnemy);
     }
 
     IEnumerator Enmy()
@@ -255,10 +277,11 @@ public class actuallSouboj : MonoBehaviour
         {
             Utoc();
             Debug.Log("útok hráè");
-            Log.text = "útok hráè" + "\n" + zpoznenejText;
-            zpoznenejText = "útok hráè";
+            Log.text = "Player attack" + "\n" + zpoznenejText;
+            zpoznenejText = "Player attack";
             Debug.Log(enemyVSouboji.zivoty + " " + enemyVSouboji.def + "enemy");
             aktUI();
+            pal.Invoke(false);
             muzu = true;
 
         }
@@ -272,8 +295,8 @@ public class actuallSouboj : MonoBehaviour
         {
             BranSe();
             Debug.Log("Defense hráè");
-            Log.text = "Defense hráè" + "\n" + zpoznenejText;
-            zpoznenejText = "Defense hráè";
+            Log.text = "Player defense" + "\n" + zpoznenejText;
+            zpoznenejText = "Player defense";
             muzu = true;
 
         }
@@ -281,8 +304,8 @@ public class actuallSouboj : MonoBehaviour
         {
             ZvisAtk();
             Debug.Log("buff hráè");
-            Log.text = "buff hráè" + "\n" + zpoznenejText;
-            zpoznenejText = "buff hráè";
+            Log.text = "Player buff" + "\n" + zpoznenejText;
+            zpoznenejText = "Player buff";
             muzu = true;
 
         }
@@ -295,8 +318,8 @@ public class actuallSouboj : MonoBehaviour
             aktSchopnost = true;
             doba = Random.Range(1, 4);
             Debug.Log("POWER" + doba);
-            Log.text = "Schopnost na " +doba+" kol"+ "\n" + zpoznenejText;
-            zpoznenejText = "Schopnost na " + doba + " tah(y)";
+            Log.text = "Power for " +doba+" round(s)"+ "\n" + zpoznenejText;
+            zpoznenejText = "Power for " + doba + " round(s)";
             muzu = true;
 
             enemyVSouboji.jeNaTahu = true;
@@ -365,10 +388,10 @@ public class actuallSouboj : MonoBehaviour
             UtocEnemy();
             Debug.Log(hracDt.zivoty + " " + hracDt.def + "hraè");
             aktUI();
-
+            pal.Invoke(true);
             Debug.Log("útok");
-            Log.text = "Enemy útok" + "\n" + zpoznenejText;
-            zpoznenejText = "Enemy útok";
+            Log.text = "Enemy attack" + "\n" + zpoznenejText;
+            zpoznenejText = "Enemy attack";
         }
         enemyVSouboji.jeNaTahu = false;
     }

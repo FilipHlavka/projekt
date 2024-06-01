@@ -58,7 +58,7 @@ public class prirazeniDoBoje : MonoBehaviour
 
     public void konecBoje(bool vyhraEnemy)
     {
-        canvas.SetActive(true);
+       canvas.SetActive(true);
         
         if (vyhraEnemy)
         {
@@ -100,7 +100,8 @@ public class prirazeniDoBoje : MonoBehaviour
         {
             if(m.nazev == enemyVSouboji.nazev)
             {
-                Instantiate(m,enemyObjekt.transform);
+               model modelEnemy = Instantiate(m,enemyObjekt.transform);
+                actSouboj.pal.AddListener(modelEnemy.Vystrel);
             }
         }
        
@@ -115,7 +116,8 @@ public class prirazeniDoBoje : MonoBehaviour
         {
             if (m.nazev == hracDt.nazev)
             {
-                Instantiate(m, hracObjekt.transform);
+               model modelHrac = Instantiate(m, hracObjekt.transform);
+                actSouboj.pal.AddListener(modelHrac.Vystrel);
             }
         }
         j = 0;

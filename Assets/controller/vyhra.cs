@@ -34,6 +34,10 @@ public class vyhra : MonoBehaviour
                 Zivoty.instance.aktText();
                 Debug.Log("ejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtuejtu");
             }
+            else
+            {
+                pocetZivotu = 2;
+            }
 
         }
         catch

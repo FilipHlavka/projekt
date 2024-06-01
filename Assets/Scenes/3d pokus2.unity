@@ -1111,7 +1111,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   nacitani: {fileID: 0}
-  mapa: France
+  mapa: Testovaci
   hrci: {fileID: 11400000, guid: 74946ef94c6b6a247a23b041f91b34bc, type: 2}
   enmci: {fileID: 11400000, guid: 0290dceaeb9270a4094c4ad0cfeb703e, type: 2}
 --- !u!4 &532382458
@@ -1335,7 +1335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4249338741251280, guid: bae0c81228594264491543e5f01ed894, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.861437
+      value: -12.89
       objectReference: {fileID: 0}
     - target: {fileID: 4249338741251280, guid: bae0c81228594264491543e5f01ed894, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1593,7 +1593,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2056
+  m_Name: pb_Mesh-128306
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1942,7 +1942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8791897316280787259, guid: 549e5443759766f4a897e875c27dd51b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 5.1
       objectReference: {fileID: 0}
     - target: {fileID: 8791897316280787259, guid: 549e5443759766f4a897e875c27dd51b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2110,7 +2110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4622160191236889166, guid: debccda84dcc5fe46812d9db0dc87c4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.16
+      value: 33.46
       objectReference: {fileID: 0}
     - target: {fileID: 4622160191236889166, guid: debccda84dcc5fe46812d9db0dc87c4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2118,7 +2118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4622160191236889166, guid: debccda84dcc5fe46812d9db0dc87c4e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.84
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 4622160191236889166, guid: debccda84dcc5fe46812d9db0dc87c4e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2394,13 +2394,13 @@ MonoBehaviour:
           m_StringArgument: mapy
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ingamemanager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 532382452}
+        m_TargetAssemblyTypeName: pauza, Assembly-CSharp
+        m_MethodName: Nepauza
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3459,7 +3459,7 @@ Transform:
   m_GameObject: {fileID: 1354258713}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.2, z: 8.87}
+  m_LocalPosition: {x: -10.78, y: -4, z: 25.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3490,7 +3490,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1462
+  m_Name: pb_Mesh-42330
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3729,7 +3729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8791897316280787259, guid: 549e5443759766f4a897e875c27dd51b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.000025
+      value: -24.2
       objectReference: {fileID: 0}
     - target: {fileID: 8791897316280787259, guid: 549e5443759766f4a897e875c27dd51b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3737,7 +3737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8791897316280787259, guid: 549e5443759766f4a897e875c27dd51b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 8791897316280787259, guid: 549e5443759766f4a897e875c27dd51b, type: 3}
       propertyPath: m_LocalRotation.w

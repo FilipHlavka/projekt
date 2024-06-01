@@ -17,6 +17,13 @@ public class FakeLoading : MonoBehaviour
 
     private void Start()
     {
+        if (pauza.funguj != null)
+        {
+            pauza.funguj = true;
+
+        }
+
+        Time.timeScale = 1f;
         StartCoroutine(FakeLoadingCoroutine());
       
     }
@@ -30,14 +37,21 @@ public class FakeLoading : MonoBehaviour
 
         while (doba < dobaTrvani)
         {
-
+           
             if (!cekej)
             {
+                
+
                 doba += Time.deltaTime;
                 text.text = "Loading... " + Mathf.FloorToInt((doba / dobaTrvani) * 100) + "%";
                 sl.value = Mathf.FloorToInt((doba / dobaTrvani) * 100);
                 if (Random.Range(0, 501) % 500 == 0)
+                {
+                    cekej = true;
+
                     StartCoroutine(pockej());
+
+                }
             }
             
              yield return null;
@@ -50,8 +64,9 @@ public class FakeLoading : MonoBehaviour
 
     private IEnumerator pockej()
     {
-            cekej = true;
-            yield return new WaitForSeconds(Random.Range(1,3));
+        Debug.Log("co se to dìje");
+        yield return new WaitForSeconds(Random.Range(1,3));
+           
             cekej = false;
     }
 }
