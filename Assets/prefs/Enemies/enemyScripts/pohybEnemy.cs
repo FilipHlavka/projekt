@@ -124,13 +124,15 @@ public class pohybEnemy : MonoBehaviour
     
     private void Delej()
     {
-           Debug.Log(vidiHrace);
-        Vector3 dir = playerTf.position - transform.position;
-        LayerMask ignore = LayerMask.GetMask("player","Water","Default","UI");
-        if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Mathf.Infinity, ~ignore))
+        Debug.Log("nee" + playerTf.position);
+        Debug.Log(vidiHrace);
+        Vector3 dir = playerTf.position - raycastObj.transform.position;
+        LayerMask ignore = LayerMask.GetMask("player","Water","Default","UI","enemy");
+        if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Vector3.Distance(playerTf.position, raycastObj.transform.position), ~ignore))
         {
             Debug.DrawRay(raycastObj.transform.position, dir, Color.blue);
              Debug.Log(hit.collider.gameObject.name);
+            Debug.Log(hit.point);
             vidiHrace = !hit.collider.CompareTag("hora");
         }
         else
@@ -143,7 +145,7 @@ public class pohybEnemy : MonoBehaviour
         {
            
             
-                agent.isStopped = true;
+               // agent.isStopped = true;
                 utoc.Invoke(true, gameObject);
                 pomNaNeco = false;
             
@@ -153,11 +155,11 @@ public class pohybEnemy : MonoBehaviour
         }
         else if(Vector3.Distance(transform.position, playerTf.position) <= dosahDetekce)
         {
-            
 
             if (vidiHrace)
             {
                 agent.isStopped = false;
+               
 
                 agent.SetDestination(playerTf.position);
             }

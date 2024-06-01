@@ -151,7 +151,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
                    
                     if (hit && hitRay.collider != null && (hitRay.collider.CompareTag("enemy") || hitRay.collider.CompareTag("enemyCollider")))
                     {
-                        Debug.Log(hitRay.collider.name + " " + hitRay.collider.tag);
+                       // Debug.Log(hitRay.collider.name + " " + hitRay.collider.tag);
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
 
                         ukazZarovku.instance.sviti = true;

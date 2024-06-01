@@ -786,7 +786,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 4.2046137
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -841,6 +841,7 @@ MonoBehaviour:
   rangePom: 1.5
   kolajdr: {fileID: 6902471978352505932}
   RaycastObj: {fileID: 9033412374239098735}
+  poziceLineRendereru: []
   vybuch: {fileID: 0}
 --- !u!135 &2982990323787269358
 SphereCollider:
