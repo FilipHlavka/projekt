@@ -131,8 +131,8 @@ public class pohybEnemy : MonoBehaviour
         if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Vector3.Distance(playerTf.position, raycastObj.transform.position), ~ignore))
         {
             Debug.DrawRay(raycastObj.transform.position, dir, Color.blue);
-             Debug.Log(hit.collider.gameObject.name);
-            Debug.Log(hit.point);
+           /*  Debug.Log(hit.collider.gameObject.name);
+            Debug.Log(hit.point);*/
             vidiHrace = !hit.collider.CompareTag("hora");
         }
         else

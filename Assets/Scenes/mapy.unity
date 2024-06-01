@@ -1801,6 +1801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - {fileID: 434267372}
+  - {fileID: 1063120477}
   Mapa: 
 --- !u!1 &1168340167
 GameObject:
