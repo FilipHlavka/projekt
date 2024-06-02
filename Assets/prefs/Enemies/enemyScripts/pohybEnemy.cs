@@ -124,8 +124,8 @@ public class pohybEnemy : MonoBehaviour
     
     private void Delej()
     {
-        Debug.Log("nee" + playerTf.position);
-        Debug.Log(vidiHrace);
+       // Debug.Log("nee" + playerTf.position);
+        //Debug.Log(vidiHrace);
         Vector3 dir = playerTf.position - raycastObj.transform.position;
         LayerMask ignore = LayerMask.GetMask("player","Water","Default","UI","enemy");
         if (Physics.Raycast(raycastObj.transform.position, dir, out RaycastHit hit, Vector3.Distance(playerTf.position, raycastObj.transform.position), ~ignore))

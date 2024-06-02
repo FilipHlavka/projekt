@@ -26,18 +26,17 @@ public class kamPohyb3d : MonoBehaviour
     Transform dal;
     Vector3 smer;
     Vector3 normVector;
-    /*float a;
-    float b;
-    float c;
-    float a2;
-    float b2;
-    float c2;*/
+    [SerializeField]
+    GameObject bod1;
+    [SerializeField]
+    GameObject bod2;
     Quaternion otoc;
+    [SerializeField]
+    GameObject spawnPoint;
   
     void Start()
     {
-
-       // bod = gameObject.GetComponent<Transform>();
+        // bod = gameObject.GetComponent<Transform>();
         
     }
     public void Zastav()
@@ -58,100 +57,136 @@ public class kamPohyb3d : MonoBehaviour
     private void HniSe()
     {
         
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
-        {
-            float je = Input.GetAxis("Mouse ScrollWheel");
-            if (je > 0)
+       
+            if (Input.GetAxis("Mouse ScrollWheel") != 0)
             {
-                smer = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                
-                cam.transform.position -= smer * speed * Time.deltaTime * 5;
-            }
-            if (je < 0)
-            {
-                smer = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                if (Vector3.Distance(transform.position, cam.transform.position) < 50)
-                    cam.transform.position += smer * speed * Time.deltaTime * 5;
-            }
+                float je = Input.GetAxis("Mouse ScrollWheel");
+                if (je > 0)
+                {
+                    smer = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-
-            if (zoom)
-            {
-                zoom = false;
-                cam.orthographicSize = 10;
-                /*movex = org.position.x;
-                movey = org.position.y;*/
-                speed = speed / 3;
+                    cam.transform.position -= smer * speed * Time.deltaTime * 5;
+                }
+                if (je < 0)
+                {
+                    smer = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    if (Vector3.Distance(transform.position, cam.transform.position) < 50)
+                        cam.transform.position += smer * speed * Time.deltaTime * 5;
+                }
 
             }
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+
+                if (zoom)
+                {
+                    zoom = false;
+                    cam.orthographicSize = 10;
+                    /*movex = org.position.x;
+                    movey = org.position.y;*/
+                    speed = speed / 3;
+
+                }
+                else
+                {
+                    cam.orthographicSize = 50;
+                    speed = speed * 3;
+                    zoom = true;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+
+                normVector = Vector3.Cross(
+                    new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z),
+                    new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
+                    );
+                if(!((transform.position - normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x < bod1.transform.position.x) &&
+                    !((transform.position + normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x > bod2.transform.position.x) &&
+                    !((transform.position - smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z < bod1.transform.position.z) &&
+                    !((transform.position + smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z > bod2.transform.position.z))
+                transform.position -= normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
+                else
+                {
+                transform.position = new Vector3(spawnPoint.transform.position.x,-4,spawnPoint.transform.position.z);
+                }
+
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+
+
+                normVector = Vector3.Cross(
+                    new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z),
+                    new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
+                    );
+
+
+            if (!((transform.position - normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x < bod1.transform.position.x) &&
+                !((transform.position + normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x > bod2.transform.position.x) &&
+                    !((transform.position - smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z < bod1.transform.position.z) &&
+                    !((transform.position + smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z > bod2.transform.position.z))
+                transform.position += normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
             else
             {
-                cam.orthographicSize = 50;
-                speed = speed * 3;
-                zoom = true;
+                transform.position = new Vector3(spawnPoint.transform.position.x, -4, spawnPoint.transform.position.z);
             }
-        }
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
 
-        if (Input.GetKey(KeyCode.A))
-        {
+                smer = new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
+                if(!((transform.position - normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x < bod1.transform.position.x) &&
+                !((transform.position + normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x > bod2.transform.position.x) &&
+                    !((transform.position - smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z < bod1.transform.position.z) &&
+                    !((transform.position + smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z > bod2.transform.position.z))
+                transform.position -= smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10);
+            else
+            {
+                transform.position = new Vector3(spawnPoint.transform.position.x, -4, spawnPoint.transform.position.z);
+            }
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                smer = new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
 
-            normVector = Vector3.Cross(
-                new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z),
-                new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
-                );
-            
-            transform.position -= normVector * (speed - 1) * Time.deltaTime /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
-
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-
-
-            normVector = Vector3.Cross(
-                new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z),
-                new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z)
-                );
-
-            transform.position += normVector * (speed -1) * Time.deltaTime  /9 / (Vector3.Distance(transform.position, cam.transform.position) / 40);
-
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-
-            smer = new Vector3(cam.transform.position.x, 0, cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-            transform.position -= smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position)/10);
-
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            smer = new Vector3(cam.transform.position.x,0,cam.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z);
-            transform.position += smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position)/10 );
+                if (!((transform.position - normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x < bod1.transform.position.x) &&
+                !((transform.position + normVector * (speed - 1) * Time.deltaTime / 9 / (Vector3.Distance(transform.position, cam.transform.position) / 40)).x > bod2.transform.position.x) &&
+                !((transform.position - smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z < bod1.transform.position.z) &&
+                !((transform.position + smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10)).z > bod2.transform.position.z))
+                transform.position += smer * speed * Time.deltaTime * 9 / (Vector3.Distance(transform.position, cam.transform.position) / 10);
+                else
+                {
+                transform.position = new Vector3(spawnPoint.transform.position.x, -4, spawnPoint.transform.position.z);
+                }
         }
 
 
-       
-
-        if (Input.GetKey(KeyCode.Q))
-        {
-            otoc =  Quaternion.Euler(0f, -speed * Time.deltaTime * 20, 0f);
-            transform.rotation *= otoc;
-                
-           
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            otoc = Quaternion.Euler(0f, speed * Time.deltaTime * 20, 0f);
-            transform.rotation *= otoc;
 
 
-        }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                otoc = Quaternion.Euler(0f, -speed * Time.deltaTime * 20, 0f);
+                transform.rotation *= otoc;
 
-    
+
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                otoc = Quaternion.Euler(0f, speed * Time.deltaTime * 20, 0f);
+                transform.rotation *= otoc;
 
 
+            }
     }
+        
+        
+        
+
     
+
+
 }
+    
+

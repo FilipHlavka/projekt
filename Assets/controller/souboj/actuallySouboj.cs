@@ -81,7 +81,7 @@ public class actuallSouboj : MonoBehaviour
       
         hracDt = boj.hracDt;
         hracDt.def = (int)Mathf.Round(boj.hracDt.def);
-        hracDt.zivoty = (int)Mathf.Round(boj.hracDt.def);
+        hracDt.zivoty = (int)Mathf.Round(boj.hracDt.zivoty);
         enemyVSouboji = boj.enemyVSouboji;
         enemyVSouboji.zivoty = (int)Mathf.Round(boj.enemyVSouboji.zivoty);
         enemyVSouboji.def = (int)Mathf.Round(boj.enemyVSouboji.def);

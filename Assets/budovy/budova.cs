@@ -18,16 +18,24 @@ public class budova : MonoBehaviour
     public Slider slider;
     bool inProgress = false;
     protected bool znicenEnemy = false;
+    EnemyRespawn resp;
 
     // BudovaCont bdvCont;
 
     public virtual void Start()
     {
         StartCoroutine(pockej());
+        resp = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemyRespawn>();
+        resp.aktList.AddListener(udelejPockani);
         InvokeRepeating("Checkuj", 2, 2);
         slider = gameObject.GetComponentInChildren<Slider>();
         //StartCoroutine(pockejJeste());
         //slider.maxValue = zivoty;
+    }
+    void udelejPockani()
+    {
+        StartCoroutine(pockej());
+
     }
 
     protected void Checkuj()
@@ -71,7 +79,7 @@ public class budova : MonoBehaviour
     
     public virtual void akt() {  }
 
-    IEnumerator pockej()
+    public IEnumerator pockej()
     {
         inProgress = true;
         yield return new WaitForSeconds(1f);

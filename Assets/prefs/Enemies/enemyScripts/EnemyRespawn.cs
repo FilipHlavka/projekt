@@ -21,9 +21,12 @@ public class EnemyRespawn : MonoBehaviour
     TerrainData data;
     public bool spawnuj = true;
     // Start is called before the first frame update
+    public UnityEvent aktList;
 
     void Awake()
     {
+        if (aktList == null)
+            aktList = new UnityEvent();
         instance = this;
     }
 
@@ -31,7 +34,6 @@ public class EnemyRespawn : MonoBehaviour
     {
         data = SpawnPlocha.terrainData;
         spawnBounds = data.bounds;
-
         StartCoroutine(SpawnCoroutine());
     }
 
@@ -54,10 +56,11 @@ public class EnemyRespawn : MonoBehaviour
         {
             GameObject enemy = Instantiate(
             enemies.enemies[Random.Range(0, enemies.enemies.Count)].enemak.gameObject,
-            new Vector3(x, y, z),
+            fajnPozice,
             Quaternion.Euler(0, Random.Range(0, 360), 0));
             enemyRespawn.Invoke(enemy);
             FOVManager.instance.FindAllFOVAgents();
+            aktList.Invoke();
         }
         else
         {

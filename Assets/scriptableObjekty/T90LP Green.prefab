@@ -826,7 +826,7 @@ MonoBehaviour:
   Def: 30
   range: 60
   Atk: 15
-  Rychlost: 3
+  Rychlost: 4.5
   agent: {fileID: 8166514798071853401}
   fovAgent: {fileID: 7475477522295432866}
   enemies: []

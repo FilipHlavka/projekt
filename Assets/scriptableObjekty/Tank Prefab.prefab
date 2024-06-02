@@ -420,8 +420,8 @@ MonoBehaviour:
   Zivoty: 5
   Def: 15
   range: 80
-  Atk: 40
-  Rychlost: 4
+  Atk: 25
+  Rychlost: 5
   agent: {fileID: 6139387429121063489}
   fovAgent: {fileID: 947775010493027308}
   enemies: []

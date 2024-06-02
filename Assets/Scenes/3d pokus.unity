@@ -2914,9 +2914,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9aa77be8965e994e8ac7e354cf7e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusMaxPP: 0
+  mena: 0
+  stuj: 0
+  Max: 0
+  bonusMax: 0
   poKolika: 5
+  pom: 1
   bonusPoKolika: 0
+  Text: {fileID: 0}
 --- !u!4 &1204123930
 Transform:
   m_ObjectHideFlags: 0
@@ -3664,6 +3669,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849309a28d8c3374eb1b034f586fbc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stuj: 0
+  nenene: 0
+  colliderCounter: 0
+  konec:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1713990202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3697,8 +3708,12 @@ MonoBehaviour:
       atk: 0
       def: 0
       nazev: 
-      pozice: {x: 0, y: 0}
+      pozice: {x: 0, y: 0, z: 0}
+      rotace: {x: 0, y: 0, z: 0}
     sceneJm: 
+    pocetZivotu: 0
+    pocetPointu: 0
+    timer: 0
   listBudov: []
   stav:
     m_PersistentCalls:
@@ -3715,12 +3730,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd05fd39645984e4683b00093f97578d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4219083540486949734, guid: c02a0db22b492774f882d470e029d596, type: 3}
+  enemies: {fileID: 0}
   SpawnPlocha: {fileID: 1576028425}
   enemyRespawn:
     m_PersistentCalls:
       m_Calls: []
+  spawnuj: 1
 --- !u!114 &1713990205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3733,13 +3748,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3587216ac641cb42a3d55e53106614a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
   jednotky:
   - {fileID: 4464040587062689483, guid: 8b6a64d59424a944bbf4446d0ca224ca, type: 3}
   - {fileID: 4464040587062689483, guid: 1408ef2a733fd6546bb8f278a1a3a7e8, type: 3}
   - {fileID: 4464040587062689483, guid: c6de42d8ffb690a4a8882a773112cc00, type: 3}
   - {fileID: 4464040587062689483, guid: edbf293446fd64249805c22b8d75dae2, type: 3}
   panel: {fileID: 1587149912}
+  hrci: {fileID: 0}
+  button: {fileID: 0}
   spawnPoint: {fileID: 452066054}
   kamera: {fileID: 524262461}
 --- !u!114 &1713990206
@@ -3780,22 +3796,12 @@ MonoBehaviour:
       atk: 0
       def: 0
       nazev: 
-      pozice: {x: 0, y: 0}
+      pozice: {x: 0, y: 0, z: 0}
+      rotace: {x: 0, y: 0, z: 0}
     sceneJm: 
-  enemaci:
-  - {fileID: 4219083540486949734, guid: c02a0db22b492774f882d470e029d596, type: 3}
-  hraci:
-  - {fileID: 4464040587062689483, guid: 8b6a64d59424a944bbf4446d0ca224ca, type: 3}
-  - {fileID: 4464040587062689483, guid: edbf293446fd64249805c22b8d75dae2, type: 3}
-  - {fileID: 4464040587062689483, guid: c6de42d8ffb690a4a8882a773112cc00, type: 3}
-  - {fileID: 4464040587062689483, guid: 1408ef2a733fd6546bb8f278a1a3a7e8, type: 3}
-  enemyNames:
-  - zaklenemy
-  playerNames:
-  - zakladniHrac
-  - motor
-  - spg
-  - tank
+    pocetZivotu: 0
+    pocetPointu: 0
+    timer: 0
   Respawn:
     m_PersistentCalls:
       m_Calls: []
@@ -3803,6 +3809,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   nacitani: {fileID: 0}
+  mapa: 
+  hrci: {fileID: 0}
+  enmci: {fileID: 0}
 --- !u!4 &1713990208
 Transform:
   m_ObjectHideFlags: 0
@@ -4259,7 +4268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2043435545
 RectTransform:
   m_ObjectHideFlags: 0

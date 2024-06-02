@@ -6,34 +6,31 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/menu.unity
+    path: Assets/Scenes/dulezite/menu.unity
     guid: 1d7a6e8a66bb5ec4e94708d9990e1b0a
   - enabled: 1
-    path: Assets/Scenes/3d pokus2.unity
+    path: Assets/Scenes/dulezite/3d pokus2.unity
     guid: 8b3ac3c8499e14146a281cc19c5dd1cd
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/souboj.unity
+    path: Assets/Scenes/dulezite/souboj.unity
     guid: bbb3beb702d375c41b16a94a8cc241fd
   - enabled: 1
-    path: Assets/Scenes/soubojGGG.unity
-    guid: 39cf2fd0ed1dc3e4193134691f2fd564
-  - enabled: 1
-    path: Assets/Scenes/mapy.unity
+    path: Assets/Scenes/mapyStary.unity
     guid: 490bb113a83cbc04daa1956f5f078373
   - enabled: 1
-    path: Assets/Scenes/skore.unity
+    path: Assets/Scenes/dulezite/skore.unity
     guid: 614f5012e59fb044fb438406b6cda362
   - enabled: 1
-    path: Assets/Scenes/obchod.unity
-    guid: a6ff1822ec256b4409c05c99f098a89e
+    path: Assets/Scenes/dulezite/obchod.unity
+    guid: 1956f97009158554da9735359be84dc7
   - enabled: 1
-    path: Assets/Scenes/Forest.unity
+    path: Assets/Scenes/dulezite/mapy.unity
+    guid: 9be9e60cff41ebe4e853b2f9a40e342a
+  - enabled: 1
+    path: Assets/Scenes/dulezite/Forest.unity
     guid: 1ed17b60f8aed2942810d53d3ab01d43
   - enabled: 1
-    path: Assets/Scenes/konecHry.unity
+    path: Assets/Scenes/dulezite/konecHry.unity
     guid: 7898d791d47d95f4cbd6d98665adc4f7
   - enabled: 1
     path: Assets/Scenes/fakeLoadingScreen.unity

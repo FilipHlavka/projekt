@@ -42,8 +42,9 @@ public class soubojSceneController : MonoBehaviour
 
             Debug.Log(zabal.obj.Count);
             listEnemies = zabal.obj;
-            Debug.Log(listEnemies.Count);
+            Debug.Log(zabal.hrDt.zivoty);
             hracDt = zabal.hrDt;
+            Debug.Log(hracDt.zivoty);
             sceneJm = zabal.sceneJm;
             timer = zabal.timer;
             //Debug.Log(listEnemies.Count);

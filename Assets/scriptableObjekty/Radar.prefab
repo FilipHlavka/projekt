@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1368522142094161306}
   - component: {fileID: 2885776480427318919}
   - component: {fileID: 2067642519173423171}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: vni
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5460111117728319154}
   - component: {fileID: 6049276033868518422}
   - component: {fileID: 7028164538894482172}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5280741250275678690}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 973054893164944322}
   - component: {fileID: 5668303531862814118}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 680311134592386449}
   - component: {fileID: 1763767160197977717}
   - component: {fileID: 2629383522769344689}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,13 +385,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
       propertyPath: m_Name
       value: Radar
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
       propertyPath: m_TagString
       value: budova
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +465,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5487577890287868839}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4258246009632225316}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7886115404135403262}
   m_SourcePrefab: {fileID: 100100000, guid: f9141ce992c514f4dab323b1ec2ba225, type: 3}
 --- !u!4 &1720774592827490942 stripped
 Transform:
@@ -511,7 +529,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contributeToFOV: 1
-  _sightRange: 15
+  _sightRange: 40
   _sightAngle: 360
   _disappearInFOW: 0
   _disappearAlphaThreshold: 0.1
+--- !u!135 &4258246009632225316
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720774592827989598}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 40
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7886115404135403262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720774592827989598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7b0e70ffd63447a799683620beff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -44,6 +44,7 @@ public class ingameStatusy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         id = vyhra.instance.dejId();
         canvas.SetActive(true);
        // particles.SetActive(true);
@@ -81,6 +82,9 @@ public class ingameStatusy : MonoBehaviour
             Rychlost = hrac.Rychlost;
             zaklRange = hrac.range;
         }
+        Collider cl = gameObject.GetComponent<Collider>();
+        cl.enabled = false;
+        cl.enabled = true;
     }
     private void prepinac(bool co, int ID)
     {

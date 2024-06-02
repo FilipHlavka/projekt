@@ -111,6 +111,7 @@ public class prirazeniDoBoje : MonoBehaviour
     public void pridatHrace()
     {
         int j = 0;
+        Debug.Log(Souboj.hracDt.zivoty);
         hracDt = Souboj.hracDt;
         foreach (model m in modely)
         {
