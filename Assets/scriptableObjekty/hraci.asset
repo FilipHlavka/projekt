@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: hraci
   m_EditorClassIdentifier: 
   prefs:
-  - hrac: {fileID: 4950875684005414751, guid: 96b6aca4fca8ee6458b5172f0f28e93e, type: 3}
-    cenaOtaznik: 45
   - hrac: {fileID: 2147214386507736365, guid: cb4fd6a623385fb4fb454f9e6c5c6cbd, type: 3}
     cenaOtaznik: 50
   - hrac: {fileID: 7096370153247902398, guid: bae0c81228594264491543e5f01ed894, type: 3}
