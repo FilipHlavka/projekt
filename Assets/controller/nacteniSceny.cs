@@ -18,16 +18,20 @@ public class nacteniSceny : MonoBehaviour
     }
     public void Nacti()
     {
-        scena = SceneManager.GetActiveScene().name; ;
-        BinaryFormatter formator = new BinaryFormatter();
+        if (File.Exists(Application.dataPath + "/" + scena + ".bin"))
+        {
+            scena = SceneManager.GetActiveScene().name; ;
+            BinaryFormatter formator = new BinaryFormatter();
 
-        FileStream stream = File.Open(Application.dataPath + "/" + scena + ".bin", FileMode.Open);
+            FileStream stream = File.Open(Application.dataPath + "/" + scena + ".bin", FileMode.Open);
 
-        strudl = (Zavin)formator.Deserialize(stream);
-        stream.Close();
-        vyhra.pocetZivotu = strudl.pocetZivotu;
-        obtiznost.instance.tezka = strudl.tezky;
-        eventNacteni.Invoke(strudl);
+            strudl = (Zavin)formator.Deserialize(stream);
+            stream.Close();
+            vyhra.pocetZivotu = strudl.pocetZivotu;
+            obtiznost.instance.tezka = strudl.tezky;
+            eventNacteni.Invoke(strudl);
+        }
+        
     }
    
 }

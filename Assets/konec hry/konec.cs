@@ -67,6 +67,7 @@ public class konec : MonoBehaviour
         // casy.casy = casList;
         foreach (var i in casy.casy)
         {
+            if(!i.fake)
             casList.Add(i);
         }
         Casy cas = new Casy();
@@ -90,12 +91,13 @@ public class konec : MonoBehaviour
     }
 
     void VytvorFile()
-    {
+    { 
         BinaryFormatter formator = new BinaryFormatter();
         Casy cas = new Casy();
         cas.mapa = "";
         cas.time = 0;
         cas.tezky = false;
+        cas.fake = true;
         casList.Add(cas);
         CasyWrapper cs = new CasyWrapper(casList);
         
@@ -110,6 +112,7 @@ public class konec : MonoBehaviour
     [Serializable]
     public class Casy
     {
+        public bool fake = false;
         public float time;
         public bool tezky;
         public string mapa;

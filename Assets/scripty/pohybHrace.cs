@@ -92,7 +92,7 @@ public class pohybHrace : MonoBehaviour
 
                 if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
                 {
-                    
+                   // Debug.Log(hit.collider);
                     agent.SetDestination(hit.point);
                 
                 }

@@ -33,33 +33,52 @@ public class scoreBoard : MonoBehaviour
 
     private void Nacti()
     {
-        BinaryFormatter formator = new BinaryFormatter();
+        if (File.Exists(Application.dataPath + "/Casy.bin"))
+        {
+            BinaryFormatter formator = new BinaryFormatter();
 
 
-        if (!File.Exists(Application.dataPath + "/Casy.bin"))
-            VytvorFile();
+           
 
-        FileStream streamCas = File.Open(Application.dataPath + "/Casy.bin", FileMode.Open);
-        casy = (CasyWrapper)formator.Deserialize(streamCas);
-        casList = casy.casy;
-        int i = 0;
+            FileStream streamCas = File.Open(Application.dataPath + "/Casy.bin", FileMode.Open);
+            casy = (CasyWrapper)formator.Deserialize(streamCas);
+            casList = casy.casy;
+            int i = 0;
+
+            foreach (var vec in casList)
+            {
+                if (!vec.fake)
+                {
+                    scoreObj obj = Instantiate(sc, Panel.transform);
+                    // Debug.Log(vec.time + "   " + vec.tezky);
+                    obj.id = i;
+                    vec.id = i;
+                    obj.eventOdstran.AddListener(odstran);
+                    aktText(vec, obj);
+                    i++;
+                }
+                else
+                {
+                    pocetUnsean++;
+                }
+
+                
+            }
+            for (int j = 0; j < Mathf.Abs(casList.Count - pocetUnsean - 1); j++)
+            {
+                Instantiate(unseen, Panel.transform);
+            }
+            streamCas.Close();
+        }
+        else
+        {
+           
+            for (int j = 0; j < Mathf.Abs(casList.Count - pocetUnsean - 1); j++)
+            {
+                Instantiate(unseen, Panel.transform);
+            }
+        }
        
-        foreach (var vec in casList)
-        {
-
-            scoreObj obj = Instantiate(sc, Panel.transform);
-           // Debug.Log(vec.time + "   " + vec.tezky);
-            obj.id = i;
-            vec.id = i;
-            obj.eventOdstran.AddListener(odstran);
-            aktText(vec, obj);
-            i++;
-        }
-        for (int j = 0; j < Mathf.Abs(casList.Count - pocetUnsean - 1); j++)
-        {
-            Instantiate(unseen, Panel.transform);
-        }
-        streamCas.Close();
     }
     public void odstran(int id)
     {
@@ -74,13 +93,16 @@ public class scoreBoard : MonoBehaviour
     }
     public void Uloz()
     {
-        
-           // File.Delete(Application.dataPath + "/Casy.bin");
+        if (File.Exists(Application.dataPath + "/Casy.bin"))
+        {
+            // File.Delete(Application.dataPath + "/Casy.bin");
             BinaryFormatter formator = new BinaryFormatter();
-            FileStream stream = File.Open(Application.dataPath + "/Casy.bin",FileMode.Open);
+            FileStream stream = File.Open(Application.dataPath + "/Casy.bin", FileMode.Open);
             CasyWrapper cs = new CasyWrapper(casList);
             formator.Serialize(stream, cs);
             stream.Close();
+        }
+           
         
         
         
