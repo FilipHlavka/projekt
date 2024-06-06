@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/dulezite/mapy.unity
     guid: 9be9e60cff41ebe4e853b2f9a40e342a
   - enabled: 1
+    path: Assets/Scenes/dulezite/nastaveni.unity
+    guid: ebe590d2d8ee0504392e3d800be1bc91
+  - enabled: 1
     path: Assets/Scenes/dulezite/Forest.unity
     guid: 1ed17b60f8aed2942810d53d3ab01d43
   - enabled: 1

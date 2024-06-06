@@ -493,7 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 709626813}
   sl: {fileID: 1104999548}
-  dobaTrvani: 3
+  dobaTrvani: 1
 --- !u!1 &1104999546
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,6 @@ public class managerProMapy : MonoBehaviour
     public void zacniHru()
     {
         if(Mapa != "")
-          ingamemanager.instance.PrepniNascenu(Mapa, true);
+          ingamemanager.instance.PrepniNascenu(Mapa, true,2);
     }
 }

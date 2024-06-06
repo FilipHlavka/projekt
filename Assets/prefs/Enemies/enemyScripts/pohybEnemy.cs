@@ -30,7 +30,7 @@ public class pohybEnemy : MonoBehaviour
     //bool stuj = false;
     bool protekce = false;
     bool megaPom = true;
-    bool pomNaNeco = true;
+    bool mohu = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -86,8 +86,8 @@ public class pohybEnemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(cont.prvniInstance && playerTf != null && protekce && pomNaNeco)
-        Delej();
+        if(cont.prvniInstance && playerTf != null && protekce && mohu)
+        Checkuj();
 
         if (playerTf == null)
         {
@@ -122,9 +122,9 @@ public class pohybEnemy : MonoBehaviour
     }
 
     
-    private void Delej()
+    private void Checkuj()
     {
-       // Debug.Log("nee" + playerTf.position);
+       
         //Debug.Log(vidiHrace);
         Vector3 dir = playerTf.position - raycastObj.transform.position;
         LayerMask ignore = LayerMask.GetMask("player","Water","Default","UI","enemy");
@@ -147,7 +147,7 @@ public class pohybEnemy : MonoBehaviour
             
                // agent.isStopped = true;
                 utoc.Invoke(true, gameObject);
-                pomNaNeco = false;
+                mohu = false;
             
             
                         

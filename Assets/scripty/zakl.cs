@@ -31,7 +31,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
     UnityEvent<bool,GameObject> utoc;
     bool stuj = false;
     hracData hracdata;
-    int blbost= 0;
+    int pocetAk = 0;
     public string nameHr;
     //public Vector3 pozice;
     //public Vector3 rotace;
@@ -140,10 +140,6 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
                 {
                 if (Vector3.Distance(transform.position, enemy.transform.position) < range / 3)
                 {
-
-                    
-
-
                     bool hit = Physics.Raycast(RaycastObj.transform.position, enemy.transform.position - RaycastObj.transform.position, out RaycastHit hitRay, dosah, maskaPrekazka);
 
 
@@ -151,7 +147,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
                    
                     if (hit && hitRay.collider != null && (hitRay.collider.CompareTag("enemy") || hitRay.collider.CompareTag("enemyCollider")))
                     {
-                       // Debug.Log(hitRay.collider.name + " " + hitRay.collider.tag);
+                       
                         Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.red);
 
                         ukazZarovku.instance.sviti = true;
@@ -161,10 +157,10 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
 
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
-                           if (blbost == 0)
+                           if (pocetAk == 0)
                                 utoc.Invoke(false, enemy);
 
-                            blbost++;
+                            pocetAk++;
                         }
 
                     }
@@ -172,7 +168,7 @@ public abstract class zakl : MonoBehaviour, IProSchopnost
                     {
                       
                         ukazZarovku.instance.sviti = false;
-                        //resetLineRenderer();
+                       
 
                     }
 

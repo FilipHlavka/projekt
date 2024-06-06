@@ -92,18 +92,18 @@ public class soubojSceneController : MonoBehaviour
             vyhra.prohra = false;
             cont.prvniInstance = true;
 
-            mngr.PrepniNascenu("konecHry", true);
+            mngr.PrepniNascenu("konecHry", true, 1);
         }else if (enemyVyhral && zabal.pocetZivotu == -1)
         {
             vyhra.prohra = true;
             //Debug.Log("wtf");
             cont.prvniInstance = true;
-            mngr.PrepniNascenu("konecHry", true);
+            mngr.PrepniNascenu("konecHry", true, 1);
 
         }
         else
         {
-            mngr.PrepniNascenu(sceneJm, false);
+            mngr.PrepniNascenu(sceneJm, false, 0);
 
         }
 

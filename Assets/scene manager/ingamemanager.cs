@@ -16,6 +16,7 @@ public class ingamemanager : MonoBehaviour
     Image fakeScreen;
     public static ingamemanager instance;
     public static string dalsiScena;
+    public static float cas;
     void Awake()
     {
             instance = this;
@@ -31,7 +32,7 @@ public class ingamemanager : MonoBehaviour
         vyhra.instance.konec.AddListener(stavKonce);
     }
 
-    public void PrepniNascenu(string scena, bool loading)
+    public void PrepniNascenu(string scena, bool loading, float casZo)
     {
         // Zapnout fake loading screen!!!!!!!!!!!!!!!!!!!!! >w<
         if (fakeScreen != null)
@@ -45,6 +46,7 @@ public class ingamemanager : MonoBehaviour
         {
             // Debug.Log("wtf");
             //vyhra.pocetZivotu = 2;
+            cas = casZo;
             SceneManager.LoadScene("fakeLoadingScreen");
 
         }
@@ -56,7 +58,7 @@ public class ingamemanager : MonoBehaviour
     }
     public void stavKonce()
     {
-        PrepniNascenu("konecHry",true);
+        PrepniNascenu("konecHry",true,1);
         
     }
 

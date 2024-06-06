@@ -275,14 +275,30 @@ public class actuallSouboj : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Utoc();
-            Debug.Log("útok hráè");
-            Log.text = "Player attack" + "\n" + zpoznenejText;
-            zpoznenejText = "Player attack";
-            Debug.Log(enemyVSouboji.zivoty + " " + enemyVSouboji.def + "enemy");
-            aktUI();
-            pal.Invoke(false);
-            muzu = true;
+            int rnd = UnityEngine.Random.Range(0, 101);
+            if (rnd <= 0)
+            {
+                Utoc();
+                Debug.Log("útok hráè");
+                Log.text = "Player attack" + "\n" + zpoznenejText;
+                zpoznenejText = "Player attack";
+                Debug.Log(enemyVSouboji.zivoty + " " + enemyVSouboji.def + "enemy");
+                aktUI();
+                pal.Invoke(false);
+                muzu = true;
+            }
+            else
+            {
+                Debug.Log("útok hráè");
+                Log.text = "Player missed" + "\n" + zpoznenejText;
+                zpoznenejText = "Player missed";
+                Debug.Log(enemyVSouboji.zivoty + " " + enemyVSouboji.def + "enemy");
+                aktUI();
+                pal.Invoke(false);
+                muzu = true;
+                enemyVSouboji.jeNaTahu = true;
+            }
+           
 
         }
         if (Input.GetKeyDown(KeyCode.K))

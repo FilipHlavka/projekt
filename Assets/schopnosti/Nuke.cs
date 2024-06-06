@@ -22,6 +22,6 @@ public class Nuke : ZaklSchopnost
         vyhra.prohra = false;
         cont.prvniInstance = true;
 
-        ingamemanager.instance.PrepniNascenu("konecHry", true);
+        ingamemanager.instance.PrepniNascenu("konecHry", true, 1);
     }
 }
