@@ -27,14 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/dulezite/mapy.unity
     guid: 9be9e60cff41ebe4e853b2f9a40e342a
   - enabled: 1
+    path: Assets/Scenes/dulezite/konecHry.unity
+    guid: ec7c9f06106f15346a47eef4f86d2b1a
+  - enabled: 1
     path: Assets/Scenes/dulezite/nastaveni.unity
     guid: ebe590d2d8ee0504392e3d800be1bc91
   - enabled: 1
     path: Assets/Scenes/dulezite/Forest.unity
     guid: 1ed17b60f8aed2942810d53d3ab01d43
-  - enabled: 1
-    path: Assets/Scenes/dulezite/konecHry.unity
-    guid: 7898d791d47d95f4cbd6d98665adc4f7
   - enabled: 1
     path: Assets/Scenes/dulezite/Desert.unity
     guid: a0e0874a9c5d3324c843a5c89a6d90ca

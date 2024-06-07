@@ -276,8 +276,9 @@ public class actuallSouboj : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             int rnd = UnityEngine.Random.Range(0, 101);
-            if (rnd <= 0)
+            if (rnd <= 70)
             {
+                Debug.Log(rnd);
                 Utoc();
                 Debug.Log("útok hráè");
                 Log.text = "Player attack" + "\n" + zpoznenejText;
@@ -289,6 +290,7 @@ public class actuallSouboj : MonoBehaviour
             }
             else
             {
+                Debug.Log(rnd);
                 Debug.Log("útok hráè");
                 Log.text = "Player missed" + "\n" + zpoznenejText;
                 zpoznenejText = "Player missed";
@@ -304,6 +306,13 @@ public class actuallSouboj : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             hracDt.zivoty = 0;
+            muzu = true;
+
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            hracDt.zivoty = 100;
+            hracDt.atk = 0;
             muzu = true;
 
         }

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Plyn : ZaklSchopnost
 {
+    public override void Prehraj()
+    {
+       
+    }
+
     // Start is called before the first frame update
-  
+
     // Update is called once per frame
     void Update()
     {

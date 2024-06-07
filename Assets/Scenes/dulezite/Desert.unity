@@ -1610,6 +1610,7 @@ GameObject:
   - component: {fileID: 672021443}
   - component: {fileID: 672021442}
   - component: {fileID: 672021441}
+  - component: {fileID: 672021444}
   m_Layer: 5
   m_Name: pauza
   m_TagString: Untagged
@@ -1678,6 +1679,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &672021444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672021440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e0b14f42670f94696e85b0553c16e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &763128573
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,6 +36,7 @@ public abstract class ZaklSchopnost : MonoBehaviour
     {
         
     }
+    public abstract void Prehraj();
 
     public IEnumerator Znic()
     {

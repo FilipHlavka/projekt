@@ -43,13 +43,14 @@ public class SpawnIt : MonoBehaviour
                     {
                         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                         LayerMask layerMask = ~LayerMask.GetMask("player");
-                        wp.aktSchopnost = "";
+                       
                         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerMask))
                         {
                             Instantiate(particle.schopnost, hit.point, Quaternion.identity);
+                            wp.aktSchopnost = "";
                             //pouzito = true;
                             Uloz();
-
+                           
                         }
 
 

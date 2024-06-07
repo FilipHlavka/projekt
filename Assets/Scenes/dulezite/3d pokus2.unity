@@ -1556,6 +1556,7 @@ GameObject:
   - component: {fileID: 672021443}
   - component: {fileID: 672021442}
   - component: {fileID: 672021441}
+  - component: {fileID: 672021444}
   m_Layer: 5
   m_Name: pauza
   m_TagString: Untagged
@@ -1624,13 +1625,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &672021444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672021440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e0b14f42670f94696e85b0553c16e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &688679800
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-13230
+  m_Name: pb_Mesh-52078
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3561,7 +3574,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-12630
+  m_Name: pb_Mesh-52142
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4458,7 +4471,7 @@ Transform:
   m_GameObject: {fileID: 2034196474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.85, y: -15.38, z: 31.6}
+  m_LocalPosition: {x: -9.85, y: 5.45, z: 31.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

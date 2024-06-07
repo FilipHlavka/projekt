@@ -36,6 +36,7 @@ public class VyberSch : MonoBehaviour
     TMP_Text textNePenize;
     [SerializeField]
     TMP_Text volba;
+
     // Start is called before the first frame update
     void Start()
     {
