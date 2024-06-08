@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/dulezite/souboj.unity
     guid: bbb3beb702d375c41b16a94a8cc241fd
   - enabled: 1
-    path: Assets/Scenes/mapyStary.unity
-    guid: 490bb113a83cbc04daa1956f5f078373
-  - enabled: 1
     path: Assets/Scenes/dulezite/obchod.unity
     guid: 1956f97009158554da9735359be84dc7
   - enabled: 1

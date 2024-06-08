@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +7,12 @@ using UnityEngine;
 
 public class Nuke : ZaklSchopnost
 {
+    List<GameObject> list;
     private void Start()
     {
         base.Start();
-        List<GameObject> list = GameObject.FindGameObjectsWithTag("enemy").ToList();
-        foreach (GameObject go in list)
-        {
-            Destroy(go);
-            EnemyRespawn.instance.spawnuj = false;
-        }
+        list = GameObject.FindGameObjectsWithTag("enemy").ToList();
+       
         Invoke("Prehraj", 1);
         pauza.funguj = false;
     }
@@ -28,9 +26,13 @@ public class Nuke : ZaklSchopnost
 
     public override void Prehraj()
     {
-       
-            Hlasy.instance.Exploze();
-
-        
+        foreach (GameObject go in list)
+        {
+            Destroy(go);
+            EnemyRespawn.instance.spawnuj = false;
+        }
+        Hlasy.instance.Exploze();
+        if(stit.instance != null)
+        stit.instance.NasadStit();
     }
 }
