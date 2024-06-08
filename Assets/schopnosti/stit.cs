@@ -19,5 +19,6 @@ public class stit : MonoBehaviour
     {
         sys.Play();
         phbHr.agent.isStopped = true;
+        zvukHrac.instance.zdroj.volume = 0;
     }
 }
