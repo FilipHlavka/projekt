@@ -18,9 +18,10 @@ public class nacteniSceny : MonoBehaviour
     }
     public void Nacti()
     {
+        scena = SceneManager.GetActiveScene().name;
         if (File.Exists(Application.dataPath + "/" + scena + ".bin"))
         {
-            scena = SceneManager.GetActiveScene().name; ;
+             
             BinaryFormatter formator = new BinaryFormatter();
 
             FileStream stream = File.Open(Application.dataPath + "/" + scena + ".bin", FileMode.Open);

@@ -44,6 +44,7 @@ public class pauza : MonoBehaviour
         EnemyRespawn.instance.spawnuj = false;
         pom = !pom;
         panel.SetActive(true);
+        zvukHrac.instance.zdroj.volume = 0; ;
 
     }
 
@@ -56,5 +57,6 @@ public class pauza : MonoBehaviour
         Time.timeScale = 1f;
         pom = !pom;
         panel.SetActive(false);
+        zvukHrac.instance.zdroj.volume = 0.2f;
     }
 }

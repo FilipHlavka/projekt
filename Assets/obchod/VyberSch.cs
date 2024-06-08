@@ -46,7 +46,7 @@ public class VyberSch : MonoBehaviour
         image.sprite = Resources.Load<Sprite>("schopnosti/" + sch.prefs[0].schopnost.nazev);
         textPopis.text = sch.prefs[0].schopnost.popis;
         textJm.text = sch.prefs[0].schopnost.nazev;
-        cena.text = "Cost: " + sch.prefs[0].schopnost.cena + " *";
+        cena.text = "Cost: " + sch.prefs[0].schopnost.cena + " ";
     }
     
     public void Prepni(bool vpred)
@@ -72,7 +72,7 @@ public class VyberSch : MonoBehaviour
         image.sprite = Resources.Load<Sprite>("schopnosti/" + sch.prefs[schCislo].schopnost.nazev);
         textPopis.text = sch.prefs[schCislo].schopnost.popis;
         textJm.text = sch.prefs[schCislo].schopnost.nazev;
-        cena.text = "Cost: " + sch.prefs[schCislo].schopnost.cena + " *";
+        cena.text = "Cost: " + sch.prefs[schCislo].schopnost.cena + " ";
 
 
     }
@@ -89,7 +89,7 @@ public class VyberSch : MonoBehaviour
 
         wp = (HvezdyASchWrapper)formator.Deserialize(stream);
         stream.Close();
-        textHvezdy.text = wp.hvezdy + " *";
+        textHvezdy.text = wp.hvezdy + " ";
         hvezdy = wp.hvezdy;
         aktSchopnost = wp.aktSchopnost;
     }
@@ -152,7 +152,7 @@ public class VyberSch : MonoBehaviour
         {
             hvezdy -= sch.prefs[schCislo].schopnost.cena;
             aktSchopnost = sch.prefs[schCislo].schopnost.nazev;
-            textHvezdy.text = hvezdy + " *";
+            textHvezdy.text = hvezdy + " ";
             upozorneni.SetActive(true);
             textKoupe.enabled = true;
             textNePenize.enabled = false;
@@ -176,12 +176,12 @@ public class VyberSch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             hvezdy++;
-            textHvezdy.text = hvezdy + " *";
+            textHvezdy.text = hvezdy + " ";
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             hvezdy--;
-            textHvezdy.text = hvezdy + " *";
+            textHvezdy.text = hvezdy + " ";
         }
 
 
