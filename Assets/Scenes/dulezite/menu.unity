@@ -2028,8 +2028,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zdroj: {fileID: 1658447607}
-  klik: {fileID: 8300000, guid: 863dc7777d0164c4b9347058fe2fc259, type: 3}
-  exploze: {fileID: 8300000, guid: d904312be685b144ebfa3b78a9b03c48, type: 3}
+  klik: {fileID: 8300000, guid: b6aaaacaa5cf92b4eb9774d2c04b15cb, type: 3}
+  exploze: {fileID: 8300000, guid: 76fe45c6af30e444ca32dd6964ef943b, type: 3}
+  plyn: {fileID: 8300000, guid: 7b9e847bd8d3ebe4db126f61ee8eaf38, type: 3}
   prvni: 1
 --- !u!82 &1658447607
 AudioSource:

@@ -71,9 +71,13 @@ public class pohybHrace : MonoBehaviour
                 HejbniSe();
             else
                 agent.isStopped = true;
-        
-        
-       
+
+        if (Dorazil())
+        {
+            zvukHrac.instance.Harj(true);
+        }
+
+
     }
     public void Zastav()
     {
@@ -94,7 +98,7 @@ public class pohybHrace : MonoBehaviour
                 {
                    // Debug.Log(hit.collider);
                     agent.SetDestination(hit.point);
-                
+                    zvukHrac.instance.Harj(false);
                 }
 
 
@@ -103,6 +107,18 @@ public class pohybHrace : MonoBehaviour
         }
        
 
+    }
+
+    bool Dorazil()
+    {
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void Narovnej()

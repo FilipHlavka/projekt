@@ -93,11 +93,7 @@ public class actuallSouboj : MonoBehaviour
         EnmShSlider.maxValue = enemyVSouboji.def;
         aktUI();
         
-        if (enemyVSouboji.jeNaTahu)
-        {
-            enemyVSouboji.jeNaTahu = false;
-            Invoke("EnemyBoj",2);
-        }
+      
 
     }
     void aktUI()
@@ -300,7 +296,7 @@ public class actuallSouboj : MonoBehaviour
                 muzu = true;
                 enemyVSouboji.jeNaTahu = true;
             }
-           
+            ZvukSouboj.instance.Strel();
 
         }
         if (Input.GetKeyDown(KeyCode.K))
@@ -323,7 +319,7 @@ public class actuallSouboj : MonoBehaviour
             Log.text = "Player defense" + "\n" + zpoznenejText;
             zpoznenejText = "Player defense";
             muzu = true;
-
+            ZvukSouboj.instance.Def();
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -332,14 +328,14 @@ public class actuallSouboj : MonoBehaviour
             Log.text = "Player buff" + "\n" + zpoznenejText;
             zpoznenejText = "Player buff";
             muzu = true;
-
+            ZvukSouboj.instance.Buff();
         }
         if (Input.GetKeyDown(KeyCode.Space) && !aktSchopnost)
         {
-            
-           
-           
-            
+
+            ZvukSouboj.instance.Power();
+
+
             aktSchopnost = true;
             doba = Random.Range(1, 4);
             Debug.Log("POWER" + doba);
@@ -396,6 +392,7 @@ public class actuallSouboj : MonoBehaviour
         int rnd = UnityEngine.Random.Range(0, 101);
         if (rnd <= 20)
         {
+            ZvukSouboj.instance.Def();
             BranSeEnemy();
             Debug.Log("štíty");
             Log.text = "Enemy defense" + "\n" + zpoznenejText;
@@ -403,6 +400,7 @@ public class actuallSouboj : MonoBehaviour
         }
         if (rnd > 20 && rnd < 50)
         {
+            ZvukSouboj.instance.Buff();
             ZvisAtkEnemy();
             Debug.Log("buff");
             Log.text = "Enemy buff" + "\n" + zpoznenejText;
@@ -410,6 +408,7 @@ public class actuallSouboj : MonoBehaviour
         }
         if (rnd > 49)
         {
+            ZvukSouboj.instance.Strel();
             UtocEnemy();
             Debug.Log(hracDt.zivoty + " " + hracDt.def + "hraè");
             aktUI();

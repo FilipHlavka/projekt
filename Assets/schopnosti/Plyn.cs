@@ -6,14 +6,15 @@ public class Plyn : ZaklSchopnost
 {
     public override void Prehraj()
     {
-       
+        Hlasy.instance.Plyn();
     }
 
     // Start is called before the first frame update
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        base.Start();
+        Invoke("Prehraj",1);
     }
 }

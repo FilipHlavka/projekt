@@ -9,6 +9,7 @@ public class Hlasy : MonoBehaviour
     public AudioSource zdroj;
     public AudioClip klik;
     public AudioClip exploze;
+    public AudioClip plyn;
     public bool prvni = true;
 
     private void Awake()
@@ -40,6 +41,13 @@ public class Hlasy : MonoBehaviour
     {
        
         zdroj.clip = exploze;
+        zdroj.Play();
+    }
+
+    public void Plyn()
+    {
+
+        zdroj.clip = plyn;
         zdroj.Play();
     }
 }
